@@ -24,3 +24,5 @@ device_summary.py
 main.py
 multi_stage_attack_correlator.py
 parser_old.py
+reports/raw_logs.json
+reports/clearsoc.db
