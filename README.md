@@ -57,11 +57,13 @@ npm run dev
 Open http://localhost:5173
 
 ### Database
-The SQLite database (`reports/clearsoc.db`) contains 26,000+ real security events collected from a Windows lab environment under active attack simulation. It is not included in this repo due to size (60MB).
+The SQLite database (`reports/clearsoc.db`) contains 26,000+ real security events collected from a Windows lab environment under active attack simulation.
 
-Download: [clearsoc.db — Google Drive](https://drive.google.com/your-link-here)
+The database is included in the submission package but excluded from this repository due to size (60MB). To run ClearSOC with populated data, obtain the database from the submission package and place it at `reports/clearsoc.db`, then run:
 
-Place it at `reports/clearsoc.db` and run `python3 backend/soc_pipeline_v2.py` to regenerate all reports.
+````bash
+python3 backend/soc_pipeline_v2.py
+```
 
 ---
 
