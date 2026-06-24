@@ -1,0 +1,298 @@
+/* Discover Page - Raw Wazuh Telemetry Styles */
+
+.discover-page {
+  padding: 24px;
+  background: #0a0c10;
+  min-height: 100vh;
+  color: #e0e0e0;
+}
+
+/* Header */
+.discover-header {
+  margin-bottom: 24px;
+}
+
+.discover-title {
+  color: #00d4ff;
+  margin-bottom: 8px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.discover-subtitle {
+  color: #888;
+  font-size: 14px;
+}
+
+.discover-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.discover-stats {
+  color: #666;
+  font-size: 12px;
+}
+
+.discover-refresh-btn {
+  background: #1a1f2e;
+  border: 1px solid #2a2f3e;
+  color: #e0e0e0;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+}
+
+.discover-refresh-btn:hover {
+  background: #2a2f3e;
+  border-color: #00d4ff;
+}
+
+/* Search Bar */
+.discover-search-wrapper {
+  position: relative;
+  max-width: 400px;
+  margin-bottom: 24px;
+}
+
+.discover-search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666;
+}
+
+.discover-search-input {
+  width: 100%;
+  padding: 10px 12px 10px 36px;
+  background: #1a1f2e;
+  border: 1px solid #2a2f3e;
+  border-radius: 8px;
+  color: #e0e0e0;
+  font-size: 13px;
+}
+
+.discover-search-input:focus {
+  outline: none;
+  border-color: #00d4ff;
+}
+
+/* Stats Grid */
+.discover-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.discover-stat-card {
+  background: #0f1117;
+  border: 1px solid #1e2230;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.discover-stat-label {
+  color: #888;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.discover-stat-value {
+  font-size: 32px;
+  font-weight: bold;
+  color: #00d4ff;
+}
+
+/* Table Container */
+.discover-table-container {
+  background: #0f1117;
+  border: 1px solid #1e2230;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.discover-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.discover-table th {
+  padding: 14px 16px;
+  text-align: left;
+  color: #888;
+  font-size: 12px;
+  font-weight: 500;
+  border-bottom: 1px solid #1e2230;
+  background: #0a0d14;
+}
+
+.discover-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #1a1f2e;
+}
+
+.discover-table tr:hover {
+  background: #1a1f2e;
+}
+
+/* Table Cell Styles */
+.discover-time {
+  font-family: monospace;
+  font-size: 11px;
+  color: #888;
+}
+
+.discover-host-cell {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.discover-user-cell {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.discover-alert-title {
+  font-weight: 500;
+}
+
+.discover-alert-summary {
+  font-size: 11px;
+  color: #666;
+  margin-top: 4px;
+}
+
+.discover-event-id {
+  font-family: monospace;
+  font-size: 12px;
+}
+
+/* Severity Badges */
+.discover-severity {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.severity-critical {
+  background: rgba(255, 68, 68, 0.2);
+  color: #ff4444;
+}
+
+.severity-high {
+  background: rgba(255, 136, 0, 0.2);
+  color: #ff8800;
+}
+
+.severity-medium {
+  background: rgba(255, 204, 0, 0.2);
+  color: #ffcc00;
+}
+
+.severity-low {
+  background: rgba(0, 204, 136, 0.2);
+  color: #00cc88;
+}
+
+/* Investigate Button */
+.discover-investigate-btn {
+  background: transparent;
+  border: 1px solid #2a2f3e;
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+  color: #00d4ff;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+}
+
+.discover-investigate-btn:hover {
+  background: #00d4ff;
+  color: #0a0c10;
+  border-color: #00d4ff;
+}
+
+/* Loading & Empty States */
+.discover-loading,
+.discover-empty {
+  padding: 40px;
+  text-align: center;
+  color: #666;
+}
+
+.discover-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .discover-page {
+    padding: 16px;
+  }
+  
+  .discover-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .discover-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .discover-search-wrapper {
+    max-width: 100%;
+  }
+}
+
+/* ===== DISCOVER FILTER BAR ===== */
+.discover-filter-bar {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(150px, 1fr));
+  gap: 12px;
+  margin: 0 0 24px 0;
+}
+
+.discover-filter-bar select {
+  background: #101827;
+  border: 1px solid #263247;
+  color: #e0f7ff;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  outline: none;
+}
+
+.discover-filter-bar select:focus {
+  border-color: #00d4ff;
+}
+
+.discover-search-wrapper {
+  max-width: 100%;
+  background: #101827;
+  border: 1px solid #263247;
+  border-radius: 10px;
+  margin-bottom: 14px;
+}
+
+.discover-search-input {
+  background: transparent;
+  border: none;
+}

@@ -1,0 +1,164 @@
+{
+    "total_devices": 1,
+    "device_summaries": [
+        {
+            "host": "windows10",
+            "raw_events": 251,
+            "grouped_behaviors": 96,
+            "incidents": 1,
+            "attack_chains": 1,
+            "risk_score": 278,
+            "risk_level": "CRITICAL",
+            "top_behaviors": [
+                "low_frequency_activity",
+                "network_connection_activity",
+                "suspicious_process_activity",
+                "repetitive_behavior",
+                "known_noise"
+            ],
+            "top_processes": [
+                "unknown",
+                "onedrive.sync.service.exe",
+                "svchost.exe",
+                "onedrivestandaloneupdater.exe",
+                "cleanmgr.exe"
+            ],
+            "top_event_ids": [
+                "1",
+                "3",
+                "22",
+                "4798",
+                "11"
+            ],
+            "suspicious_behaviors": [
+                {
+                    "event_id": "1",
+                    "event_name": "Process Creation",
+                    "process": "powershell.exe",
+                    "parent_process": "wazuh-agent.exe",
+                    "user": "system",
+                    "count": 8,
+                    "severity": "MEDIUM",
+                    "summary": "8 event(s) of type 1 (Process Creation) were grouped on host windows10, user system, process powershell.exe, parent process wazuh-agent.exe."
+                },
+                {
+                    "event_id": "4625",
+                    "event_name": "Failed Login",
+                    "process": "svchost.exe",
+                    "parent_process": "unknown",
+                    "user": "leo",
+                    "count": 6,
+                    "severity": "MEDIUM",
+                    "summary": "6 event(s) of type 4625 (Failed Login) were grouped on host windows10, user leo, process svchost.exe, parent process unknown."
+                },
+                {
+                    "event_id": "1",
+                    "event_name": "Process Creation",
+                    "process": "rundll32.exe",
+                    "parent_process": "svchost.exe",
+                    "user": "system",
+                    "count": 2,
+                    "severity": "MEDIUM",
+                    "summary": "2 event(s) of type 1 (Process Creation) were grouped on host windows10, user system, process rundll32.exe, parent process svchost.exe."
+                },
+                {
+                    "event_id": "1",
+                    "event_name": "Process Creation",
+                    "process": "cmd.exe",
+                    "parent_process": "vmtoolsd.exe",
+                    "user": "system",
+                    "count": 1,
+                    "severity": "MEDIUM",
+                    "summary": "1 event(s) of type 1 (Process Creation) were grouped on host windows10, user system, process cmd.exe, parent process vmtoolsd.exe."
+                },
+                {
+                    "event_id": "1",
+                    "event_name": "Process Creation",
+                    "process": "powershell.exe",
+                    "parent_process": "compattelrunner.exe",
+                    "user": "system",
+                    "count": 1,
+                    "severity": "MEDIUM",
+                    "summary": "1 event(s) of type 1 (Process Creation) were grouped on host windows10, user system, process powershell.exe, parent process compattelrunner.exe."
+                },
+                {
+                    "event_id": "1",
+                    "event_name": "Process Creation",
+                    "process": "rundll32.exe",
+                    "parent_process": "svchost.exe",
+                    "user": "leo",
+                    "count": 1,
+                    "severity": "MEDIUM",
+                    "summary": "1 event(s) of type 1 (Process Creation) were grouped on host windows10, user leo, process rundll32.exe, parent process svchost.exe."
+                }
+            ],
+            "incident_previews": [
+                {
+                    "module": "authentication_attack",
+                    "chain_type": "Possible Brute Force Activity",
+                    "severity": "MEDIUM",
+                    "risk_score": 35,
+                    "correlation_confidence": "MEDIUM",
+                    "summary": "6 failed login attempt(s) were observed for user leo from source 127.0.0.1 to destination host windows10 within 5 second(s). No successful login was observed within the correlation window.",
+                    "timeline": [
+                        {
+                            "time": "2026-05-27T15:42:19.747+0800",
+                            "event_id": "4625",
+                            "stage": "Initial Access",
+                            "event": "Repeated failed logins detected",
+                            "details": "6 failed login attempt(s)",
+                            "host": "windows10",
+                            "user": "leo",
+                            "source_ip": "127.0.0.1",
+                            "destination_host": "windows10",
+                            "logon_type": "2",
+                            "first_seen": "2026-05-27T15:42:19.747+0800",
+                            "last_seen": "2026-05-27T15:42:24.910+0800",
+                            "mitre": "T1110"
+                        }
+                    ]
+                }
+            ],
+            "attack_chain_previews": [
+                {
+                    "chain_label": "Correlated Activity Timeline",
+                    "is_attack_candidate": false,
+                    "start_time": "2026-05-27T15:42:19.747+0800",
+                    "end_time": "2026-05-27T15:42:19.747+0800",
+                    "event_count": 1,
+                    "summary": "6 failed login attempt(s) were observed for user leo from source 127.0.0.1 to destination host windows10 within 5 second(s). No successful login was observed within the correlation window.",
+                    "timeline": [
+                        {
+                            "parent_process": "",
+                            "process": "",
+                            "time": "2026-05-27T15:42:19.747+0800",
+                            "event_id": "4625",
+                            "stage": "Initial Access",
+                            "event": "Repeated failed logins detected",
+                            "details": "6 failed login attempt(s)",
+                            "mitre": "T1110",
+                            "host": "windows10",
+                            "user": "leo",
+                            "source_ip": "127.0.0.1",
+                            "destination_ip": "",
+                            "destination_host": "windows10",
+                            "logon_type": "2",
+                            "module": "authentication_attack",
+                            "chain_type": "Possible Brute Force Activity",
+                            "severity": "MEDIUM",
+                            "confidence": "MEDIUM",
+                            "analyst_note": ""
+                        }
+                    ]
+                }
+            ],
+            "severity_breakdown": {
+                "HIGH": 0,
+                "MEDIUM": 6,
+                "LOW": 88,
+                "INFO": 2
+            },
+            "summary": "251 raw events were processed on windows10. These were reduced into 96 grouped behaviors, 1 correlated incidents, and 1 attack chain(s). Overall device risk was classified as CRITICAL."
+        }
+    ]
+}

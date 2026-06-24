@@ -1,0 +1,1363 @@
+[
+    {
+        "investigation_id": "INV-00001",
+        "alert_id": "CSA-00001",
+        "time": "2026-05-02T14:51:07.859+0800",
+        "host": "WIN-LI00JJSH3VR",
+        "user": "unknown",
+        "event_id": "7040",
+        "rule_id": "61104",
+        "rule_description": "Service startup type was changed",
+        "process": "",
+        "parent_process": "",
+        "command_line": "",
+        "severity": "MEDIUM",
+        "kill_chain_phase": "Persistence",
+        "mitre": [
+            "T1543.003"
+        ],
+        "fp_notes": "Could be legitimate software installation \u2014 check change management",
+        "title": "\u2699\ufe0f Service Configuration Modified",
+        "summary": "Service startup type changed on WIN-LI00JJSH3VR \u2014 possible persistence mechanism",
+        "related_chain_id": null,
+        "chain_severity": null,
+        "chain_decision": "MONITOR",
+        "chain_reasons": [],
+        "chain_kill_chain_phases": [],
+        "confidence": "LOW",
+        "recommended_actions": [
+            "Identify which service was modified",
+            "Verify if change was authorized",
+            "Check service binary path for malicious executables",
+            "Correlate with other suspicious activity on same host"
+        ],
+        "validation": {
+            "brute_force_preceded": false,
+            "privilege_escalation_observed": false,
+            "powershell_observed": false,
+            "persistence_observed": false,
+            "lateral_movement_observed": false
+        }
+    },
+    {
+        "investigation_id": "INV-00002",
+        "alert_id": "CSA-00002",
+        "time": "2026-05-02T17:55:44.328+0800",
+        "host": "WIN-LI00JJSH3VR",
+        "user": "administrator",
+        "event_id": "4719",
+        "rule_id": "60112",
+        "rule_description": "Windows Audit Policy changed",
+        "process": "",
+        "parent_process": "",
+        "command_line": "",
+        "severity": "HIGH",
+        "kill_chain_phase": "Defense Evasion",
+        "mitre": [
+            "T1562.002"
+        ],
+        "fp_notes": "Could be legitimate IT policy change \u2014 verify with change management",
+        "title": "\ud83d\udee1\ufe0f Audit Policy Modified",
+        "summary": "Windows audit policy changed on WIN-LI00JJSH3VR \u2014 attacker may be disabling logging",
+        "related_chain_id": "CHAIN-00001",
+        "chain_severity": "LOW",
+        "chain_decision": "MONITOR",
+        "chain_reasons": [
+            "Brute force login activity detected"
+        ],
+        "chain_kill_chain_phases": [
+            "Initial Access",
+            "Defense Evasion"
+        ],
+        "confidence": "MEDIUM",
+        "recommended_actions": [
+            "Verify if audit policy change was authorized",
+            "Check what specific policies were changed",
+            "Re-enable audit logging if disabled",
+            "Investigate who made the change and why"
+        ],
+        "validation": {
+            "brute_force_preceded": true,
+            "privilege_escalation_observed": false,
+            "powershell_observed": false,
+            "persistence_observed": false,
+            "lateral_movement_observed": false
+        }
+    },
+    {
+        "investigation_id": "INV-00003",
+        "alert_id": "CSA-00003",
+        "time": "2026-05-02T17:55:45.485+0800",
+        "host": "WIN-LI00JJSH3VR",
+        "user": "administrator",
+        "event_id": "4625",
+        "rule_id": "60122",
+        "rule_description": "Logon Failure - Unknown user or bad password",
+        "process": "",
+        "parent_process": "",
+        "command_line": "",
+        "severity": "MEDIUM",
+        "kill_chain_phase": "Initial Access",
+        "mitre": [
+            "T1110"
+        ],
+        "fp_notes": "3-9 failures may be user error. Do not call it brute force unless volume increases.",
+        "title": "Authentication Failure Spike",
+        "summary": "3 failed logins in 5 min | User: administrator | Host: WIN-LI00JJSH3VR",
+        "related_chain_id": "CHAIN-00001",
+        "chain_severity": "LOW",
+        "chain_decision": "MONITOR",
+        "chain_reasons": [
+            "Brute force login activity detected"
+        ],
+        "chain_kill_chain_phases": [
+            "Initial Access",
+            "Defense Evasion"
+        ],
+        "confidence": "LOW",
+        "recommended_actions": [
+            "Verify if the user mistyped password",
+            "Check source IP and logon type",
+            "Monitor for successful login after failures"
+        ],
+        "validation": {
+            "brute_force_preceded": true,
+            "privilege_escalation_observed": false,
+            "powershell_observed": false,
+            "persistence_observed": false,
+            "lateral_movement_observed": false
+        }
+    },
+    {
+        "investigation_id": "INV-00004",
+        "alert_id": "CSA-00004",
+        "time": "2026-05-02T17:55:49.529+0800",
+        "host": "WIN-LI00JJSH3VR",
+        "user": "administrator",
+        "event_id": "4625",
+        "rule_id": "60122",
+        "rule_description": "Logon Failure - Unknown user or bad password",
+        "process": "",
+        "parent_process": "",
+        "command_line": "",
+        "severity": "MEDIUM",
+        "kill_chain_phase": "Initial Access",
+        "mitre": [
+            "T1110"
+        ],
+        "fp_notes": "Could be password expiry or account lockout \u2014 no confirmed success yet",
+        "title": "\ud83d\udd28 Brute Force Login Attempt",
+        "summary": "10 failed logins in 5 min | User: administrator | Host: WIN-LI00JJSH3VR",
+        "related_chain_id": "CHAIN-00001",
+        "chain_severity": "LOW",
+        "chain_decision": "MONITOR",
+        "chain_reasons": [
+            "Brute force login activity detected"
+        ],
+        "chain_kill_chain_phases": [
+            "Initial Access",
+            "Defense Evasion"
+        ],
+        "confidence": "LOW",
+        "recommended_actions": [
+            "Check if account is now locked",
+            "Verify source IP",
+            "Monitor for successful login (4624) following this"
+        ],
+        "validation": {
+            "brute_force_preceded": true,
+            "privilege_escalation_observed": false,
+            "powershell_observed": false,
+            "persistence_observed": false,
+            "lateral_movement_observed": false
+        }
+    },
+    {
+        "investigation_id": "INV-00005",
+        "alert_id": "CSA-00005",
+        "time": "2026-05-04T14:02:44.790+0800",
+        "host": "windows10",
+        "user": "unknown",
+        "event_id": "7040",
+        "rule_id": "61104",
+        "rule_description": "Service startup type was changed",
+        "process": "",
+        "parent_process": "",
+        "command_line": "",
+        "severity": "MEDIUM",
+        "kill_chain_phase": "Persistence",
+        "mitre": [
+            "T1543.003"
+        ],
+        "fp_notes": "Could be legitimate software installation \u2014 check change management",
+        "title": "\u2699\ufe0f Service Configuration Modified",
+        "summary": "Service startup type changed on windows10 \u2014 possible persistence mechanism",
+        "related_chain_id": "CHAIN-00002",
+        "chain_severity": "HIGH",
+        "chain_decision": "INVESTIGATE",
+        "chain_reasons": [
+            "Suspicious PowerShell execution",
+            "Persistence mechanism detected"
+        ],
+        "chain_kill_chain_phases": [
+            "Execution",
+            "Persistence",
+            "Discovery"
+        ],
+        "confidence": "MEDIUM",
+        "recommended_actions": [
+            "Identify which service was modified",
+            "Verify if change was authorized",
+            "Check service binary path for malicious executables",
+            "Correlate with other suspicious activity on same host"
+        ],
+        "validation": {
+            "brute_force_preceded": false,
+            "privilege_escalation_observed": false,
+            "powershell_observed": true,
+            "persistence_observed": true,
+            "lateral_movement_observed": false
+        }
+    },
+    {
+        "investigation_id": "INV-00006",
+        "alert_id": "CSA-00006",
+        "time": "2026-05-04T14:02:44.978+0800",
+        "host": "windows10",
+        "user": "unknown",
+        "event_id": "1",
+        "rule_id": "92032",
+        "rule_description": "Suspicious Windows cmd shell execution",
+        "process": "C:\\\\Windows\\\\System32\\\\conhost.exe",
+        "parent_process": "C:\\\\Windows\\\\System32\\\\cmd.exe",
+        "command_line": "\\\\??\\\\C:\\\\Windows\\\\system32\\\\conhost.exe 0xffffffff -ForceV1",
+        "severity": "MEDIUM",
+        "kill_chain_phase": "Execution",
+        "mitre": [
+            "T1059.003"
+        ],
+        "fp_notes": "Verify parent process \u2014 could be legitimate admin activity",
+        "title": "\u26a1 Suspicious Process Execution",
+        "summary": "Suspicious Windows cmd shell execution | Host: windows10 | Process: c:\\\\windows\\\\system32\\\\conhost.exe",
+        "related_chain_id": "CHAIN-00002",
+        "chain_severity": "HIGH",
+        "chain_decision": "INVESTIGATE",
+        "chain_reasons": [
+            "Suspicious PowerShell execution",
+            "Persistence mechanism detected"
+        ],
+        "chain_kill_chain_phases": [
+            "Execution",
+            "Persistence",
+            "Discovery"
+        ],
+        "confidence": "MEDIUM",
+        "recommended_actions": [
+            "Check parent process context",
+            "Verify if activity was authorized",
+            "Correlate with login events on same host",
+            "Check for file drops or network connections after execution"
+        ],
+        "validation": {
+            "brute_force_preceded": false,
+            "privilege_escalation_observed": false,
+            "powershell_observed": true,
+            "persistence_observed": true,
+            "lateral_movement_observed": false
+        }
+    },
+    {
+        "investigation_id": "INV-00007",
+        "alert_id": "CSA-00007",
+        "time": "2026-05-04T14:02:45.370+0800",
+        "host": "windows10",
+        "user": "unknown",
+        "event_id": "1",
+        "rule_id": "92066",
+        "rule_description": "C:\\\\Windows\\\\SysWOW64\\\\SecEdit.exe binary in a suspicious location launched by C:\\\\Windows\\\\SysWOW64\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe",
+        "process": "C:\\\\Windows\\\\SysWOW64\\\\SecEdit.exe",
+        "parent_process": "C:\\\\Windows\\\\SysWOW64\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe",
+        "command_line": "\\\"C:\\\\Windows\\\\system32\\\\SecEdit.exe\\\" /export /cfg C:\\\\Windows\\\\TEMP\\\\secpol.cfg",
+        "severity": "MEDIUM",
+        "kill_chain_phase": "Execution",
+        "mitre": [
+            "T1059.003"
+        ],
+        "fp_notes": "Verify parent process \u2014 could be legitimate admin activity",
+        "title": "\u26a1 Suspicious Process Execution",
+        "summary": "C:\\\\Windows\\\\SysWOW64\\\\SecEdit.exe binary in a suspicious location launched by C:\\\\Windows\\\\SysWOW64\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe | Host: windows10 | Process: c:\\\\windows\\\\syswow64\\\\secedit.exe",
+        "related_chain_id": "CHAIN-00002",
+        "chain_severity": "HIGH",
+        "chain_decision": "INVESTIGATE",
+        "chain_reasons": [
+            "Suspicious PowerShell execution",
+            "Persistence mechanism detected"
+        ],
+        "chain_kill_chain_phases": [
+            "Execution",
+            "Persistence",
+            "Discovery"
+        ],
+        "confidence": "MEDIUM",
+        "recommended_actions": [
+            "Check parent process context",
+            "Verify if activity was authorized",
+            "Correlate with login events on same host",
+            "Check for file drops or network connections after execution"
+        ],
+        "validation": {
+            "brute_force_preceded": false,
+            "privilege_escalation_observed": false,
+            "powershell_observed": true,
+            "persistence_observed": true,
+            "lateral_movement_observed": false
+        }
+    },
+    {
+        "investigation_id": "INV-00008",
+        "alert_id": "CSA-00008",
+        "time": "2026-05-04T14:02:59.996+0800",
+        "host": "windows10",
+        "user": "leo",
+        "event_id": "4672",
+        "rule_id": "67028",
+        "rule_description": "Special privileges assigned to new logon.",
+        "process": "",
+        "parent_process": "",
+        "command_line": "",
+        "severity": "HIGH",
+        "kill_chain_phase": "Privilege Escalation",
+        "mitre": [
+            "T1078.002"
+        ],
+        "fp_notes": "Verify if scheduled IT maintenance \u2014 check change management",
+        "title": "\ud83d\udc51 Unexpected Admin Privileges",
+        "summary": "User 'leo' received special privileges on windows10",
+        "related_chain_id": "CHAIN-00003",
+        "chain_severity": "MEDIUM",
+        "chain_decision": "MONITOR",
+        "chain_reasons": [
+            "Brute force login activity detected",
+            "Privilege escalation detected"
+        ],
+        "chain_kill_chain_phases": [
+            "Initial Access",
+            "Privilege Escalation"
+        ],
+        "confidence": "MEDIUM",
+        "recommended_actions": [
+            "Verify if user normally has admin rights",
+            "Check what was executed after privilege assignment",
+            "Correlate with brute force or lateral movement alerts",
+            "Review Event ID 4720/4732 for account creation"
+        ],
+        "validation": {
+            "brute_force_preceded": false,
+            "privilege_escalation_observed": true,
+            "powershell_observed": false,
+            "persistence_observed": false,
+            "lateral_movement_observed": false
+        }
+    },
+    {
+        "investigation_id": "INV-00009",
+        "alert_id": "CSA-00009",
+        "time": "2026-05-04T14:04:47.550+0800",
+        "host": "windows10",
+        "user": "unknown",
+        "event_id": "1",
+        "rule_id": "92031",
+        "rule_description": "Discovery activity executed",
+        "process": "C:\\\\Windows\\\\SysWOW64\\\\net1.exe",
+        "parent_process": "C:\\\\Windows\\\\SysWOW64\\\\net.exe",
+        "command_line": "C:\\\\Windows\\\\system32\\\\net1 user",
+        "severity": "MEDIUM",
+        "kill_chain_phase": "Discovery",
+        "mitre": [
+            "T1082",
+            "T1087"
+        ],
+        "fp_notes": "Verify parent process \u2014 could be legitimate admin activity",
+        "title": "\ud83d\udd0d Discovery Activity Detected",
+        "summary": "Discovery activity executed | Host: windows10 | Process: c:\\\\windows\\\\syswow64\\\\net1.exe",
+        "related_chain_id": "CHAIN-00002",
+        "chain_severity": "HIGH",
+        "chain_decision": "INVESTIGATE",
+        "chain_reasons": [
+            "Suspicious PowerShell execution",
+            "Persistence mechanism detected"
+        ],
+        "chain_kill_chain_phases": [
+            "Execution",
+            "Persistence",
+            "Discovery"
+        ],
+        "confidence": "MEDIUM",
+        "recommended_actions": [
+            "Check parent process context",
+            "Verify if activity was authorized",
+            "Correlate with login events on same host",
+            "Check for file drops or network connections after execution"
+        ],
+        "validation": {
+            "brute_force_preceded": false,
+            "privilege_escalation_observed": false,
+            "powershell_observed": true,
+            "persistence_observed": true,
+            "lateral_movement_observed": false
+        }
+    },
+    {
+        "investigation_id": "INV-00010",
+        "alert_id": "CSA-00010",
+        "time": "2026-05-04T16:09:56.185+0800",
+        "host": "win-server",
+        "user": "unknown",
+        "event_id": "7040",
+        "rule_id": "61104",
+        "rule_description": "Service startup type was changed",
+        "process": "",
+        "parent_process": "",
+        "command_line": "",
+        "severity": "MEDIUM",
+        "kill_chain_phase": "Persistence",
+        "mitre": [
+            "T1543.003"
+        ],
+        "fp_notes": "Could be legitimate software installation \u2014 check change management",
+        "title": "\u2699\ufe0f Service Configuration Modified",
+        "summary": "Service startup type changed on win-server \u2014 possible persistence mechanism",
+        "related_chain_id": "CHAIN-00004",
+        "chain_severity": "MEDIUM",
+        "chain_decision": "MONITOR",
+        "chain_reasons": [
+            "Persistence mechanism detected"
+        ],
+        "chain_kill_chain_phases": [
+            "Execution",
+            "Persistence",
+            "Discovery"
+        ],
+        "confidence": "LOW",
+        "recommended_actions": [
+            "Identify which service was modified",
+            "Verify if change was authorized",
+            "Check service binary path for malicious executables",
+            "Correlate with other suspicious activity on same host"
+        ],
+        "validation": {
+            "brute_force_preceded": false,
+            "privilege_escalation_observed": false,
+            "powershell_observed": false,
+            "persistence_observed": true,
+            "lateral_movement_observed": false
+        }
+    },
+    {
+        "investigation_id": "INV-00011",
+        "alert_id": "CSA-00011",
+        "time": "2026-05-04T16:37:19.642+0800",
+        "host": "win-server",
+        "user": "unknown",
+        "event_id": "11",
+        "rule_id": "92201",
+        "rule_description": "C:\\\\Windows\\\\system32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe created a new scripting file under Windows Temp or User data folder",
+        "process": "C:\\\\Windows\\\\system32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe",
+        "parent_process": "",
+        "command_line": "",
+        "severity": "MEDIUM",
+        "kill_chain_phase": "Persistence",
+        "mitre": [
+            "T1105"
+        ],
+        "fp_notes": "Check if software installation was planned \u2014 verify with change management",
+        "title": "\ud83e\udda0 Suspicious Executable Dropped",
+        "summary": "Executable file created in suspicious location | Host: win-server | Rule: C:\\\\Windows\\\\system32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe created a new scripting file under Windows Temp or User data folder",
+        "related_chain_id": "CHAIN-00004",
+        "chain_severity": "MEDIUM",
+        "chain_decision": "MONITOR",
+        "chain_reasons": [
+            "Persistence mechanism detected"
+        ],
+        "chain_kill_chain_phases": [
+            "Execution",
+            "Persistence",
+            "Discovery"
+        ],
+        "confidence": "LOW",
+        "recommended_actions": [
+            "Identify the process that dropped the file",
+            "Check file hash against VirusTotal",
+            "Verify if software installation was authorized",
+            "Check for follow-up execution of the dropped file"
+        ],
+        "validation": {
+            "brute_force_preceded": false,
+            "privilege_escalation_observed": false,
+            "powershell_observed": false,
+            "persistence_observed": true,
+            "lateral_movement_observed": false
+        }
+    },
+    {
+        "investigation_id": "INV-00012",
+        "alert_id": "CSA-00012",
+        "time": "2026-05-04T16:37:26.096+0800",
+        "host": "win-server",
+        "user": "unknown",
+        "event_id": "1",
+        "rule_id": "92031",
+        "rule_description": "Discovery activity executed",
+        "process": "C:\\\\Windows\\\\SysWOW64\\\\net1.exe",
+        "parent_process": "C:\\\\Windows\\\\SysWOW64\\\\net.exe",
+        "command_line": "C:\\\\Windows\\\\system32\\\\net1 user",
+        "severity": "MEDIUM",
+        "kill_chain_phase": "Discovery",
+        "mitre": [
+            "T1082",
+            "T1087"
+        ],
+        "fp_notes": "Verify parent process \u2014 could be legitimate admin activity",
+        "title": "\ud83d\udd0d Discovery Activity Detected",
+        "summary": "Discovery activity executed | Host: win-server | Process: c:\\\\windows\\\\syswow64\\\\net1.exe",
+        "related_chain_id": "CHAIN-00004",
+        "chain_severity": "MEDIUM",
+        "chain_decision": "MONITOR",
+        "chain_reasons": [
+            "Persistence mechanism detected"
+        ],
+        "chain_kill_chain_phases": [
+            "Execution",
+            "Persistence",
+            "Discovery"
+        ],
+        "confidence": "LOW",
+        "recommended_actions": [
+            "Check parent process context",
+            "Verify if activity was authorized",
+            "Correlate with login events on same host",
+            "Check for file drops or network connections after execution"
+        ],
+        "validation": {
+            "brute_force_preceded": false,
+            "privilege_escalation_observed": false,
+            "powershell_observed": false,
+            "persistence_observed": true,
+            "lateral_movement_observed": false
+        }
+    },
+    {
+        "investigation_id": "INV-00013",
+        "alert_id": "CSA-00013",
+        "time": "2026-05-04T17:25:29.502+0800",
+        "host": "win-server",
+        "user": "administrator",
+        "event_id": "4625",
+        "rule_id": "60122",
+        "rule_description": "Logon Failure - Unknown user or bad password",
+        "process": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+        "parent_process": "",
+        "command_line": "",
+        "severity": "MEDIUM",
+        "kill_chain_phase": "Initial Access",
+        "mitre": [
+            "T1110"
+        ],
+        "fp_notes": "3-9 failures may be user error. Do not call it brute force unless volume increases.",
+        "title": "Authentication Failure Spike",
+        "summary": "3 failed logins in 5 min | User: administrator | Host: win-server",
+        "related_chain_id": null,
+        "chain_severity": null,
+        "chain_decision": "MONITOR",
+        "chain_reasons": [],
+        "chain_kill_chain_phases": [],
+        "confidence": "LOW",
+        "recommended_actions": [
+            "Verify if the user mistyped password",
+            "Check source IP and logon type",
+            "Monitor for successful login after failures"
+        ],
+        "validation": {
+            "brute_force_preceded": false,
+            "privilege_escalation_observed": false,
+            "powershell_observed": false,
+            "persistence_observed": false,
+            "lateral_movement_observed": false
+        }
+    },
+    {
+        "investigation_id": "INV-00014",
+        "alert_id": "CSA-00014",
+        "time": "2026-05-04T17:54:59.508+0800",
+        "host": "win-server",
+        "user": "anonymous logon",
+        "event_id": "4624",
+        "rule_id": "92652",
+        "rule_description": "Successful Remote Logon Detected - User:\\ANONYMOUS LOGON - NTLM authentication, possible pass-the-hash attack.",
+        "process": "",
+        "parent_process": "",
+        "command_line": "",
+        "severity": "CRITICAL",
+        "kill_chain_phase": "Lateral Movement",
+        "mitre": [
+            "T1550.002"
+        ],
+        "fp_notes": "Near-zero FP \u2014 NTLM anonymous logon is highly suspicious",
+        "title": "\ud83d\udc80 Pass-the-Hash Attack Detected",
+        "summary": "NTLM anonymous logon detected \u2014 possible credential relay attack | Host: win-server",
+        "related_chain_id": null,
+        "chain_severity": null,
+        "chain_decision": "MONITOR",
+        "chain_reasons": [],
+        "chain_kill_chain_phases": [],
+        "confidence": "HIGH",
+        "recommended_actions": [
+            "Isolate host immediately",
+            "Check for lateral movement from this host",
+            "Reset credentials for all accounts on this host",
+            "Escalate to L2/L3 immediately",
+            "Check for Mimikatz or credential dumping tools"
+        ],
+        "validation": {
+            "brute_force_preceded": false,
+            "privilege_escalation_observed": false,
+            "powershell_observed": false,
+            "persistence_observed": false,
+            "lateral_movement_observed": false
+        }
+    },
+    {
+        "investigation_id": "INV-00015",
+        "alert_id": "CSA-00015",
+        "time": "2026-05-04T17:55:01.394+0800",
+        "host": "win-server",
+        "user": "admin",
+        "event_id": "4625",
+        "rule_id": "60122",
+        "rule_description": "Logon Failure - Unknown user or bad password",
+        "process": "",
+        "parent_process": "",
+        "command_line": "",
+        "severity": "MEDIUM",
+        "kill_chain_phase": "Initial Access",
+        "mitre": [
+            "T1110"
+        ],
+        "fp_notes": "3-9 failures may be user error. Do not call it brute force unless volume increases.",
+        "title": "Authentication Failure Spike",
+        "summary": "3 failed logins in 5 min | User: admin | Host: win-server",
+        "related_chain_id": "CHAIN-00005",
+        "chain_severity": "LOW",
+        "chain_decision": "MONITOR",
+        "chain_reasons": [
+            "Brute force login activity detected"
+        ],
+        "chain_kill_chain_phases": [
+            "Initial Access"
+        ],
+        "confidence": "LOW",
+        "recommended_actions": [
+            "Verify if the user mistyped password",
+            "Check source IP and logon type",
+            "Monitor for successful login after failures"
+        ],
+        "validation": {
+            "brute_force_preceded": true,
+            "privilege_escalation_observed": false,
+            "powershell_observed": false,
+            "persistence_observed": false,
+            "lateral_movement_observed": false
+        }
+    },
+    {
+        "investigation_id": "INV-00016",
+        "alert_id": "CSA-00016",
+        "time": "2026-05-04T18:12:18.955+0800",
+        "host": "win-server",
+        "user": "unknown",
+        "event_id": "1",
+        "rule_id": "61618",
+        "rule_description": "Sysmon - Suspicious Process - svchost.exe",
+        "process": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+        "parent_process": "C:\\\\Program Files\\\\Windows Defender\\\\MsMpEng.exe",
+        "command_line": "\\\"c:\\\\windows\\\\system32\\\\\\\\svchost.exe\\\"",
+        "severity": "MEDIUM",
+        "kill_chain_phase": "Execution",
+        "mitre": [
+            "T1059.003"
+        ],
+        "fp_notes": "Verify parent process \u2014 could be legitimate admin activity",
+        "title": "\u26a1 Suspicious Process Execution",
+        "summary": "Sysmon - Suspicious Process - svchost.exe | Host: win-server | Process: c:\\\\windows\\\\system32\\\\svchost.exe",
+        "related_chain_id": "CHAIN-00004",
+        "chain_severity": "MEDIUM",
+        "chain_decision": "MONITOR",
+        "chain_reasons": [
+            "Persistence mechanism detected"
+        ],
+        "chain_kill_chain_phases": [
+            "Execution",
+            "Persistence",
+            "Discovery"
+        ],
+        "confidence": "LOW",
+        "recommended_actions": [
+            "Check parent process context",
+            "Verify if activity was authorized",
+            "Correlate with login events on same host",
+            "Check for file drops or network connections after execution"
+        ],
+        "validation": {
+            "brute_force_preceded": false,
+            "privilege_escalation_observed": false,
+            "powershell_observed": false,
+            "persistence_observed": true,
+            "lateral_movement_observed": false
+        }
+    },
+    {
+        "investigation_id": "INV-00017",
+        "alert_id": "CSA-00017",
+        "time": "2026-05-04T18:13:20.003+0800",
+        "host": "win-server",
+        "user": "admin",
+        "event_id": "4625",
+        "rule_id": "60122",
+        "rule_description": "Logon Failure - Unknown user or bad password",
+        "process": "",
+        "parent_process": "",
+        "command_line": "",
+        "severity": "MEDIUM",
+        "kill_chain_phase": "Initial Access",
+        "mitre": [
+            "T1110"
+        ],
+        "fp_notes": "Could be password expiry or account lockout \u2014 no confirmed success yet",
+        "title": "\ud83d\udd28 Brute Force Login Attempt",
+        "summary": "10 failed logins in 5 min | User: admin | Host: win-server",
+        "related_chain_id": "CHAIN-00005",
+        "chain_severity": "LOW",
+        "chain_decision": "MONITOR",
+        "chain_reasons": [
+            "Brute force login activity detected"
+        ],
+        "chain_kill_chain_phases": [
+            "Initial Access"
+        ],
+        "confidence": "LOW",
+        "recommended_actions": [
+            "Check if account is now locked",
+            "Verify source IP",
+            "Monitor for successful login (4624) following this"
+        ],
+        "validation": {
+            "brute_force_preceded": true,
+            "privilege_escalation_observed": false,
+            "powershell_observed": false,
+            "persistence_observed": false,
+            "lateral_movement_observed": false
+        }
+    },
+    {
+        "investigation_id": "INV-00018",
+        "alert_id": "CSA-00018",
+        "time": "2026-05-09T14:42:30.836+0800",
+        "host": "win-server",
+        "user": "unknown",
+        "event_id": "11",
+        "rule_id": "92217",
+        "rule_description": "Executable dropped in Windows root folder",
+        "process": "C:\\\\Program Files\\\\Windows Defender\\\\MsMpEng.exe",
+        "parent_process": "",
+        "command_line": "",
+        "severity": "HIGH",
+        "kill_chain_phase": "Persistence",
+        "mitre": [
+            "T1105"
+        ],
+        "fp_notes": "Check if software installation was planned \u2014 verify with change management",
+        "title": "\ud83e\udda0 Suspicious Executable Dropped",
+        "summary": "Executable file created in suspicious location | Host: win-server | Rule: Executable dropped in Windows root folder",
+        "related_chain_id": "CHAIN-00004",
+        "chain_severity": "MEDIUM",
+        "chain_decision": "MONITOR",
+        "chain_reasons": [
+            "Persistence mechanism detected"
+        ],
+        "chain_kill_chain_phases": [
+            "Execution",
+            "Persistence",
+            "Discovery"
+        ],
+        "confidence": "MEDIUM",
+        "recommended_actions": [
+            "Identify the process that dropped the file",
+            "Check file hash against VirusTotal",
+            "Verify if software installation was authorized",
+            "Check for follow-up execution of the dropped file"
+        ],
+        "validation": {
+            "brute_force_preceded": false,
+            "privilege_escalation_observed": false,
+            "powershell_observed": false,
+            "persistence_observed": true,
+            "lateral_movement_observed": false
+        }
+    },
+    {
+        "investigation_id": "INV-00019",
+        "alert_id": "CSA-00019",
+        "time": "2026-05-09T14:43:02.749+0800",
+        "host": "win-server",
+        "user": "unknown",
+        "event_id": "1",
+        "rule_id": "92032",
+        "rule_description": "Suspicious Windows cmd shell execution",
+        "process": "C:\\\\Windows\\\\System32\\\\cmd.exe",
+        "parent_process": "C:\\\\Windows\\\\System32\\\\cmd.exe",
+        "command_line": "C:\\\\Windows\\\\system32\\\\cmd.exe /c C:\\\\Windows\\\\system32\\\\reg.exe query hklm\\\\software\\\\microsoft\\\\windows\\\\softwareinventorylogging /v collectionstate /reg:64",
+        "severity": "MEDIUM",
+        "kill_chain_phase": "Execution",
+        "mitre": [
+            "T1059.003"
+        ],
+        "fp_notes": "Verify parent process \u2014 could be legitimate admin activity",
+        "title": "\u26a1 Suspicious Process Execution",
+        "summary": "Suspicious Windows cmd shell execution | Host: win-server | Process: c:\\\\windows\\\\system32\\\\cmd.exe",
+        "related_chain_id": "CHAIN-00004",
+        "chain_severity": "MEDIUM",
+        "chain_decision": "MONITOR",
+        "chain_reasons": [
+            "Persistence mechanism detected"
+        ],
+        "chain_kill_chain_phases": [
+            "Execution",
+            "Persistence",
+            "Discovery"
+        ],
+        "confidence": "LOW",
+        "recommended_actions": [
+            "Check parent process context",
+            "Verify if activity was authorized",
+            "Correlate with login events on same host",
+            "Check for file drops or network connections after execution"
+        ],
+        "validation": {
+            "brute_force_preceded": false,
+            "privilege_escalation_observed": false,
+            "powershell_observed": false,
+            "persistence_observed": true,
+            "lateral_movement_observed": false
+        }
+    },
+    {
+        "investigation_id": "INV-00020",
+        "alert_id": "CSA-00020",
+        "time": "2026-05-09T14:45:26.189+0800",
+        "host": "win-server",
+        "user": "unknown",
+        "event_id": "11",
+        "rule_id": "92219",
+        "rule_description": "Possible DLL search order hijack by C:\\\\Windows\\\\SoftwareDistribution\\\\Download\\\\ff533690b6482093d711deaaaf7adcb8\\\\Metadata\\\\UpdateAgent.dll created in Windows root folder",
+        "process": "C:\\\\Windows\\\\system32\\\\svchost.exe",
+        "parent_process": "",
+        "command_line": "",
+        "severity": "MEDIUM",
+        "kill_chain_phase": "Persistence",
+        "mitre": [
+            "T1105"
+        ],
+        "fp_notes": "Check if software installation was planned \u2014 verify with change management",
+        "title": "\ud83e\udda0 Suspicious Executable Dropped",
+        "summary": "Executable file created in suspicious location | Host: win-server | Rule: Possible DLL search order hijack by C:\\\\Windows\\\\SoftwareDistribution\\\\Download\\\\ff533690b6482093d711deaaaf7adcb8\\\\Metadata\\\\UpdateAgent.dll created in Windows root folder",
+        "related_chain_id": "CHAIN-00004",
+        "chain_severity": "MEDIUM",
+        "chain_decision": "MONITOR",
+        "chain_reasons": [
+            "Persistence mechanism detected"
+        ],
+        "chain_kill_chain_phases": [
+            "Execution",
+            "Persistence",
+            "Discovery"
+        ],
+        "confidence": "LOW",
+        "recommended_actions": [
+            "Identify the process that dropped the file",
+            "Check file hash against VirusTotal",
+            "Verify if software installation was authorized",
+            "Check for follow-up execution of the dropped file"
+        ],
+        "validation": {
+            "brute_force_preceded": false,
+            "privilege_escalation_observed": false,
+            "powershell_observed": false,
+            "persistence_observed": true,
+            "lateral_movement_observed": false
+        }
+    },
+    {
+        "investigation_id": "INV-00021",
+        "alert_id": "CSA-00021",
+        "time": "2026-05-09T14:53:22.834+0800",
+        "host": "win-server",
+        "user": "unknown",
+        "event_id": "11",
+        "rule_id": "92213",
+        "rule_description": "Executable file dropped in folder commonly used by malware",
+        "process": "C:\\\\Windows\\\\system32\\\\cleanmgr.exe",
+        "parent_process": "",
+        "command_line": "",
+        "severity": "HIGH",
+        "kill_chain_phase": "Persistence",
+        "mitre": [
+            "T1105"
+        ],
+        "fp_notes": "Check if software installation was planned \u2014 verify with change management",
+        "title": "\ud83e\udda0 Suspicious Executable Dropped",
+        "summary": "Executable file created in suspicious location | Host: win-server | Rule: Executable file dropped in folder commonly used by malware",
+        "related_chain_id": "CHAIN-00004",
+        "chain_severity": "MEDIUM",
+        "chain_decision": "MONITOR",
+        "chain_reasons": [
+            "Persistence mechanism detected"
+        ],
+        "chain_kill_chain_phases": [
+            "Execution",
+            "Persistence",
+            "Discovery"
+        ],
+        "confidence": "MEDIUM",
+        "recommended_actions": [
+            "Identify the process that dropped the file",
+            "Check file hash against VirusTotal",
+            "Verify if software installation was authorized",
+            "Check for follow-up execution of the dropped file"
+        ],
+        "validation": {
+            "brute_force_preceded": false,
+            "privilege_escalation_observed": false,
+            "powershell_observed": false,
+            "persistence_observed": true,
+            "lateral_movement_observed": false
+        }
+    },
+    {
+        "investigation_id": "INV-00022",
+        "alert_id": "CSA-00022",
+        "time": "2026-05-13T17:01:19.818+0800",
+        "host": "win-server",
+        "user": "unknown",
+        "event_id": "11",
+        "rule_id": "92200",
+        "rule_description": "Scripting file created under Windows Temp or User folder",
+        "process": "C:\\\\Windows\\\\system32\\\\taskhostw.exe",
+        "parent_process": "",
+        "command_line": "",
+        "severity": "MEDIUM",
+        "kill_chain_phase": "Persistence",
+        "mitre": [
+            "T1105"
+        ],
+        "fp_notes": "Check if software installation was planned \u2014 verify with change management",
+        "title": "\ud83e\udda0 Suspicious Executable Dropped",
+        "summary": "Executable file created in suspicious location | Host: win-server | Rule: Scripting file created under Windows Temp or User folder",
+        "related_chain_id": "CHAIN-00004",
+        "chain_severity": "MEDIUM",
+        "chain_decision": "MONITOR",
+        "chain_reasons": [
+            "Persistence mechanism detected"
+        ],
+        "chain_kill_chain_phases": [
+            "Execution",
+            "Persistence",
+            "Discovery"
+        ],
+        "confidence": "LOW",
+        "recommended_actions": [
+            "Identify the process that dropped the file",
+            "Check file hash against VirusTotal",
+            "Verify if software installation was authorized",
+            "Check for follow-up execution of the dropped file"
+        ],
+        "validation": {
+            "brute_force_preceded": false,
+            "privilege_escalation_observed": false,
+            "powershell_observed": false,
+            "persistence_observed": true,
+            "lateral_movement_observed": false
+        }
+    },
+    {
+        "investigation_id": "INV-00023",
+        "alert_id": "CSA-00023",
+        "time": "2026-05-15T16:43:43.942+0800",
+        "host": "windows10",
+        "user": "unknown",
+        "event_id": "1",
+        "rule_id": "92027",
+        "rule_description": "Powershell process spawned powershell instance",
+        "process": "C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe",
+        "parent_process": "C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe",
+        "command_line": "\\\"C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\\\" -ExecutionPolicy Bypass -enc SGVsbG8=",
+        "severity": "HIGH",
+        "kill_chain_phase": "Execution",
+        "mitre": [
+            "T1059.001"
+        ],
+        "fp_notes": "Verify command \u2014 check if admin script or scheduled task",
+        "title": "\u26a1 Suspicious PowerShell Execution (score:60)",
+        "summary": "Encoded command (-enc) | Execution policy bypass",
+        "related_chain_id": "CHAIN-00002",
+        "chain_severity": "HIGH",
+        "chain_decision": "INVESTIGATE",
+        "chain_reasons": [
+            "Suspicious PowerShell execution",
+            "Persistence mechanism detected"
+        ],
+        "chain_kill_chain_phases": [
+            "Execution",
+            "Persistence",
+            "Discovery"
+        ],
+        "confidence": "MEDIUM",
+        "recommended_actions": [
+            "Decode base64 command if encoded",
+            "Check parent process context",
+            "Look for file drops or network connections after execution",
+            "Correlate with login events on same host"
+        ],
+        "validation": {
+            "brute_force_preceded": false,
+            "privilege_escalation_observed": false,
+            "powershell_observed": true,
+            "persistence_observed": true,
+            "lateral_movement_observed": false
+        }
+    },
+    {
+        "investigation_id": "INV-00024",
+        "alert_id": "CSA-00024",
+        "time": "2026-05-15T18:29:26.524+0800",
+        "host": "windows10",
+        "user": "unknown",
+        "event_id": "11",
+        "rule_id": "92213",
+        "rule_description": "Executable file dropped in folder commonly used by malware",
+        "process": "C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe",
+        "parent_process": "",
+        "command_line": "",
+        "severity": "HIGH",
+        "kill_chain_phase": "Persistence",
+        "mitre": [
+            "T1105"
+        ],
+        "fp_notes": "Check if software installation was planned \u2014 verify with change management",
+        "title": "\ud83e\udda0 Suspicious Executable Dropped",
+        "summary": "Executable file created in suspicious location | Host: windows10 | Rule: Executable file dropped in folder commonly used by malware",
+        "related_chain_id": "CHAIN-00002",
+        "chain_severity": "HIGH",
+        "chain_decision": "INVESTIGATE",
+        "chain_reasons": [
+            "Suspicious PowerShell execution",
+            "Persistence mechanism detected"
+        ],
+        "chain_kill_chain_phases": [
+            "Execution",
+            "Persistence",
+            "Discovery"
+        ],
+        "confidence": "MEDIUM",
+        "recommended_actions": [
+            "Identify the process that dropped the file",
+            "Check file hash against VirusTotal",
+            "Verify if software installation was authorized",
+            "Check for follow-up execution of the dropped file"
+        ],
+        "validation": {
+            "brute_force_preceded": false,
+            "privilege_escalation_observed": false,
+            "powershell_observed": true,
+            "persistence_observed": true,
+            "lateral_movement_observed": false
+        }
+    },
+    {
+        "investigation_id": "INV-00025",
+        "alert_id": "CSA-00025",
+        "time": "2026-05-15T18:33:33.546+0800",
+        "host": "windows10",
+        "user": "unknown",
+        "event_id": "11",
+        "rule_id": "92205",
+        "rule_description": "Powershell process created an executable file in Windows root folder",
+        "process": "C:\\\\Windows\\\\SysWOW64\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe",
+        "parent_process": "",
+        "command_line": "",
+        "severity": "HIGH",
+        "kill_chain_phase": "Persistence",
+        "mitre": [
+            "T1105"
+        ],
+        "fp_notes": "Check if software installation was planned \u2014 verify with change management",
+        "title": "\ud83e\udda0 Suspicious Executable Dropped",
+        "summary": "Executable file created in suspicious location | Host: windows10 | Rule: Powershell process created an executable file in Windows root folder",
+        "related_chain_id": "CHAIN-00002",
+        "chain_severity": "HIGH",
+        "chain_decision": "INVESTIGATE",
+        "chain_reasons": [
+            "Suspicious PowerShell execution",
+            "Persistence mechanism detected"
+        ],
+        "chain_kill_chain_phases": [
+            "Execution",
+            "Persistence",
+            "Discovery"
+        ],
+        "confidence": "MEDIUM",
+        "recommended_actions": [
+            "Identify the process that dropped the file",
+            "Check file hash against VirusTotal",
+            "Verify if software installation was authorized",
+            "Check for follow-up execution of the dropped file"
+        ],
+        "validation": {
+            "brute_force_preceded": false,
+            "privilege_escalation_observed": false,
+            "powershell_observed": true,
+            "persistence_observed": true,
+            "lateral_movement_observed": false
+        }
+    },
+    {
+        "investigation_id": "INV-00026",
+        "alert_id": "CSA-00026",
+        "time": "2026-05-19T13:47:04.271+0800",
+        "host": "windows10",
+        "user": "leo",
+        "event_id": "4625",
+        "rule_id": "60122",
+        "rule_description": "Logon Failure - Unknown user or bad password",
+        "process": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+        "parent_process": "",
+        "command_line": "",
+        "severity": "MEDIUM",
+        "kill_chain_phase": "Initial Access",
+        "mitre": [
+            "T1110"
+        ],
+        "fp_notes": "3-9 failures may be user error. Do not call it brute force unless volume increases.",
+        "title": "Authentication Failure Spike",
+        "summary": "3 failed logins in 5 min | User: leo | Host: windows10",
+        "related_chain_id": "CHAIN-00003",
+        "chain_severity": "MEDIUM",
+        "chain_decision": "MONITOR",
+        "chain_reasons": [
+            "Brute force login activity detected",
+            "Privilege escalation detected"
+        ],
+        "chain_kill_chain_phases": [
+            "Initial Access",
+            "Privilege Escalation"
+        ],
+        "confidence": "MEDIUM",
+        "recommended_actions": [
+            "Verify if the user mistyped password",
+            "Check source IP and logon type",
+            "Monitor for successful login after failures"
+        ],
+        "validation": {
+            "brute_force_preceded": false,
+            "privilege_escalation_observed": true,
+            "powershell_observed": false,
+            "persistence_observed": false,
+            "lateral_movement_observed": false
+        }
+    },
+    {
+        "investigation_id": "INV-00027",
+        "alert_id": "CSA-00027",
+        "time": "2026-05-19T13:49:00.901+0800",
+        "host": "windows10",
+        "user": "unknown",
+        "event_id": "11",
+        "rule_id": "92217",
+        "rule_description": "Executable dropped in Windows root folder",
+        "process": "C:\\\\Windows\\\\system32\\\\svchost.exe",
+        "parent_process": "",
+        "command_line": "",
+        "severity": "HIGH",
+        "kill_chain_phase": "Persistence",
+        "mitre": [
+            "T1105"
+        ],
+        "fp_notes": "Check if software installation was planned \u2014 verify with change management",
+        "title": "\ud83e\udda0 Suspicious Executable Dropped",
+        "summary": "Executable file created in suspicious location | Host: windows10 | Rule: Executable dropped in Windows root folder",
+        "related_chain_id": "CHAIN-00002",
+        "chain_severity": "HIGH",
+        "chain_decision": "INVESTIGATE",
+        "chain_reasons": [
+            "Suspicious PowerShell execution",
+            "Persistence mechanism detected"
+        ],
+        "chain_kill_chain_phases": [
+            "Execution",
+            "Persistence",
+            "Discovery"
+        ],
+        "confidence": "MEDIUM",
+        "recommended_actions": [
+            "Identify the process that dropped the file",
+            "Check file hash against VirusTotal",
+            "Verify if software installation was authorized",
+            "Check for follow-up execution of the dropped file"
+        ],
+        "validation": {
+            "brute_force_preceded": false,
+            "privilege_escalation_observed": false,
+            "powershell_observed": true,
+            "persistence_observed": true,
+            "lateral_movement_observed": false
+        }
+    },
+    {
+        "investigation_id": "INV-00028",
+        "alert_id": "CSA-00028",
+        "time": "2026-05-23T13:57:04.864+0800",
+        "host": "windows10",
+        "user": "unknown",
+        "event_id": "11",
+        "rule_id": "92200",
+        "rule_description": "Scripting file created under Windows Temp or User folder",
+        "process": "C:\\\\Windows\\\\system32\\\\taskhostw.exe",
+        "parent_process": "",
+        "command_line": "",
+        "severity": "MEDIUM",
+        "kill_chain_phase": "Persistence",
+        "mitre": [
+            "T1105"
+        ],
+        "fp_notes": "Check if software installation was planned \u2014 verify with change management",
+        "title": "\ud83e\udda0 Suspicious Executable Dropped",
+        "summary": "Executable file created in suspicious location | Host: windows10 | Rule: Scripting file created under Windows Temp or User folder",
+        "related_chain_id": "CHAIN-00002",
+        "chain_severity": "HIGH",
+        "chain_decision": "INVESTIGATE",
+        "chain_reasons": [
+            "Suspicious PowerShell execution",
+            "Persistence mechanism detected"
+        ],
+        "chain_kill_chain_phases": [
+            "Execution",
+            "Persistence",
+            "Discovery"
+        ],
+        "confidence": "MEDIUM",
+        "recommended_actions": [
+            "Identify the process that dropped the file",
+            "Check file hash against VirusTotal",
+            "Verify if software installation was authorized",
+            "Check for follow-up execution of the dropped file"
+        ],
+        "validation": {
+            "brute_force_preceded": false,
+            "privilege_escalation_observed": false,
+            "powershell_observed": true,
+            "persistence_observed": true,
+            "lateral_movement_observed": false
+        }
+    },
+    {
+        "investigation_id": "INV-00029",
+        "alert_id": "CSA-00029",
+        "time": "2026-06-06T12:26:28.749+0800",
+        "host": "win-server",
+        "user": "unknown",
+        "event_id": "1",
+        "rule_id": "92052",
+        "rule_description": "Windows command prompt started by an abnormal process",
+        "process": "C:\\\\Windows\\\\SysWOW64\\\\cmd.exe",
+        "parent_process": "C:\\\\Program Files (x86)\\\\ossec-agent\\\\active-response\\\\bin\\\\restart-wazuh.exe",
+        "command_line": "C:\\\\Windows\\\\system32\\\\cmd.exe /c %%WINDIR%%\\\\system32\\\\net.exe stop Wazuh",
+        "severity": "MEDIUM",
+        "kill_chain_phase": "Execution",
+        "mitre": [
+            "T1059.003"
+        ],
+        "fp_notes": "Verify parent process \u2014 could be legitimate admin activity",
+        "title": "\u26a1 Suspicious Process Execution",
+        "summary": "Windows command prompt started by an abnormal process | Host: win-server | Process: c:\\\\windows\\\\syswow64\\\\cmd.exe",
+        "related_chain_id": "CHAIN-00004",
+        "chain_severity": "MEDIUM",
+        "chain_decision": "MONITOR",
+        "chain_reasons": [
+            "Persistence mechanism detected"
+        ],
+        "chain_kill_chain_phases": [
+            "Execution",
+            "Persistence",
+            "Discovery"
+        ],
+        "confidence": "LOW",
+        "recommended_actions": [
+            "Check parent process context",
+            "Verify if activity was authorized",
+            "Correlate with login events on same host",
+            "Check for file drops or network connections after execution"
+        ],
+        "validation": {
+            "brute_force_preceded": false,
+            "privilege_escalation_observed": false,
+            "powershell_observed": false,
+            "persistence_observed": true,
+            "lateral_movement_observed": false
+        }
+    },
+    {
+        "investigation_id": "INV-00030",
+        "alert_id": "CSA-00030",
+        "time": "2026-06-06T12:26:28.764+0800",
+        "host": "win-server",
+        "user": "unknown",
+        "event_id": "1",
+        "rule_id": "92036",
+        "rule_description": "A C:\\\\Windows\\\\SysWOW64\\\\net.exe binary was started by a Windows cmd shell",
+        "process": "C:\\\\Windows\\\\SysWOW64\\\\net.exe",
+        "parent_process": "C:\\\\Windows\\\\SysWOW64\\\\cmd.exe",
+        "command_line": "C:\\\\Windows\\\\system32\\\\net.exe  stop Wazuh",
+        "severity": "MEDIUM",
+        "kill_chain_phase": "Execution",
+        "mitre": [
+            "T1059.003"
+        ],
+        "fp_notes": "Verify parent process \u2014 could be legitimate admin activity",
+        "title": "\u26a1 Suspicious Process Execution",
+        "summary": "A C:\\\\Windows\\\\SysWOW64\\\\net.exe binary was started by a Windows cmd shell | Host: win-server | Process: c:\\\\windows\\\\syswow64\\\\net.exe",
+        "related_chain_id": "CHAIN-00004",
+        "chain_severity": "MEDIUM",
+        "chain_decision": "MONITOR",
+        "chain_reasons": [
+            "Persistence mechanism detected"
+        ],
+        "chain_kill_chain_phases": [
+            "Execution",
+            "Persistence",
+            "Discovery"
+        ],
+        "confidence": "LOW",
+        "recommended_actions": [
+            "Check parent process context",
+            "Verify if activity was authorized",
+            "Correlate with login events on same host",
+            "Check for file drops or network connections after execution"
+        ],
+        "validation": {
+            "brute_force_preceded": false,
+            "privilege_escalation_observed": false,
+            "powershell_observed": false,
+            "persistence_observed": true,
+            "lateral_movement_observed": false
+        }
+    }
+]

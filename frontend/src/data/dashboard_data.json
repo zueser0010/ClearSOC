@@ -1,0 +1,3288 @@
+{
+    "overview": {
+        "total_devices": 1,
+        "critical_devices": 0,
+        "high_devices": 0,
+        "medium_devices": 0,
+        "low_devices": 0,
+        "total_incidents": 67,
+        "total_attack_chains": 0,
+        "total_iocs": 0,
+        "hunt_findings": 0,
+        "important_logs": 67,
+        "multi_stage_attacks": 0,
+        "average_mttd_seconds": 0,
+        "average_mttd_minutes": 0,
+        "soar_playbooks": 0
+    },
+    "devices": [
+        {
+            "host": "windows10"
+        }
+    ],
+    "recent_incidents": [
+        {
+            "alert_id": "CSA-00001",
+            "time": "2026-05-04T14:02:59.924+0800",
+            "host": "windows10",
+            "user": "leo",
+            "source_ip": "127.0.0.1",
+            "destination_ip": "unknown",
+            "event_id": "4624",
+            "process": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+            "parent_process": "",
+            "command_line": "",
+            "pack": "successful_login",
+            "rule_name": "Successful Login",
+            "title": "\u2705 Successful Windows Login",
+            "summary": "User leo successfully logged in on host windows10",
+            "severity": "INFO",
+            "mitre": [
+                "T1078"
+            ],
+            "recommended_actions": [
+                "Check whether failed logins happened before this login",
+                "Verify source IP and logon type",
+                "Check for privilege escalation or PowerShell after login"
+            ],
+            "status": "OPEN",
+            "raw": {
+                "id": "1777874579.2516804",
+                "source_file": "/var/ossec/logs/alerts/2026/May/ossec-alerts-04.json",
+                "timestamp": "2026-05-04T14:02:59.924+0800",
+                "agent_name": "windows10",
+                "host": "windows10",
+                "agent_id": "003",
+                "manager_name": "alwin",
+                "rule_id": "60118",
+                "rule_level": 3,
+                "rule_description": "Windows Workstation Logon Success",
+                "groups": [
+                    "windows",
+                    "windows_security",
+                    "authentication_success"
+                ],
+                "location": "EventChannel",
+                "event_id": "4624",
+                "provider": "Microsoft-Windows-Security-Auditing",
+                "computer": "DESKTOP-G0LLA16",
+                "user": "leo",
+                "source_ip": "127.0.0.1",
+                "destination_ip": "",
+                "process": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+                "parent_process": "",
+                "command_line": "",
+                "logon_type": "2",
+                "logon_id": "0x33f1a9",
+                "full_log": "",
+                "raw": {
+                    "timestamp": "2026-05-04T14:02:59.924+0800",
+                    "rule": {
+                        "level": 3,
+                        "description": "Windows Workstation Logon Success",
+                        "id": "60118",
+                        "mitre": {
+                            "id": [
+                                "T1078"
+                            ],
+                            "tactic": [
+                                "Defense Evasion",
+                                "Persistence",
+                                "Privilege Escalation",
+                                "Initial Access"
+                            ],
+                            "technique": [
+                                "Valid Accounts"
+                            ]
+                        },
+                        "firedtimes": 1,
+                        "mail": false,
+                        "groups": [
+                            "windows",
+                            "windows_security",
+                            "authentication_success"
+                        ],
+                        "pci_dss": [
+                            "10.2.5"
+                        ],
+                        "gpg13": [
+                            "7.1",
+                            "7.2"
+                        ],
+                        "gdpr": [
+                            "IV_32.2"
+                        ],
+                        "hipaa": [
+                            "164.312.b"
+                        ],
+                        "nist_800_53": [
+                            "AU.14",
+                            "AC.9"
+                        ],
+                        "tsc": [
+                            "CC6.8",
+                            "CC7.2",
+                            "CC7.3"
+                        ]
+                    },
+                    "agent": {
+                        "id": "003",
+                        "name": "windows10",
+                        "ip": "192.168.10.120"
+                    },
+                    "manager": {
+                        "name": "alwin"
+                    },
+                    "id": "1777874579.2516804",
+                    "decoder": {
+                        "name": "windows_eventchannel"
+                    },
+                    "data": {
+                        "win": {
+                            "system": {
+                                "providerName": "Microsoft-Windows-Security-Auditing",
+                                "providerGuid": "{54849625-5478-4994-a5ba-3e3b0328c30d}",
+                                "eventID": "4624",
+                                "version": "2",
+                                "level": "0",
+                                "task": "12544",
+                                "opcode": "0",
+                                "keywords": "0x8020000000000000",
+                                "systemTime": "2026-05-04T06:02:58.6341822Z",
+                                "eventRecordID": "19162",
+                                "processID": "668",
+                                "threadID": "792",
+                                "channel": "Security",
+                                "computer": "DESKTOP-G0LLA16",
+                                "severityValue": "AUDIT_SUCCESS",
+                                "message": "\"An account was successfully logged on.\r\n\r\nSubject:\r\n\tSecurity ID:\t\tS-1-5-18\r\n\tAccount Name:\t\tDESKTOP-G0LLA16$\r\n\tAccount Domain:\t\tWORKGROUP\r\n\tLogon ID:\t\t0x3E7\r\n\r\nLogon Information:\r\n\tLogon Type:\t\t2\r\n\tRestricted Admin Mode:\t-\r\n\tVirtual Account:\t\tNo\r\n\tElevated Token:\t\tYes\r\n\r\nImpersonation Level:\t\tImpersonation\r\n\r\nNew Logon:\r\n\tSecurity ID:\t\tS-1-5-21-4138275471-3107049867-993298588-1001\r\n\tAccount Name:\t\tleo\r\n\tAccount Domain:\t\tDESKTOP-G0LLA16\r\n\tLogon ID:\t\t0x33F1A9\r\n\tLinked Logon ID:\t\t0x33F1D8\r\n\tNetwork Account Name:\t-\r\n\tNetwork Account Domain:\t-\r\n\tLogon GUID:\t\t{00000000-0000-0000-0000-000000000000}\r\n\r\nProcess Information:\r\n\tProcess ID:\t\t0x178\r\n\tProcess Name:\t\tC:\\Windows\\System32\\svchost.exe\r\n\r\nNetwork Information:\r\n\tWorkstation Name:\tDESKTOP-G0LLA16\r\n\tSource Network Address:\t127.0.0.1\r\n\tSource Port:\t\t0\r\n\r\nDetailed Authentication Information:\r\n\tLogon Process:\t\tUser32 \r\n\tAuthentication Package:\tNegotiate\r\n\tTransited Services:\t-\r\n\tPackage Name (NTLM only):\t-\r\n\tKey Length:\t\t0\r\n\r\nThis event is generated when a logon session is created. It is generated on the computer that was accessed.\r\n\r\nThe subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.\r\n\r\nThe logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).\r\n\r\nThe New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.\r\n\r\nThe network fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.\r\n\r\nThe impersonation level field indicates the extent to which a process in the logon session can impersonate.\r\n\r\nThe authentication information fields provide detailed information about this specific logon request.\r\n\t- Logon GUID is a unique identifier that can be used to correlate this event with a KDC event.\r\n\t- Transited services indicate which intermediate services have participated in this logon request.\r\n\t- Package name indicates which sub-protocol was used among the NTLM protocols.\r\n\t- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.\""
+                            },
+                            "eventdata": {
+                                "subjectUserSid": "S-1-5-18",
+                                "subjectUserName": "DESKTOP-G0LLA16$",
+                                "subjectDomainName": "WORKGROUP",
+                                "subjectLogonId": "0x3e7",
+                                "targetUserSid": "S-1-5-21-4138275471-3107049867-993298588-1001",
+                                "targetUserName": "leo",
+                                "targetDomainName": "DESKTOP-G0LLA16",
+                                "targetLogonId": "0x33f1a9",
+                                "logonType": "2",
+                                "logonProcessName": "User32",
+                                "authenticationPackageName": "Negotiate",
+                                "workstationName": "DESKTOP-G0LLA16",
+                                "logonGuid": "{00000000-0000-0000-0000-000000000000}",
+                                "keyLength": "0",
+                                "processId": "0x178",
+                                "processName": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+                                "ipAddress": "127.0.0.1",
+                                "ipPort": "0",
+                                "impersonationLevel": "%%1833",
+                                "virtualAccount": "%%1843",
+                                "targetLinkedLogonId": "0x33f1d8",
+                                "elevatedToken": "%%1842"
+                            }
+                        }
+                    },
+                    "location": "EventChannel"
+                }
+            }
+        },
+        {
+            "alert_id": "CSA-00002",
+            "time": "2026-05-04T14:02:59.996+0800",
+            "host": "windows10",
+            "user": "leo",
+            "source_ip": "127.0.0.1",
+            "destination_ip": "unknown",
+            "event_id": "4624",
+            "process": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+            "parent_process": "",
+            "command_line": "",
+            "pack": "successful_login",
+            "rule_name": "Successful Login",
+            "title": "\u2705 Successful Windows Login",
+            "summary": "User leo successfully logged in on host windows10",
+            "severity": "INFO",
+            "mitre": [
+                "T1078"
+            ],
+            "recommended_actions": [
+                "Check whether failed logins happened before this login",
+                "Verify source IP and logon type",
+                "Check for privilege escalation or PowerShell after login"
+            ],
+            "status": "OPEN",
+            "raw": {
+                "id": "1777874579.2524528",
+                "source_file": "/var/ossec/logs/alerts/2026/May/ossec-alerts-04.json",
+                "timestamp": "2026-05-04T14:02:59.996+0800",
+                "agent_name": "windows10",
+                "host": "windows10",
+                "agent_id": "003",
+                "manager_name": "alwin",
+                "rule_id": "60118",
+                "rule_level": 3,
+                "rule_description": "Windows Workstation Logon Success",
+                "groups": [
+                    "windows",
+                    "windows_security",
+                    "authentication_success"
+                ],
+                "location": "EventChannel",
+                "event_id": "4624",
+                "provider": "Microsoft-Windows-Security-Auditing",
+                "computer": "DESKTOP-G0LLA16",
+                "user": "leo",
+                "source_ip": "127.0.0.1",
+                "destination_ip": "",
+                "process": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+                "parent_process": "",
+                "command_line": "",
+                "logon_type": "2",
+                "logon_id": "0x33f1d8",
+                "full_log": "",
+                "raw": {
+                    "timestamp": "2026-05-04T14:02:59.996+0800",
+                    "rule": {
+                        "level": 3,
+                        "description": "Windows Workstation Logon Success",
+                        "id": "60118",
+                        "mitre": {
+                            "id": [
+                                "T1078"
+                            ],
+                            "tactic": [
+                                "Defense Evasion",
+                                "Persistence",
+                                "Privilege Escalation",
+                                "Initial Access"
+                            ],
+                            "technique": [
+                                "Valid Accounts"
+                            ]
+                        },
+                        "firedtimes": 2,
+                        "mail": false,
+                        "groups": [
+                            "windows",
+                            "windows_security",
+                            "authentication_success"
+                        ],
+                        "pci_dss": [
+                            "10.2.5"
+                        ],
+                        "gpg13": [
+                            "7.1",
+                            "7.2"
+                        ],
+                        "gdpr": [
+                            "IV_32.2"
+                        ],
+                        "hipaa": [
+                            "164.312.b"
+                        ],
+                        "nist_800_53": [
+                            "AU.14",
+                            "AC.9"
+                        ],
+                        "tsc": [
+                            "CC6.8",
+                            "CC7.2",
+                            "CC7.3"
+                        ]
+                    },
+                    "agent": {
+                        "id": "003",
+                        "name": "windows10",
+                        "ip": "192.168.10.120"
+                    },
+                    "manager": {
+                        "name": "alwin"
+                    },
+                    "id": "1777874579.2524528",
+                    "decoder": {
+                        "name": "windows_eventchannel"
+                    },
+                    "data": {
+                        "win": {
+                            "system": {
+                                "providerName": "Microsoft-Windows-Security-Auditing",
+                                "providerGuid": "{54849625-5478-4994-a5ba-3e3b0328c30d}",
+                                "eventID": "4624",
+                                "version": "2",
+                                "level": "0",
+                                "task": "12544",
+                                "opcode": "0",
+                                "keywords": "0x8020000000000000",
+                                "systemTime": "2026-05-04T06:02:58.6342119Z",
+                                "eventRecordID": "19163",
+                                "processID": "668",
+                                "threadID": "792",
+                                "channel": "Security",
+                                "computer": "DESKTOP-G0LLA16",
+                                "severityValue": "AUDIT_SUCCESS",
+                                "message": "\"An account was successfully logged on.\r\n\r\nSubject:\r\n\tSecurity ID:\t\tS-1-5-18\r\n\tAccount Name:\t\tDESKTOP-G0LLA16$\r\n\tAccount Domain:\t\tWORKGROUP\r\n\tLogon ID:\t\t0x3E7\r\n\r\nLogon Information:\r\n\tLogon Type:\t\t2\r\n\tRestricted Admin Mode:\t-\r\n\tVirtual Account:\t\tNo\r\n\tElevated Token:\t\tNo\r\n\r\nImpersonation Level:\t\tImpersonation\r\n\r\nNew Logon:\r\n\tSecurity ID:\t\tS-1-5-21-4138275471-3107049867-993298588-1001\r\n\tAccount Name:\t\tleo\r\n\tAccount Domain:\t\tDESKTOP-G0LLA16\r\n\tLogon ID:\t\t0x33F1D8\r\n\tLinked Logon ID:\t\t0x33F1A9\r\n\tNetwork Account Name:\t-\r\n\tNetwork Account Domain:\t-\r\n\tLogon GUID:\t\t{00000000-0000-0000-0000-000000000000}\r\n\r\nProcess Information:\r\n\tProcess ID:\t\t0x178\r\n\tProcess Name:\t\tC:\\Windows\\System32\\svchost.exe\r\n\r\nNetwork Information:\r\n\tWorkstation Name:\tDESKTOP-G0LLA16\r\n\tSource Network Address:\t127.0.0.1\r\n\tSource Port:\t\t0\r\n\r\nDetailed Authentication Information:\r\n\tLogon Process:\t\tUser32 \r\n\tAuthentication Package:\tNegotiate\r\n\tTransited Services:\t-\r\n\tPackage Name (NTLM only):\t-\r\n\tKey Length:\t\t0\r\n\r\nThis event is generated when a logon session is created. It is generated on the computer that was accessed.\r\n\r\nThe subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.\r\n\r\nThe logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).\r\n\r\nThe New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.\r\n\r\nThe network fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.\r\n\r\nThe impersonation level field indicates the extent to which a process in the logon session can impersonate.\r\n\r\nThe authentication information fields provide detailed information about this specific logon request.\r\n\t- Logon GUID is a unique identifier that can be used to correlate this event with a KDC event.\r\n\t- Transited services indicate which intermediate services have participated in this logon request.\r\n\t- Package name indicates which sub-protocol was used among the NTLM protocols.\r\n\t- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.\""
+                            },
+                            "eventdata": {
+                                "subjectUserSid": "S-1-5-18",
+                                "subjectUserName": "DESKTOP-G0LLA16$",
+                                "subjectDomainName": "WORKGROUP",
+                                "subjectLogonId": "0x3e7",
+                                "targetUserSid": "S-1-5-21-4138275471-3107049867-993298588-1001",
+                                "targetUserName": "leo",
+                                "targetDomainName": "DESKTOP-G0LLA16",
+                                "targetLogonId": "0x33f1d8",
+                                "logonType": "2",
+                                "logonProcessName": "User32",
+                                "authenticationPackageName": "Negotiate",
+                                "workstationName": "DESKTOP-G0LLA16",
+                                "logonGuid": "{00000000-0000-0000-0000-000000000000}",
+                                "keyLength": "0",
+                                "processId": "0x178",
+                                "processName": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+                                "ipAddress": "127.0.0.1",
+                                "ipPort": "0",
+                                "impersonationLevel": "%%1833",
+                                "virtualAccount": "%%1843",
+                                "targetLinkedLogonId": "0x33f1a9",
+                                "elevatedToken": "%%1843"
+                            }
+                        }
+                    },
+                    "location": "EventChannel"
+                }
+            }
+        },
+        {
+            "alert_id": "CSA-00003",
+            "time": "2026-05-04T14:02:59.996+0800",
+            "host": "windows10",
+            "user": "leo",
+            "source_ip": "192.168.10.120",
+            "destination_ip": "unknown",
+            "event_id": "4672",
+            "process": "",
+            "parent_process": "",
+            "command_line": "",
+            "pack": "privilege_escalation",
+            "rule_name": "Privilege Escalation",
+            "title": "\ud83d\udc51 Unexpected Admin Privileges",
+            "summary": "Non-admin user 'leo' received special privileges on windows10",
+            "severity": "HIGH",
+            "mitre": [
+                "T1078.002"
+            ],
+            "recommended_actions": [
+                "Verify if user normally has admin rights",
+                "Check what was run immediately after this event",
+                "Correlate with brute force or lateral movement alerts"
+            ],
+            "status": "OPEN",
+            "raw": {
+                "id": "1777874579.2532250",
+                "source_file": "/var/ossec/logs/alerts/2026/May/ossec-alerts-04.json",
+                "timestamp": "2026-05-04T14:02:59.996+0800",
+                "agent_name": "windows10",
+                "host": "windows10",
+                "agent_id": "003",
+                "manager_name": "alwin",
+                "rule_id": "67028",
+                "rule_level": 3,
+                "rule_description": "Special privileges assigned to new logon.",
+                "groups": [
+                    "windows",
+                    " WEF"
+                ],
+                "location": "EventChannel",
+                "event_id": "4672",
+                "provider": "Microsoft-Windows-Security-Auditing",
+                "computer": "DESKTOP-G0LLA16",
+                "user": "leo",
+                "source_ip": "192.168.10.120",
+                "destination_ip": "",
+                "process": "",
+                "parent_process": "",
+                "command_line": "",
+                "logon_type": "",
+                "logon_id": "0x33f1a9",
+                "full_log": "",
+                "raw": {
+                    "timestamp": "2026-05-04T14:02:59.996+0800",
+                    "rule": {
+                        "level": 3,
+                        "description": "Special privileges assigned to new logon.",
+                        "id": "67028",
+                        "mitre": {
+                            "id": [
+                                "T1484"
+                            ],
+                            "tactic": [
+                                "Defense Evasion",
+                                "Privilege Escalation"
+                            ],
+                            "technique": [
+                                "Domain Policy Modification"
+                            ]
+                        },
+                        "firedtimes": 1,
+                        "mail": false,
+                        "groups": [
+                            "windows",
+                            " WEF"
+                        ]
+                    },
+                    "agent": {
+                        "id": "003",
+                        "name": "windows10",
+                        "ip": "192.168.10.120"
+                    },
+                    "manager": {
+                        "name": "alwin"
+                    },
+                    "id": "1777874579.2532250",
+                    "decoder": {
+                        "name": "windows_eventchannel"
+                    },
+                    "data": {
+                        "win": {
+                            "system": {
+                                "providerName": "Microsoft-Windows-Security-Auditing",
+                                "providerGuid": "{54849625-5478-4994-a5ba-3e3b0328c30d}",
+                                "eventID": "4672",
+                                "version": "0",
+                                "level": "0",
+                                "task": "12548",
+                                "opcode": "0",
+                                "keywords": "0x8020000000000000",
+                                "systemTime": "2026-05-04T06:02:58.6342336Z",
+                                "eventRecordID": "19164",
+                                "processID": "668",
+                                "threadID": "792",
+                                "channel": "Security",
+                                "computer": "DESKTOP-G0LLA16",
+                                "severityValue": "AUDIT_SUCCESS",
+                                "message": "\"Special privileges assigned to new logon.\r\n\r\nSubject:\r\n\tSecurity ID:\t\tS-1-5-21-4138275471-3107049867-993298588-1001\r\n\tAccount Name:\t\tleo\r\n\tAccount Domain:\t\tDESKTOP-G0LLA16\r\n\tLogon ID:\t\t0x33F1A9\r\n\r\nPrivileges:\t\tSeSecurityPrivilege\r\n\t\t\tSeTakeOwnershipPrivilege\r\n\t\t\tSeLoadDriverPrivilege\r\n\t\t\tSeBackupPrivilege\r\n\t\t\tSeRestorePrivilege\r\n\t\t\tSeDebugPrivilege\r\n\t\t\tSeSystemEnvironmentPrivilege\r\n\t\t\tSeImpersonatePrivilege\r\n\t\t\tSeDelegateSessionUserImpersonatePrivilege\""
+                            },
+                            "eventdata": {
+                                "subjectUserSid": "S-1-5-21-4138275471-3107049867-993298588-1001",
+                                "subjectUserName": "leo",
+                                "subjectDomainName": "DESKTOP-G0LLA16",
+                                "subjectLogonId": "0x33f1a9",
+                                "privilegeList": "SeSecurityPrivilege     SeTakeOwnershipPrivilege     SeLoadDriverPrivilege     SeBackupPrivilege     SeRestorePrivilege     SeDebugPrivilege     SeSystemEnvironmentPrivilege     SeImpersonatePrivilege     SeDelegateSessionUserImpersonatePrivilege"
+                            }
+                        }
+                    },
+                    "location": "EventChannel"
+                }
+            }
+        },
+        {
+            "alert_id": "CSA-00004",
+            "time": "2026-05-04T16:04:23.971+0800",
+            "host": "windows10",
+            "user": "leo",
+            "source_ip": "127.0.0.1",
+            "destination_ip": "unknown",
+            "event_id": "4624",
+            "process": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+            "parent_process": "",
+            "command_line": "",
+            "pack": "successful_login",
+            "rule_name": "Successful Login",
+            "title": "\u2705 Successful Windows Login",
+            "summary": "User leo successfully logged in on host windows10",
+            "severity": "INFO",
+            "mitre": [
+                "T1078"
+            ],
+            "recommended_actions": [
+                "Check whether failed logins happened before this login",
+                "Verify source IP and logon type",
+                "Check for privilege escalation or PowerShell after login"
+            ],
+            "status": "OPEN",
+            "raw": {
+                "id": "1777881863.4165016",
+                "source_file": "/var/ossec/logs/alerts/2026/May/ossec-alerts-04.json",
+                "timestamp": "2026-05-04T16:04:23.971+0800",
+                "agent_name": "windows10",
+                "host": "windows10",
+                "agent_id": "003",
+                "manager_name": "alwin",
+                "rule_id": "60118",
+                "rule_level": 3,
+                "rule_description": "Windows Workstation Logon Success",
+                "groups": [
+                    "windows",
+                    "windows_security",
+                    "authentication_success"
+                ],
+                "location": "EventChannel",
+                "event_id": "4624",
+                "provider": "Microsoft-Windows-Security-Auditing",
+                "computer": "DESKTOP-G0LLA16",
+                "user": "leo",
+                "source_ip": "127.0.0.1",
+                "destination_ip": "",
+                "process": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+                "parent_process": "",
+                "command_line": "",
+                "logon_type": "2",
+                "logon_id": "0xd3f3c2",
+                "full_log": "",
+                "raw": {
+                    "timestamp": "2026-05-04T16:04:23.971+0800",
+                    "rule": {
+                        "level": 3,
+                        "description": "Windows Workstation Logon Success",
+                        "id": "60118",
+                        "mitre": {
+                            "id": [
+                                "T1078"
+                            ],
+                            "tactic": [
+                                "Defense Evasion",
+                                "Persistence",
+                                "Privilege Escalation",
+                                "Initial Access"
+                            ],
+                            "technique": [
+                                "Valid Accounts"
+                            ]
+                        },
+                        "firedtimes": 1,
+                        "mail": false,
+                        "groups": [
+                            "windows",
+                            "windows_security",
+                            "authentication_success"
+                        ],
+                        "pci_dss": [
+                            "10.2.5"
+                        ],
+                        "gpg13": [
+                            "7.1",
+                            "7.2"
+                        ],
+                        "gdpr": [
+                            "IV_32.2"
+                        ],
+                        "hipaa": [
+                            "164.312.b"
+                        ],
+                        "nist_800_53": [
+                            "AU.14",
+                            "AC.9"
+                        ],
+                        "tsc": [
+                            "CC6.8",
+                            "CC7.2",
+                            "CC7.3"
+                        ]
+                    },
+                    "agent": {
+                        "id": "003",
+                        "name": "windows10",
+                        "ip": "192.168.10.120"
+                    },
+                    "manager": {
+                        "name": "alwin"
+                    },
+                    "id": "1777881863.4165016",
+                    "decoder": {
+                        "name": "windows_eventchannel"
+                    },
+                    "data": {
+                        "win": {
+                            "system": {
+                                "providerName": "Microsoft-Windows-Security-Auditing",
+                                "providerGuid": "{54849625-5478-4994-a5ba-3e3b0328c30d}",
+                                "eventID": "4624",
+                                "version": "2",
+                                "level": "0",
+                                "task": "12544",
+                                "opcode": "0",
+                                "keywords": "0x8020000000000000",
+                                "systemTime": "2026-05-04T08:04:22.6310784Z",
+                                "eventRecordID": "19387",
+                                "processID": "668",
+                                "threadID": "5068",
+                                "channel": "Security",
+                                "computer": "DESKTOP-G0LLA16",
+                                "severityValue": "AUDIT_SUCCESS",
+                                "message": "\"An account was successfully logged on.\r\n\r\nSubject:\r\n\tSecurity ID:\t\tS-1-5-18\r\n\tAccount Name:\t\tDESKTOP-G0LLA16$\r\n\tAccount Domain:\t\tWORKGROUP\r\n\tLogon ID:\t\t0x3E7\r\n\r\nLogon Information:\r\n\tLogon Type:\t\t2\r\n\tRestricted Admin Mode:\t-\r\n\tVirtual Account:\t\tNo\r\n\tElevated Token:\t\tYes\r\n\r\nImpersonation Level:\t\tImpersonation\r\n\r\nNew Logon:\r\n\tSecurity ID:\t\tS-1-5-21-4138275471-3107049867-993298588-1001\r\n\tAccount Name:\t\tleo\r\n\tAccount Domain:\t\tDESKTOP-G0LLA16\r\n\tLogon ID:\t\t0xD3F3C2\r\n\tLinked Logon ID:\t\t0xD3F3E7\r\n\tNetwork Account Name:\t-\r\n\tNetwork Account Domain:\t-\r\n\tLogon GUID:\t\t{00000000-0000-0000-0000-000000000000}\r\n\r\nProcess Information:\r\n\tProcess ID:\t\t0x178\r\n\tProcess Name:\t\tC:\\Windows\\System32\\svchost.exe\r\n\r\nNetwork Information:\r\n\tWorkstation Name:\tDESKTOP-G0LLA16\r\n\tSource Network Address:\t127.0.0.1\r\n\tSource Port:\t\t0\r\n\r\nDetailed Authentication Information:\r\n\tLogon Process:\t\tUser32 \r\n\tAuthentication Package:\tNegotiate\r\n\tTransited Services:\t-\r\n\tPackage Name (NTLM only):\t-\r\n\tKey Length:\t\t0\r\n\r\nThis event is generated when a logon session is created. It is generated on the computer that was accessed.\r\n\r\nThe subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.\r\n\r\nThe logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).\r\n\r\nThe New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.\r\n\r\nThe network fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.\r\n\r\nThe impersonation level field indicates the extent to which a process in the logon session can impersonate.\r\n\r\nThe authentication information fields provide detailed information about this specific logon request.\r\n\t- Logon GUID is a unique identifier that can be used to correlate this event with a KDC event.\r\n\t- Transited services indicate which intermediate services have participated in this logon request.\r\n\t- Package name indicates which sub-protocol was used among the NTLM protocols.\r\n\t- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.\""
+                            },
+                            "eventdata": {
+                                "subjectUserSid": "S-1-5-18",
+                                "subjectUserName": "DESKTOP-G0LLA16$",
+                                "subjectDomainName": "WORKGROUP",
+                                "subjectLogonId": "0x3e7",
+                                "targetUserSid": "S-1-5-21-4138275471-3107049867-993298588-1001",
+                                "targetUserName": "leo",
+                                "targetDomainName": "DESKTOP-G0LLA16",
+                                "targetLogonId": "0xd3f3c2",
+                                "logonType": "2",
+                                "logonProcessName": "User32",
+                                "authenticationPackageName": "Negotiate",
+                                "workstationName": "DESKTOP-G0LLA16",
+                                "logonGuid": "{00000000-0000-0000-0000-000000000000}",
+                                "keyLength": "0",
+                                "processId": "0x178",
+                                "processName": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+                                "ipAddress": "127.0.0.1",
+                                "ipPort": "0",
+                                "impersonationLevel": "%%1833",
+                                "virtualAccount": "%%1843",
+                                "targetLinkedLogonId": "0xd3f3e7",
+                                "elevatedToken": "%%1842"
+                            }
+                        }
+                    },
+                    "location": "EventChannel"
+                }
+            }
+        },
+        {
+            "alert_id": "CSA-00005",
+            "time": "2026-05-04T16:04:23.977+0800",
+            "host": "windows10",
+            "user": "leo",
+            "source_ip": "127.0.0.1",
+            "destination_ip": "unknown",
+            "event_id": "4624",
+            "process": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+            "parent_process": "",
+            "command_line": "",
+            "pack": "successful_login",
+            "rule_name": "Successful Login",
+            "title": "\u2705 Successful Windows Login",
+            "summary": "User leo successfully logged in on host windows10",
+            "severity": "INFO",
+            "mitre": [
+                "T1078"
+            ],
+            "recommended_actions": [
+                "Check whether failed logins happened before this login",
+                "Verify source IP and logon type",
+                "Check for privilege escalation or PowerShell after login"
+            ],
+            "status": "OPEN",
+            "raw": {
+                "id": "1777881863.4172742",
+                "source_file": "/var/ossec/logs/alerts/2026/May/ossec-alerts-04.json",
+                "timestamp": "2026-05-04T16:04:23.977+0800",
+                "agent_name": "windows10",
+                "host": "windows10",
+                "agent_id": "003",
+                "manager_name": "alwin",
+                "rule_id": "60118",
+                "rule_level": 3,
+                "rule_description": "Windows Workstation Logon Success",
+                "groups": [
+                    "windows",
+                    "windows_security",
+                    "authentication_success"
+                ],
+                "location": "EventChannel",
+                "event_id": "4624",
+                "provider": "Microsoft-Windows-Security-Auditing",
+                "computer": "DESKTOP-G0LLA16",
+                "user": "leo",
+                "source_ip": "127.0.0.1",
+                "destination_ip": "",
+                "process": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+                "parent_process": "",
+                "command_line": "",
+                "logon_type": "2",
+                "logon_id": "0xd3f3e7",
+                "full_log": "",
+                "raw": {
+                    "timestamp": "2026-05-04T16:04:23.977+0800",
+                    "rule": {
+                        "level": 3,
+                        "description": "Windows Workstation Logon Success",
+                        "id": "60118",
+                        "mitre": {
+                            "id": [
+                                "T1078"
+                            ],
+                            "tactic": [
+                                "Defense Evasion",
+                                "Persistence",
+                                "Privilege Escalation",
+                                "Initial Access"
+                            ],
+                            "technique": [
+                                "Valid Accounts"
+                            ]
+                        },
+                        "firedtimes": 2,
+                        "mail": false,
+                        "groups": [
+                            "windows",
+                            "windows_security",
+                            "authentication_success"
+                        ],
+                        "pci_dss": [
+                            "10.2.5"
+                        ],
+                        "gpg13": [
+                            "7.1",
+                            "7.2"
+                        ],
+                        "gdpr": [
+                            "IV_32.2"
+                        ],
+                        "hipaa": [
+                            "164.312.b"
+                        ],
+                        "nist_800_53": [
+                            "AU.14",
+                            "AC.9"
+                        ],
+                        "tsc": [
+                            "CC6.8",
+                            "CC7.2",
+                            "CC7.3"
+                        ]
+                    },
+                    "agent": {
+                        "id": "003",
+                        "name": "windows10",
+                        "ip": "192.168.10.120"
+                    },
+                    "manager": {
+                        "name": "alwin"
+                    },
+                    "id": "1777881863.4172742",
+                    "decoder": {
+                        "name": "windows_eventchannel"
+                    },
+                    "data": {
+                        "win": {
+                            "system": {
+                                "providerName": "Microsoft-Windows-Security-Auditing",
+                                "providerGuid": "{54849625-5478-4994-a5ba-3e3b0328c30d}",
+                                "eventID": "4624",
+                                "version": "2",
+                                "level": "0",
+                                "task": "12544",
+                                "opcode": "0",
+                                "keywords": "0x8020000000000000",
+                                "systemTime": "2026-05-04T08:04:22.6311153Z",
+                                "eventRecordID": "19388",
+                                "processID": "668",
+                                "threadID": "5068",
+                                "channel": "Security",
+                                "computer": "DESKTOP-G0LLA16",
+                                "severityValue": "AUDIT_SUCCESS",
+                                "message": "\"An account was successfully logged on.\r\n\r\nSubject:\r\n\tSecurity ID:\t\tS-1-5-18\r\n\tAccount Name:\t\tDESKTOP-G0LLA16$\r\n\tAccount Domain:\t\tWORKGROUP\r\n\tLogon ID:\t\t0x3E7\r\n\r\nLogon Information:\r\n\tLogon Type:\t\t2\r\n\tRestricted Admin Mode:\t-\r\n\tVirtual Account:\t\tNo\r\n\tElevated Token:\t\tNo\r\n\r\nImpersonation Level:\t\tImpersonation\r\n\r\nNew Logon:\r\n\tSecurity ID:\t\tS-1-5-21-4138275471-3107049867-993298588-1001\r\n\tAccount Name:\t\tleo\r\n\tAccount Domain:\t\tDESKTOP-G0LLA16\r\n\tLogon ID:\t\t0xD3F3E7\r\n\tLinked Logon ID:\t\t0xD3F3C2\r\n\tNetwork Account Name:\t-\r\n\tNetwork Account Domain:\t-\r\n\tLogon GUID:\t\t{00000000-0000-0000-0000-000000000000}\r\n\r\nProcess Information:\r\n\tProcess ID:\t\t0x178\r\n\tProcess Name:\t\tC:\\Windows\\System32\\svchost.exe\r\n\r\nNetwork Information:\r\n\tWorkstation Name:\tDESKTOP-G0LLA16\r\n\tSource Network Address:\t127.0.0.1\r\n\tSource Port:\t\t0\r\n\r\nDetailed Authentication Information:\r\n\tLogon Process:\t\tUser32 \r\n\tAuthentication Package:\tNegotiate\r\n\tTransited Services:\t-\r\n\tPackage Name (NTLM only):\t-\r\n\tKey Length:\t\t0\r\n\r\nThis event is generated when a logon session is created. It is generated on the computer that was accessed.\r\n\r\nThe subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.\r\n\r\nThe logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).\r\n\r\nThe New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.\r\n\r\nThe network fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.\r\n\r\nThe impersonation level field indicates the extent to which a process in the logon session can impersonate.\r\n\r\nThe authentication information fields provide detailed information about this specific logon request.\r\n\t- Logon GUID is a unique identifier that can be used to correlate this event with a KDC event.\r\n\t- Transited services indicate which intermediate services have participated in this logon request.\r\n\t- Package name indicates which sub-protocol was used among the NTLM protocols.\r\n\t- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.\""
+                            },
+                            "eventdata": {
+                                "subjectUserSid": "S-1-5-18",
+                                "subjectUserName": "DESKTOP-G0LLA16$",
+                                "subjectDomainName": "WORKGROUP",
+                                "subjectLogonId": "0x3e7",
+                                "targetUserSid": "S-1-5-21-4138275471-3107049867-993298588-1001",
+                                "targetUserName": "leo",
+                                "targetDomainName": "DESKTOP-G0LLA16",
+                                "targetLogonId": "0xd3f3e7",
+                                "logonType": "2",
+                                "logonProcessName": "User32",
+                                "authenticationPackageName": "Negotiate",
+                                "workstationName": "DESKTOP-G0LLA16",
+                                "logonGuid": "{00000000-0000-0000-0000-000000000000}",
+                                "keyLength": "0",
+                                "processId": "0x178",
+                                "processName": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+                                "ipAddress": "127.0.0.1",
+                                "ipPort": "0",
+                                "impersonationLevel": "%%1833",
+                                "virtualAccount": "%%1843",
+                                "targetLinkedLogonId": "0xd3f3c2",
+                                "elevatedToken": "%%1843"
+                            }
+                        }
+                    },
+                    "location": "EventChannel"
+                }
+            }
+        },
+        {
+            "alert_id": "CSA-00006",
+            "time": "2026-05-09T14:42:37.402+0800",
+            "host": "windows10",
+            "user": "leo",
+            "source_ip": "127.0.0.1",
+            "destination_ip": "unknown",
+            "event_id": "4624",
+            "process": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+            "parent_process": "",
+            "command_line": "",
+            "pack": "successful_login",
+            "rule_name": "Successful Login",
+            "title": "\u2705 Successful Windows Login",
+            "summary": "User leo successfully logged in on host windows10",
+            "severity": "INFO",
+            "mitre": [
+                "T1078"
+            ],
+            "recommended_actions": [
+                "Check whether failed logins happened before this login",
+                "Verify source IP and logon type",
+                "Check for privilege escalation or PowerShell after login"
+            ],
+            "status": "OPEN",
+            "raw": {
+                "id": "1778308957.362330",
+                "source_file": "/var/ossec/logs/alerts/2026/May/ossec-alerts-09.json",
+                "timestamp": "2026-05-09T14:42:37.402+0800",
+                "agent_name": "windows10",
+                "host": "windows10",
+                "agent_id": "003",
+                "manager_name": "alwin",
+                "rule_id": "60118",
+                "rule_level": 3,
+                "rule_description": "Windows Workstation Logon Success",
+                "groups": [
+                    "windows",
+                    "windows_security",
+                    "authentication_success"
+                ],
+                "location": "EventChannel",
+                "event_id": "4624",
+                "provider": "Microsoft-Windows-Security-Auditing",
+                "computer": "DESKTOP-G0LLA16",
+                "user": "leo",
+                "source_ip": "127.0.0.1",
+                "destination_ip": "",
+                "process": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+                "parent_process": "",
+                "command_line": "",
+                "logon_type": "2",
+                "logon_id": "0xf04920",
+                "full_log": "",
+                "raw": {
+                    "timestamp": "2026-05-09T14:42:37.402+0800",
+                    "rule": {
+                        "level": 3,
+                        "description": "Windows Workstation Logon Success",
+                        "id": "60118",
+                        "mitre": {
+                            "id": [
+                                "T1078"
+                            ],
+                            "tactic": [
+                                "Defense Evasion",
+                                "Persistence",
+                                "Privilege Escalation",
+                                "Initial Access"
+                            ],
+                            "technique": [
+                                "Valid Accounts"
+                            ]
+                        },
+                        "firedtimes": 1,
+                        "mail": false,
+                        "groups": [
+                            "windows",
+                            "windows_security",
+                            "authentication_success"
+                        ],
+                        "pci_dss": [
+                            "10.2.5"
+                        ],
+                        "gpg13": [
+                            "7.1",
+                            "7.2"
+                        ],
+                        "gdpr": [
+                            "IV_32.2"
+                        ],
+                        "hipaa": [
+                            "164.312.b"
+                        ],
+                        "nist_800_53": [
+                            "AU.14",
+                            "AC.9"
+                        ],
+                        "tsc": [
+                            "CC6.8",
+                            "CC7.2",
+                            "CC7.3"
+                        ]
+                    },
+                    "agent": {
+                        "id": "003",
+                        "name": "windows10",
+                        "ip": "192.168.10.120"
+                    },
+                    "manager": {
+                        "name": "alwin"
+                    },
+                    "id": "1778308957.362330",
+                    "decoder": {
+                        "name": "windows_eventchannel"
+                    },
+                    "data": {
+                        "win": {
+                            "system": {
+                                "providerName": "Microsoft-Windows-Security-Auditing",
+                                "providerGuid": "{54849625-5478-4994-a5ba-3e3b0328c30d}",
+                                "eventID": "4624",
+                                "version": "2",
+                                "level": "0",
+                                "task": "12544",
+                                "opcode": "0",
+                                "keywords": "0x8020000000000000",
+                                "systemTime": "2026-05-09T06:42:36.2249162Z",
+                                "eventRecordID": "19519",
+                                "processID": "668",
+                                "threadID": "6424",
+                                "channel": "Security",
+                                "computer": "DESKTOP-G0LLA16",
+                                "severityValue": "AUDIT_SUCCESS",
+                                "message": "\"An account was successfully logged on.\r\n\r\nSubject:\r\n\tSecurity ID:\t\tS-1-5-18\r\n\tAccount Name:\t\tDESKTOP-G0LLA16$\r\n\tAccount Domain:\t\tWORKGROUP\r\n\tLogon ID:\t\t0x3E7\r\n\r\nLogon Information:\r\n\tLogon Type:\t\t2\r\n\tRestricted Admin Mode:\t-\r\n\tVirtual Account:\t\tNo\r\n\tElevated Token:\t\tYes\r\n\r\nImpersonation Level:\t\tImpersonation\r\n\r\nNew Logon:\r\n\tSecurity ID:\t\tS-1-5-21-4138275471-3107049867-993298588-1001\r\n\tAccount Name:\t\tleo\r\n\tAccount Domain:\t\tDESKTOP-G0LLA16\r\n\tLogon ID:\t\t0xF04920\r\n\tLinked Logon ID:\t\t0xF04940\r\n\tNetwork Account Name:\t-\r\n\tNetwork Account Domain:\t-\r\n\tLogon GUID:\t\t{00000000-0000-0000-0000-000000000000}\r\n\r\nProcess Information:\r\n\tProcess ID:\t\t0x178\r\n\tProcess Name:\t\tC:\\Windows\\System32\\svchost.exe\r\n\r\nNetwork Information:\r\n\tWorkstation Name:\tDESKTOP-G0LLA16\r\n\tSource Network Address:\t127.0.0.1\r\n\tSource Port:\t\t0\r\n\r\nDetailed Authentication Information:\r\n\tLogon Process:\t\tUser32 \r\n\tAuthentication Package:\tNegotiate\r\n\tTransited Services:\t-\r\n\tPackage Name (NTLM only):\t-\r\n\tKey Length:\t\t0\r\n\r\nThis event is generated when a logon session is created. It is generated on the computer that was accessed.\r\n\r\nThe subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.\r\n\r\nThe logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).\r\n\r\nThe New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.\r\n\r\nThe network fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.\r\n\r\nThe impersonation level field indicates the extent to which a process in the logon session can impersonate.\r\n\r\nThe authentication information fields provide detailed information about this specific logon request.\r\n\t- Logon GUID is a unique identifier that can be used to correlate this event with a KDC event.\r\n\t- Transited services indicate which intermediate services have participated in this logon request.\r\n\t- Package name indicates which sub-protocol was used among the NTLM protocols.\r\n\t- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.\""
+                            },
+                            "eventdata": {
+                                "subjectUserSid": "S-1-5-18",
+                                "subjectUserName": "DESKTOP-G0LLA16$",
+                                "subjectDomainName": "WORKGROUP",
+                                "subjectLogonId": "0x3e7",
+                                "targetUserSid": "S-1-5-21-4138275471-3107049867-993298588-1001",
+                                "targetUserName": "leo",
+                                "targetDomainName": "DESKTOP-G0LLA16",
+                                "targetLogonId": "0xf04920",
+                                "logonType": "2",
+                                "logonProcessName": "User32",
+                                "authenticationPackageName": "Negotiate",
+                                "workstationName": "DESKTOP-G0LLA16",
+                                "logonGuid": "{00000000-0000-0000-0000-000000000000}",
+                                "keyLength": "0",
+                                "processId": "0x178",
+                                "processName": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+                                "ipAddress": "127.0.0.1",
+                                "ipPort": "0",
+                                "impersonationLevel": "%%1833",
+                                "virtualAccount": "%%1843",
+                                "targetLinkedLogonId": "0xf04940",
+                                "elevatedToken": "%%1842"
+                            }
+                        }
+                    },
+                    "location": "EventChannel"
+                }
+            }
+        },
+        {
+            "alert_id": "CSA-00007",
+            "time": "2026-05-09T14:42:37.413+0800",
+            "host": "windows10",
+            "user": "leo",
+            "source_ip": "127.0.0.1",
+            "destination_ip": "unknown",
+            "event_id": "4624",
+            "process": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+            "parent_process": "",
+            "command_line": "",
+            "pack": "successful_login",
+            "rule_name": "Successful Login",
+            "title": "\u2705 Successful Windows Login",
+            "summary": "User leo successfully logged in on host windows10",
+            "severity": "INFO",
+            "mitre": [
+                "T1078"
+            ],
+            "recommended_actions": [
+                "Check whether failed logins happened before this login",
+                "Verify source IP and logon type",
+                "Check for privilege escalation or PowerShell after login"
+            ],
+            "status": "OPEN",
+            "raw": {
+                "id": "1778308957.370055",
+                "source_file": "/var/ossec/logs/alerts/2026/May/ossec-alerts-09.json",
+                "timestamp": "2026-05-09T14:42:37.413+0800",
+                "agent_name": "windows10",
+                "host": "windows10",
+                "agent_id": "003",
+                "manager_name": "alwin",
+                "rule_id": "60118",
+                "rule_level": 3,
+                "rule_description": "Windows Workstation Logon Success",
+                "groups": [
+                    "windows",
+                    "windows_security",
+                    "authentication_success"
+                ],
+                "location": "EventChannel",
+                "event_id": "4624",
+                "provider": "Microsoft-Windows-Security-Auditing",
+                "computer": "DESKTOP-G0LLA16",
+                "user": "leo",
+                "source_ip": "127.0.0.1",
+                "destination_ip": "",
+                "process": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+                "parent_process": "",
+                "command_line": "",
+                "logon_type": "2",
+                "logon_id": "0xf04940",
+                "full_log": "",
+                "raw": {
+                    "timestamp": "2026-05-09T14:42:37.413+0800",
+                    "rule": {
+                        "level": 3,
+                        "description": "Windows Workstation Logon Success",
+                        "id": "60118",
+                        "mitre": {
+                            "id": [
+                                "T1078"
+                            ],
+                            "tactic": [
+                                "Defense Evasion",
+                                "Persistence",
+                                "Privilege Escalation",
+                                "Initial Access"
+                            ],
+                            "technique": [
+                                "Valid Accounts"
+                            ]
+                        },
+                        "firedtimes": 2,
+                        "mail": false,
+                        "groups": [
+                            "windows",
+                            "windows_security",
+                            "authentication_success"
+                        ],
+                        "pci_dss": [
+                            "10.2.5"
+                        ],
+                        "gpg13": [
+                            "7.1",
+                            "7.2"
+                        ],
+                        "gdpr": [
+                            "IV_32.2"
+                        ],
+                        "hipaa": [
+                            "164.312.b"
+                        ],
+                        "nist_800_53": [
+                            "AU.14",
+                            "AC.9"
+                        ],
+                        "tsc": [
+                            "CC6.8",
+                            "CC7.2",
+                            "CC7.3"
+                        ]
+                    },
+                    "agent": {
+                        "id": "003",
+                        "name": "windows10",
+                        "ip": "192.168.10.120"
+                    },
+                    "manager": {
+                        "name": "alwin"
+                    },
+                    "id": "1778308957.370055",
+                    "decoder": {
+                        "name": "windows_eventchannel"
+                    },
+                    "data": {
+                        "win": {
+                            "system": {
+                                "providerName": "Microsoft-Windows-Security-Auditing",
+                                "providerGuid": "{54849625-5478-4994-a5ba-3e3b0328c30d}",
+                                "eventID": "4624",
+                                "version": "2",
+                                "level": "0",
+                                "task": "12544",
+                                "opcode": "0",
+                                "keywords": "0x8020000000000000",
+                                "systemTime": "2026-05-09T06:42:36.2249611Z",
+                                "eventRecordID": "19520",
+                                "processID": "668",
+                                "threadID": "6424",
+                                "channel": "Security",
+                                "computer": "DESKTOP-G0LLA16",
+                                "severityValue": "AUDIT_SUCCESS",
+                                "message": "\"An account was successfully logged on.\r\n\r\nSubject:\r\n\tSecurity ID:\t\tS-1-5-18\r\n\tAccount Name:\t\tDESKTOP-G0LLA16$\r\n\tAccount Domain:\t\tWORKGROUP\r\n\tLogon ID:\t\t0x3E7\r\n\r\nLogon Information:\r\n\tLogon Type:\t\t2\r\n\tRestricted Admin Mode:\t-\r\n\tVirtual Account:\t\tNo\r\n\tElevated Token:\t\tNo\r\n\r\nImpersonation Level:\t\tImpersonation\r\n\r\nNew Logon:\r\n\tSecurity ID:\t\tS-1-5-21-4138275471-3107049867-993298588-1001\r\n\tAccount Name:\t\tleo\r\n\tAccount Domain:\t\tDESKTOP-G0LLA16\r\n\tLogon ID:\t\t0xF04940\r\n\tLinked Logon ID:\t\t0xF04920\r\n\tNetwork Account Name:\t-\r\n\tNetwork Account Domain:\t-\r\n\tLogon GUID:\t\t{00000000-0000-0000-0000-000000000000}\r\n\r\nProcess Information:\r\n\tProcess ID:\t\t0x178\r\n\tProcess Name:\t\tC:\\Windows\\System32\\svchost.exe\r\n\r\nNetwork Information:\r\n\tWorkstation Name:\tDESKTOP-G0LLA16\r\n\tSource Network Address:\t127.0.0.1\r\n\tSource Port:\t\t0\r\n\r\nDetailed Authentication Information:\r\n\tLogon Process:\t\tUser32 \r\n\tAuthentication Package:\tNegotiate\r\n\tTransited Services:\t-\r\n\tPackage Name (NTLM only):\t-\r\n\tKey Length:\t\t0\r\n\r\nThis event is generated when a logon session is created. It is generated on the computer that was accessed.\r\n\r\nThe subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.\r\n\r\nThe logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).\r\n\r\nThe New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.\r\n\r\nThe network fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.\r\n\r\nThe impersonation level field indicates the extent to which a process in the logon session can impersonate.\r\n\r\nThe authentication information fields provide detailed information about this specific logon request.\r\n\t- Logon GUID is a unique identifier that can be used to correlate this event with a KDC event.\r\n\t- Transited services indicate which intermediate services have participated in this logon request.\r\n\t- Package name indicates which sub-protocol was used among the NTLM protocols.\r\n\t- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.\""
+                            },
+                            "eventdata": {
+                                "subjectUserSid": "S-1-5-18",
+                                "subjectUserName": "DESKTOP-G0LLA16$",
+                                "subjectDomainName": "WORKGROUP",
+                                "subjectLogonId": "0x3e7",
+                                "targetUserSid": "S-1-5-21-4138275471-3107049867-993298588-1001",
+                                "targetUserName": "leo",
+                                "targetDomainName": "DESKTOP-G0LLA16",
+                                "targetLogonId": "0xf04940",
+                                "logonType": "2",
+                                "logonProcessName": "User32",
+                                "authenticationPackageName": "Negotiate",
+                                "workstationName": "DESKTOP-G0LLA16",
+                                "logonGuid": "{00000000-0000-0000-0000-000000000000}",
+                                "keyLength": "0",
+                                "processId": "0x178",
+                                "processName": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+                                "ipAddress": "127.0.0.1",
+                                "ipPort": "0",
+                                "impersonationLevel": "%%1833",
+                                "virtualAccount": "%%1843",
+                                "targetLinkedLogonId": "0xf04920",
+                                "elevatedToken": "%%1843"
+                            }
+                        }
+                    },
+                    "location": "EventChannel"
+                }
+            }
+        },
+        {
+            "alert_id": "CSA-00008",
+            "time": "2026-05-09T17:40:47.322+0800",
+            "host": "windows10",
+            "user": "leo",
+            "source_ip": "127.0.0.1",
+            "destination_ip": "unknown",
+            "event_id": "4624",
+            "process": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+            "parent_process": "",
+            "command_line": "",
+            "pack": "successful_login",
+            "rule_name": "Successful Login",
+            "title": "\u2705 Successful Windows Login",
+            "summary": "User leo successfully logged in on host windows10",
+            "severity": "INFO",
+            "mitre": [
+                "T1078"
+            ],
+            "recommended_actions": [
+                "Check whether failed logins happened before this login",
+                "Verify source IP and logon type",
+                "Check for privilege escalation or PowerShell after login"
+            ],
+            "status": "OPEN",
+            "raw": {
+                "id": "1778319647.1554499",
+                "source_file": "/var/ossec/logs/alerts/2026/May/ossec-alerts-09.json",
+                "timestamp": "2026-05-09T17:40:47.322+0800",
+                "agent_name": "windows10",
+                "host": "windows10",
+                "agent_id": "003",
+                "manager_name": "alwin",
+                "rule_id": "60118",
+                "rule_level": 3,
+                "rule_description": "Windows Workstation Logon Success",
+                "groups": [
+                    "windows",
+                    "windows_security",
+                    "authentication_success"
+                ],
+                "location": "EventChannel",
+                "event_id": "4624",
+                "provider": "Microsoft-Windows-Security-Auditing",
+                "computer": "DESKTOP-G0LLA16",
+                "user": "leo",
+                "source_ip": "127.0.0.1",
+                "destination_ip": "",
+                "process": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+                "parent_process": "",
+                "command_line": "",
+                "logon_type": "2",
+                "logon_id": "0x127dd6",
+                "full_log": "",
+                "raw": {
+                    "timestamp": "2026-05-09T17:40:47.322+0800",
+                    "rule": {
+                        "level": 3,
+                        "description": "Windows Workstation Logon Success",
+                        "id": "60118",
+                        "mitre": {
+                            "id": [
+                                "T1078"
+                            ],
+                            "tactic": [
+                                "Defense Evasion",
+                                "Persistence",
+                                "Privilege Escalation",
+                                "Initial Access"
+                            ],
+                            "technique": [
+                                "Valid Accounts"
+                            ]
+                        },
+                        "firedtimes": 2,
+                        "mail": false,
+                        "groups": [
+                            "windows",
+                            "windows_security",
+                            "authentication_success"
+                        ],
+                        "pci_dss": [
+                            "10.2.5"
+                        ],
+                        "gpg13": [
+                            "7.1",
+                            "7.2"
+                        ],
+                        "gdpr": [
+                            "IV_32.2"
+                        ],
+                        "hipaa": [
+                            "164.312.b"
+                        ],
+                        "nist_800_53": [
+                            "AU.14",
+                            "AC.9"
+                        ],
+                        "tsc": [
+                            "CC6.8",
+                            "CC7.2",
+                            "CC7.3"
+                        ]
+                    },
+                    "agent": {
+                        "id": "003",
+                        "name": "windows10",
+                        "ip": "192.168.10.120"
+                    },
+                    "manager": {
+                        "name": "alwin"
+                    },
+                    "id": "1778319647.1554499",
+                    "decoder": {
+                        "name": "windows_eventchannel"
+                    },
+                    "data": {
+                        "win": {
+                            "system": {
+                                "providerName": "Microsoft-Windows-Security-Auditing",
+                                "providerGuid": "{54849625-5478-4994-a5ba-3e3b0328c30d}",
+                                "eventID": "4624",
+                                "version": "2",
+                                "level": "0",
+                                "task": "12544",
+                                "opcode": "0",
+                                "keywords": "0x8020000000000000",
+                                "systemTime": "2026-05-09T09:40:46.1803238Z",
+                                "eventRecordID": "19895",
+                                "processID": "664",
+                                "threadID": "744",
+                                "channel": "Security",
+                                "computer": "DESKTOP-G0LLA16",
+                                "severityValue": "AUDIT_SUCCESS",
+                                "message": "\"An account was successfully logged on.\r\n\r\nSubject:\r\n\tSecurity ID:\t\tS-1-5-18\r\n\tAccount Name:\t\tDESKTOP-G0LLA16$\r\n\tAccount Domain:\t\tWORKGROUP\r\n\tLogon ID:\t\t0x3E7\r\n\r\nLogon Information:\r\n\tLogon Type:\t\t2\r\n\tRestricted Admin Mode:\t-\r\n\tVirtual Account:\t\tNo\r\n\tElevated Token:\t\tNo\r\n\r\nImpersonation Level:\t\tImpersonation\r\n\r\nNew Logon:\r\n\tSecurity ID:\t\tS-1-5-21-4138275471-3107049867-993298588-1001\r\n\tAccount Name:\t\tleo\r\n\tAccount Domain:\t\tDESKTOP-G0LLA16\r\n\tLogon ID:\t\t0x127DD6\r\n\tLinked Logon ID:\t\t0x127DAA\r\n\tNetwork Account Name:\t-\r\n\tNetwork Account Domain:\t-\r\n\tLogon GUID:\t\t{00000000-0000-0000-0000-000000000000}\r\n\r\nProcess Information:\r\n\tProcess ID:\t\t0x450\r\n\tProcess Name:\t\tC:\\Windows\\System32\\svchost.exe\r\n\r\nNetwork Information:\r\n\tWorkstation Name:\tDESKTOP-G0LLA16\r\n\tSource Network Address:\t127.0.0.1\r\n\tSource Port:\t\t0\r\n\r\nDetailed Authentication Information:\r\n\tLogon Process:\t\tUser32 \r\n\tAuthentication Package:\tNegotiate\r\n\tTransited Services:\t-\r\n\tPackage Name (NTLM only):\t-\r\n\tKey Length:\t\t0\r\n\r\nThis event is generated when a logon session is created. It is generated on the computer that was accessed.\r\n\r\nThe subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.\r\n\r\nThe logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).\r\n\r\nThe New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.\r\n\r\nThe network fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.\r\n\r\nThe impersonation level field indicates the extent to which a process in the logon session can impersonate.\r\n\r\nThe authentication information fields provide detailed information about this specific logon request.\r\n\t- Logon GUID is a unique identifier that can be used to correlate this event with a KDC event.\r\n\t- Transited services indicate which intermediate services have participated in this logon request.\r\n\t- Package name indicates which sub-protocol was used among the NTLM protocols.\r\n\t- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.\""
+                            },
+                            "eventdata": {
+                                "subjectUserSid": "S-1-5-18",
+                                "subjectUserName": "DESKTOP-G0LLA16$",
+                                "subjectDomainName": "WORKGROUP",
+                                "subjectLogonId": "0x3e7",
+                                "targetUserSid": "S-1-5-21-4138275471-3107049867-993298588-1001",
+                                "targetUserName": "leo",
+                                "targetDomainName": "DESKTOP-G0LLA16",
+                                "targetLogonId": "0x127dd6",
+                                "logonType": "2",
+                                "logonProcessName": "User32",
+                                "authenticationPackageName": "Negotiate",
+                                "workstationName": "DESKTOP-G0LLA16",
+                                "logonGuid": "{00000000-0000-0000-0000-000000000000}",
+                                "keyLength": "0",
+                                "processId": "0x450",
+                                "processName": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+                                "ipAddress": "127.0.0.1",
+                                "ipPort": "0",
+                                "impersonationLevel": "%%1833",
+                                "virtualAccount": "%%1843",
+                                "targetLinkedLogonId": "0x127daa",
+                                "elevatedToken": "%%1843"
+                            }
+                        }
+                    },
+                    "location": "EventChannel"
+                }
+            }
+        },
+        {
+            "alert_id": "CSA-00009",
+            "time": "2026-05-09T17:40:47.318+0800",
+            "host": "windows10",
+            "user": "leo",
+            "source_ip": "127.0.0.1",
+            "destination_ip": "unknown",
+            "event_id": "4624",
+            "process": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+            "parent_process": "",
+            "command_line": "",
+            "pack": "successful_login",
+            "rule_name": "Successful Login",
+            "title": "\u2705 Successful Windows Login",
+            "summary": "User leo successfully logged in on host windows10",
+            "severity": "INFO",
+            "mitre": [
+                "T1078"
+            ],
+            "recommended_actions": [
+                "Check whether failed logins happened before this login",
+                "Verify source IP and logon type",
+                "Check for privilege escalation or PowerShell after login"
+            ],
+            "status": "OPEN",
+            "raw": {
+                "id": "1778319647.1562221",
+                "source_file": "/var/ossec/logs/alerts/2026/May/ossec-alerts-09.json",
+                "timestamp": "2026-05-09T17:40:47.318+0800",
+                "agent_name": "windows10",
+                "host": "windows10",
+                "agent_id": "003",
+                "manager_name": "alwin",
+                "rule_id": "60118",
+                "rule_level": 3,
+                "rule_description": "Windows Workstation Logon Success",
+                "groups": [
+                    "windows",
+                    "windows_security",
+                    "authentication_success"
+                ],
+                "location": "EventChannel",
+                "event_id": "4624",
+                "provider": "Microsoft-Windows-Security-Auditing",
+                "computer": "DESKTOP-G0LLA16",
+                "user": "leo",
+                "source_ip": "127.0.0.1",
+                "destination_ip": "",
+                "process": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+                "parent_process": "",
+                "command_line": "",
+                "logon_type": "2",
+                "logon_id": "0x127daa",
+                "full_log": "",
+                "raw": {
+                    "timestamp": "2026-05-09T17:40:47.318+0800",
+                    "rule": {
+                        "level": 3,
+                        "description": "Windows Workstation Logon Success",
+                        "id": "60118",
+                        "mitre": {
+                            "id": [
+                                "T1078"
+                            ],
+                            "tactic": [
+                                "Defense Evasion",
+                                "Persistence",
+                                "Privilege Escalation",
+                                "Initial Access"
+                            ],
+                            "technique": [
+                                "Valid Accounts"
+                            ]
+                        },
+                        "firedtimes": 1,
+                        "mail": false,
+                        "groups": [
+                            "windows",
+                            "windows_security",
+                            "authentication_success"
+                        ],
+                        "pci_dss": [
+                            "10.2.5"
+                        ],
+                        "gpg13": [
+                            "7.1",
+                            "7.2"
+                        ],
+                        "gdpr": [
+                            "IV_32.2"
+                        ],
+                        "hipaa": [
+                            "164.312.b"
+                        ],
+                        "nist_800_53": [
+                            "AU.14",
+                            "AC.9"
+                        ],
+                        "tsc": [
+                            "CC6.8",
+                            "CC7.2",
+                            "CC7.3"
+                        ]
+                    },
+                    "agent": {
+                        "id": "003",
+                        "name": "windows10",
+                        "ip": "192.168.10.120"
+                    },
+                    "manager": {
+                        "name": "alwin"
+                    },
+                    "id": "1778319647.1562221",
+                    "decoder": {
+                        "name": "windows_eventchannel"
+                    },
+                    "data": {
+                        "win": {
+                            "system": {
+                                "providerName": "Microsoft-Windows-Security-Auditing",
+                                "providerGuid": "{54849625-5478-4994-a5ba-3e3b0328c30d}",
+                                "eventID": "4624",
+                                "version": "2",
+                                "level": "0",
+                                "task": "12544",
+                                "opcode": "0",
+                                "keywords": "0x8020000000000000",
+                                "systemTime": "2026-05-09T09:40:46.1802953Z",
+                                "eventRecordID": "19894",
+                                "processID": "664",
+                                "threadID": "744",
+                                "channel": "Security",
+                                "computer": "DESKTOP-G0LLA16",
+                                "severityValue": "AUDIT_SUCCESS",
+                                "message": "\"An account was successfully logged on.\r\n\r\nSubject:\r\n\tSecurity ID:\t\tS-1-5-18\r\n\tAccount Name:\t\tDESKTOP-G0LLA16$\r\n\tAccount Domain:\t\tWORKGROUP\r\n\tLogon ID:\t\t0x3E7\r\n\r\nLogon Information:\r\n\tLogon Type:\t\t2\r\n\tRestricted Admin Mode:\t-\r\n\tVirtual Account:\t\tNo\r\n\tElevated Token:\t\tYes\r\n\r\nImpersonation Level:\t\tImpersonation\r\n\r\nNew Logon:\r\n\tSecurity ID:\t\tS-1-5-21-4138275471-3107049867-993298588-1001\r\n\tAccount Name:\t\tleo\r\n\tAccount Domain:\t\tDESKTOP-G0LLA16\r\n\tLogon ID:\t\t0x127DAA\r\n\tLinked Logon ID:\t\t0x127DD6\r\n\tNetwork Account Name:\t-\r\n\tNetwork Account Domain:\t-\r\n\tLogon GUID:\t\t{00000000-0000-0000-0000-000000000000}\r\n\r\nProcess Information:\r\n\tProcess ID:\t\t0x450\r\n\tProcess Name:\t\tC:\\Windows\\System32\\svchost.exe\r\n\r\nNetwork Information:\r\n\tWorkstation Name:\tDESKTOP-G0LLA16\r\n\tSource Network Address:\t127.0.0.1\r\n\tSource Port:\t\t0\r\n\r\nDetailed Authentication Information:\r\n\tLogon Process:\t\tUser32 \r\n\tAuthentication Package:\tNegotiate\r\n\tTransited Services:\t-\r\n\tPackage Name (NTLM only):\t-\r\n\tKey Length:\t\t0\r\n\r\nThis event is generated when a logon session is created. It is generated on the computer that was accessed.\r\n\r\nThe subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.\r\n\r\nThe logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).\r\n\r\nThe New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.\r\n\r\nThe network fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.\r\n\r\nThe impersonation level field indicates the extent to which a process in the logon session can impersonate.\r\n\r\nThe authentication information fields provide detailed information about this specific logon request.\r\n\t- Logon GUID is a unique identifier that can be used to correlate this event with a KDC event.\r\n\t- Transited services indicate which intermediate services have participated in this logon request.\r\n\t- Package name indicates which sub-protocol was used among the NTLM protocols.\r\n\t- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.\""
+                            },
+                            "eventdata": {
+                                "subjectUserSid": "S-1-5-18",
+                                "subjectUserName": "DESKTOP-G0LLA16$",
+                                "subjectDomainName": "WORKGROUP",
+                                "subjectLogonId": "0x3e7",
+                                "targetUserSid": "S-1-5-21-4138275471-3107049867-993298588-1001",
+                                "targetUserName": "leo",
+                                "targetDomainName": "DESKTOP-G0LLA16",
+                                "targetLogonId": "0x127daa",
+                                "logonType": "2",
+                                "logonProcessName": "User32",
+                                "authenticationPackageName": "Negotiate",
+                                "workstationName": "DESKTOP-G0LLA16",
+                                "logonGuid": "{00000000-0000-0000-0000-000000000000}",
+                                "keyLength": "0",
+                                "processId": "0x450",
+                                "processName": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+                                "ipAddress": "127.0.0.1",
+                                "ipPort": "0",
+                                "impersonationLevel": "%%1833",
+                                "virtualAccount": "%%1843",
+                                "targetLinkedLogonId": "0x127dd6",
+                                "elevatedToken": "%%1842"
+                            }
+                        }
+                    },
+                    "location": "EventChannel"
+                }
+            }
+        },
+        {
+            "alert_id": "CSA-00010",
+            "time": "2026-05-13T16:52:48.124+0800",
+            "host": "windows10",
+            "user": "leo",
+            "source_ip": "127.0.0.1",
+            "destination_ip": "unknown",
+            "event_id": "4624",
+            "process": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+            "parent_process": "",
+            "command_line": "",
+            "pack": "successful_login",
+            "rule_name": "Successful Login",
+            "title": "\u2705 Successful Windows Login",
+            "summary": "User leo successfully logged in on host windows10",
+            "severity": "INFO",
+            "mitre": [
+                "T1078"
+            ],
+            "recommended_actions": [
+                "Check whether failed logins happened before this login",
+                "Verify source IP and logon type",
+                "Check for privilege escalation or PowerShell after login"
+            ],
+            "status": "OPEN",
+            "raw": {
+                "id": "1778662368.433935",
+                "source_file": "/var/ossec/logs/alerts/2026/May/ossec-alerts-13.json",
+                "timestamp": "2026-05-13T16:52:48.124+0800",
+                "agent_name": "windows10",
+                "host": "windows10",
+                "agent_id": "003",
+                "manager_name": "alwin",
+                "rule_id": "60118",
+                "rule_level": 3,
+                "rule_description": "Windows Workstation Logon Success",
+                "groups": [
+                    "windows",
+                    "windows_security",
+                    "authentication_success"
+                ],
+                "location": "EventChannel",
+                "event_id": "4624",
+                "provider": "Microsoft-Windows-Security-Auditing",
+                "computer": "DESKTOP-G0LLA16",
+                "user": "leo",
+                "source_ip": "127.0.0.1",
+                "destination_ip": "",
+                "process": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+                "parent_process": "",
+                "command_line": "",
+                "logon_type": "2",
+                "logon_id": "0xd7cfd",
+                "full_log": "",
+                "raw": {
+                    "timestamp": "2026-05-13T16:52:48.124+0800",
+                    "rule": {
+                        "level": 3,
+                        "description": "Windows Workstation Logon Success",
+                        "id": "60118",
+                        "mitre": {
+                            "id": [
+                                "T1078"
+                            ],
+                            "tactic": [
+                                "Defense Evasion",
+                                "Persistence",
+                                "Privilege Escalation",
+                                "Initial Access"
+                            ],
+                            "technique": [
+                                "Valid Accounts"
+                            ]
+                        },
+                        "firedtimes": 2,
+                        "mail": false,
+                        "groups": [
+                            "windows",
+                            "windows_security",
+                            "authentication_success"
+                        ],
+                        "pci_dss": [
+                            "10.2.5"
+                        ],
+                        "gpg13": [
+                            "7.1",
+                            "7.2"
+                        ],
+                        "gdpr": [
+                            "IV_32.2"
+                        ],
+                        "hipaa": [
+                            "164.312.b"
+                        ],
+                        "nist_800_53": [
+                            "AU.14",
+                            "AC.9"
+                        ],
+                        "tsc": [
+                            "CC6.8",
+                            "CC7.2",
+                            "CC7.3"
+                        ]
+                    },
+                    "agent": {
+                        "id": "003",
+                        "name": "windows10",
+                        "ip": "192.168.10.120"
+                    },
+                    "manager": {
+                        "name": "alwin"
+                    },
+                    "id": "1778662368.433935",
+                    "decoder": {
+                        "name": "windows_eventchannel"
+                    },
+                    "data": {
+                        "win": {
+                            "system": {
+                                "providerName": "Microsoft-Windows-Security-Auditing",
+                                "providerGuid": "{54849625-5478-4994-a5ba-3e3b0328c30d}",
+                                "eventID": "4624",
+                                "version": "2",
+                                "level": "0",
+                                "task": "12544",
+                                "opcode": "0",
+                                "keywords": "0x8020000000000000",
+                                "systemTime": "2026-05-13T08:52:46.2606102Z",
+                                "eventRecordID": "20286",
+                                "processID": "692",
+                                "threadID": "724",
+                                "channel": "Security",
+                                "computer": "DESKTOP-G0LLA16",
+                                "severityValue": "AUDIT_SUCCESS",
+                                "message": "\"An account was successfully logged on.\r\n\r\nSubject:\r\n\tSecurity ID:\t\tS-1-5-18\r\n\tAccount Name:\t\tDESKTOP-G0LLA16$\r\n\tAccount Domain:\t\tWORKGROUP\r\n\tLogon ID:\t\t0x3E7\r\n\r\nLogon Information:\r\n\tLogon Type:\t\t2\r\n\tRestricted Admin Mode:\t-\r\n\tVirtual Account:\t\tNo\r\n\tElevated Token:\t\tYes\r\n\r\nImpersonation Level:\t\tImpersonation\r\n\r\nNew Logon:\r\n\tSecurity ID:\t\tS-1-5-21-4138275471-3107049867-993298588-1001\r\n\tAccount Name:\t\tleo\r\n\tAccount Domain:\t\tDESKTOP-G0LLA16\r\n\tLogon ID:\t\t0xD7CFD\r\n\tLinked Logon ID:\t\t0xD7D27\r\n\tNetwork Account Name:\t-\r\n\tNetwork Account Domain:\t-\r\n\tLogon GUID:\t\t{00000000-0000-0000-0000-000000000000}\r\n\r\nProcess Information:\r\n\tProcess ID:\t\t0x17c\r\n\tProcess Name:\t\tC:\\Windows\\System32\\svchost.exe\r\n\r\nNetwork Information:\r\n\tWorkstation Name:\tDESKTOP-G0LLA16\r\n\tSource Network Address:\t127.0.0.1\r\n\tSource Port:\t\t0\r\n\r\nDetailed Authentication Information:\r\n\tLogon Process:\t\tUser32 \r\n\tAuthentication Package:\tNegotiate\r\n\tTransited Services:\t-\r\n\tPackage Name (NTLM only):\t-\r\n\tKey Length:\t\t0\r\n\r\nThis event is generated when a logon session is created. It is generated on the computer that was accessed.\r\n\r\nThe subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.\r\n\r\nThe logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).\r\n\r\nThe New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.\r\n\r\nThe network fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.\r\n\r\nThe impersonation level field indicates the extent to which a process in the logon session can impersonate.\r\n\r\nThe authentication information fields provide detailed information about this specific logon request.\r\n\t- Logon GUID is a unique identifier that can be used to correlate this event with a KDC event.\r\n\t- Transited services indicate which intermediate services have participated in this logon request.\r\n\t- Package name indicates which sub-protocol was used among the NTLM protocols.\r\n\t- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.\""
+                            },
+                            "eventdata": {
+                                "subjectUserSid": "S-1-5-18",
+                                "subjectUserName": "DESKTOP-G0LLA16$",
+                                "subjectDomainName": "WORKGROUP",
+                                "subjectLogonId": "0x3e7",
+                                "targetUserSid": "S-1-5-21-4138275471-3107049867-993298588-1001",
+                                "targetUserName": "leo",
+                                "targetDomainName": "DESKTOP-G0LLA16",
+                                "targetLogonId": "0xd7cfd",
+                                "logonType": "2",
+                                "logonProcessName": "User32",
+                                "authenticationPackageName": "Negotiate",
+                                "workstationName": "DESKTOP-G0LLA16",
+                                "logonGuid": "{00000000-0000-0000-0000-000000000000}",
+                                "keyLength": "0",
+                                "processId": "0x17c",
+                                "processName": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+                                "ipAddress": "127.0.0.1",
+                                "ipPort": "0",
+                                "impersonationLevel": "%%1833",
+                                "virtualAccount": "%%1843",
+                                "targetLinkedLogonId": "0xd7d27",
+                                "elevatedToken": "%%1842"
+                            }
+                        }
+                    },
+                    "location": "EventChannel"
+                }
+            }
+        },
+        {
+            "alert_id": "CSA-00011",
+            "time": "2026-05-13T16:52:48.135+0800",
+            "host": "windows10",
+            "user": "leo",
+            "source_ip": "127.0.0.1",
+            "destination_ip": "unknown",
+            "event_id": "4624",
+            "process": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+            "parent_process": "",
+            "command_line": "",
+            "pack": "successful_login",
+            "rule_name": "Successful Login",
+            "title": "\u2705 Successful Windows Login",
+            "summary": "User leo successfully logged in on host windows10",
+            "severity": "INFO",
+            "mitre": [
+                "T1078"
+            ],
+            "recommended_actions": [
+                "Check whether failed logins happened before this login",
+                "Verify source IP and logon type",
+                "Check for privilege escalation or PowerShell after login"
+            ],
+            "status": "OPEN",
+            "raw": {
+                "id": "1778662368.441650",
+                "source_file": "/var/ossec/logs/alerts/2026/May/ossec-alerts-13.json",
+                "timestamp": "2026-05-13T16:52:48.135+0800",
+                "agent_name": "windows10",
+                "host": "windows10",
+                "agent_id": "003",
+                "manager_name": "alwin",
+                "rule_id": "60118",
+                "rule_level": 3,
+                "rule_description": "Windows Workstation Logon Success",
+                "groups": [
+                    "windows",
+                    "windows_security",
+                    "authentication_success"
+                ],
+                "location": "EventChannel",
+                "event_id": "4624",
+                "provider": "Microsoft-Windows-Security-Auditing",
+                "computer": "DESKTOP-G0LLA16",
+                "user": "leo",
+                "source_ip": "127.0.0.1",
+                "destination_ip": "",
+                "process": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+                "parent_process": "",
+                "command_line": "",
+                "logon_type": "2",
+                "logon_id": "0xd7d27",
+                "full_log": "",
+                "raw": {
+                    "timestamp": "2026-05-13T16:52:48.135+0800",
+                    "rule": {
+                        "level": 3,
+                        "description": "Windows Workstation Logon Success",
+                        "id": "60118",
+                        "mitre": {
+                            "id": [
+                                "T1078"
+                            ],
+                            "tactic": [
+                                "Defense Evasion",
+                                "Persistence",
+                                "Privilege Escalation",
+                                "Initial Access"
+                            ],
+                            "technique": [
+                                "Valid Accounts"
+                            ]
+                        },
+                        "firedtimes": 3,
+                        "mail": false,
+                        "groups": [
+                            "windows",
+                            "windows_security",
+                            "authentication_success"
+                        ],
+                        "pci_dss": [
+                            "10.2.5"
+                        ],
+                        "gpg13": [
+                            "7.1",
+                            "7.2"
+                        ],
+                        "gdpr": [
+                            "IV_32.2"
+                        ],
+                        "hipaa": [
+                            "164.312.b"
+                        ],
+                        "nist_800_53": [
+                            "AU.14",
+                            "AC.9"
+                        ],
+                        "tsc": [
+                            "CC6.8",
+                            "CC7.2",
+                            "CC7.3"
+                        ]
+                    },
+                    "agent": {
+                        "id": "003",
+                        "name": "windows10",
+                        "ip": "192.168.10.120"
+                    },
+                    "manager": {
+                        "name": "alwin"
+                    },
+                    "id": "1778662368.441650",
+                    "decoder": {
+                        "name": "windows_eventchannel"
+                    },
+                    "data": {
+                        "win": {
+                            "system": {
+                                "providerName": "Microsoft-Windows-Security-Auditing",
+                                "providerGuid": "{54849625-5478-4994-a5ba-3e3b0328c30d}",
+                                "eventID": "4624",
+                                "version": "2",
+                                "level": "0",
+                                "task": "12544",
+                                "opcode": "0",
+                                "keywords": "0x8020000000000000",
+                                "systemTime": "2026-05-13T08:52:46.2606301Z",
+                                "eventRecordID": "20287",
+                                "processID": "692",
+                                "threadID": "724",
+                                "channel": "Security",
+                                "computer": "DESKTOP-G0LLA16",
+                                "severityValue": "AUDIT_SUCCESS",
+                                "message": "\"An account was successfully logged on.\r\n\r\nSubject:\r\n\tSecurity ID:\t\tS-1-5-18\r\n\tAccount Name:\t\tDESKTOP-G0LLA16$\r\n\tAccount Domain:\t\tWORKGROUP\r\n\tLogon ID:\t\t0x3E7\r\n\r\nLogon Information:\r\n\tLogon Type:\t\t2\r\n\tRestricted Admin Mode:\t-\r\n\tVirtual Account:\t\tNo\r\n\tElevated Token:\t\tNo\r\n\r\nImpersonation Level:\t\tImpersonation\r\n\r\nNew Logon:\r\n\tSecurity ID:\t\tS-1-5-21-4138275471-3107049867-993298588-1001\r\n\tAccount Name:\t\tleo\r\n\tAccount Domain:\t\tDESKTOP-G0LLA16\r\n\tLogon ID:\t\t0xD7D27\r\n\tLinked Logon ID:\t\t0xD7CFD\r\n\tNetwork Account Name:\t-\r\n\tNetwork Account Domain:\t-\r\n\tLogon GUID:\t\t{00000000-0000-0000-0000-000000000000}\r\n\r\nProcess Information:\r\n\tProcess ID:\t\t0x17c\r\n\tProcess Name:\t\tC:\\Windows\\System32\\svchost.exe\r\n\r\nNetwork Information:\r\n\tWorkstation Name:\tDESKTOP-G0LLA16\r\n\tSource Network Address:\t127.0.0.1\r\n\tSource Port:\t\t0\r\n\r\nDetailed Authentication Information:\r\n\tLogon Process:\t\tUser32 \r\n\tAuthentication Package:\tNegotiate\r\n\tTransited Services:\t-\r\n\tPackage Name (NTLM only):\t-\r\n\tKey Length:\t\t0\r\n\r\nThis event is generated when a logon session is created. It is generated on the computer that was accessed.\r\n\r\nThe subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.\r\n\r\nThe logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).\r\n\r\nThe New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.\r\n\r\nThe network fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.\r\n\r\nThe impersonation level field indicates the extent to which a process in the logon session can impersonate.\r\n\r\nThe authentication information fields provide detailed information about this specific logon request.\r\n\t- Logon GUID is a unique identifier that can be used to correlate this event with a KDC event.\r\n\t- Transited services indicate which intermediate services have participated in this logon request.\r\n\t- Package name indicates which sub-protocol was used among the NTLM protocols.\r\n\t- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.\""
+                            },
+                            "eventdata": {
+                                "subjectUserSid": "S-1-5-18",
+                                "subjectUserName": "DESKTOP-G0LLA16$",
+                                "subjectDomainName": "WORKGROUP",
+                                "subjectLogonId": "0x3e7",
+                                "targetUserSid": "S-1-5-21-4138275471-3107049867-993298588-1001",
+                                "targetUserName": "leo",
+                                "targetDomainName": "DESKTOP-G0LLA16",
+                                "targetLogonId": "0xd7d27",
+                                "logonType": "2",
+                                "logonProcessName": "User32",
+                                "authenticationPackageName": "Negotiate",
+                                "workstationName": "DESKTOP-G0LLA16",
+                                "logonGuid": "{00000000-0000-0000-0000-000000000000}",
+                                "keyLength": "0",
+                                "processId": "0x17c",
+                                "processName": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+                                "ipAddress": "127.0.0.1",
+                                "ipPort": "0",
+                                "impersonationLevel": "%%1833",
+                                "virtualAccount": "%%1843",
+                                "targetLinkedLogonId": "0xd7cfd",
+                                "elevatedToken": "%%1843"
+                            }
+                        }
+                    },
+                    "location": "EventChannel"
+                }
+            }
+        },
+        {
+            "alert_id": "CSA-00012",
+            "time": "2026-05-13T18:44:00.679+0800",
+            "host": "windows10",
+            "user": "leo",
+            "source_ip": "127.0.0.1",
+            "destination_ip": "unknown",
+            "event_id": "4624",
+            "process": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+            "parent_process": "",
+            "command_line": "",
+            "pack": "successful_login",
+            "rule_name": "Successful Login",
+            "title": "\u2705 Successful Windows Login",
+            "summary": "User leo successfully logged in on host windows10",
+            "severity": "INFO",
+            "mitre": [
+                "T1078"
+            ],
+            "recommended_actions": [
+                "Check whether failed logins happened before this login",
+                "Verify source IP and logon type",
+                "Check for privilege escalation or PowerShell after login"
+            ],
+            "status": "OPEN",
+            "raw": {
+                "id": "1778669040.798990",
+                "source_file": "/var/ossec/logs/alerts/2026/May/ossec-alerts-13.json",
+                "timestamp": "2026-05-13T18:44:00.679+0800",
+                "agent_name": "windows10",
+                "host": "windows10",
+                "agent_id": "003",
+                "manager_name": "alwin",
+                "rule_id": "60118",
+                "rule_level": 3,
+                "rule_description": "Windows Workstation Logon Success",
+                "groups": [
+                    "windows",
+                    "windows_security",
+                    "authentication_success"
+                ],
+                "location": "EventChannel",
+                "event_id": "4624",
+                "provider": "Microsoft-Windows-Security-Auditing",
+                "computer": "DESKTOP-G0LLA16",
+                "user": "leo",
+                "source_ip": "127.0.0.1",
+                "destination_ip": "",
+                "process": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+                "parent_process": "",
+                "command_line": "",
+                "logon_type": "2",
+                "logon_id": "0x4654a5",
+                "full_log": "",
+                "raw": {
+                    "timestamp": "2026-05-13T18:44:00.679+0800",
+                    "rule": {
+                        "level": 3,
+                        "description": "Windows Workstation Logon Success",
+                        "id": "60118",
+                        "mitre": {
+                            "id": [
+                                "T1078"
+                            ],
+                            "tactic": [
+                                "Defense Evasion",
+                                "Persistence",
+                                "Privilege Escalation",
+                                "Initial Access"
+                            ],
+                            "technique": [
+                                "Valid Accounts"
+                            ]
+                        },
+                        "firedtimes": 1,
+                        "mail": false,
+                        "groups": [
+                            "windows",
+                            "windows_security",
+                            "authentication_success"
+                        ],
+                        "pci_dss": [
+                            "10.2.5"
+                        ],
+                        "gpg13": [
+                            "7.1",
+                            "7.2"
+                        ],
+                        "gdpr": [
+                            "IV_32.2"
+                        ],
+                        "hipaa": [
+                            "164.312.b"
+                        ],
+                        "nist_800_53": [
+                            "AU.14",
+                            "AC.9"
+                        ],
+                        "tsc": [
+                            "CC6.8",
+                            "CC7.2",
+                            "CC7.3"
+                        ]
+                    },
+                    "agent": {
+                        "id": "003",
+                        "name": "windows10",
+                        "ip": "192.168.10.120"
+                    },
+                    "manager": {
+                        "name": "alwin"
+                    },
+                    "id": "1778669040.798990",
+                    "decoder": {
+                        "name": "windows_eventchannel"
+                    },
+                    "data": {
+                        "win": {
+                            "system": {
+                                "providerName": "Microsoft-Windows-Security-Auditing",
+                                "providerGuid": "{54849625-5478-4994-a5ba-3e3b0328c30d}",
+                                "eventID": "4624",
+                                "version": "2",
+                                "level": "0",
+                                "task": "12544",
+                                "opcode": "0",
+                                "keywords": "0x8020000000000000",
+                                "systemTime": "2026-05-13T10:43:59.3054491Z",
+                                "eventRecordID": "20570",
+                                "processID": "692",
+                                "threadID": "4420",
+                                "channel": "Security",
+                                "computer": "DESKTOP-G0LLA16",
+                                "severityValue": "AUDIT_SUCCESS",
+                                "message": "\"An account was successfully logged on.\r\n\r\nSubject:\r\n\tSecurity ID:\t\tS-1-5-18\r\n\tAccount Name:\t\tDESKTOP-G0LLA16$\r\n\tAccount Domain:\t\tWORKGROUP\r\n\tLogon ID:\t\t0x3E7\r\n\r\nLogon Information:\r\n\tLogon Type:\t\t2\r\n\tRestricted Admin Mode:\t-\r\n\tVirtual Account:\t\tNo\r\n\tElevated Token:\t\tYes\r\n\r\nImpersonation Level:\t\tImpersonation\r\n\r\nNew Logon:\r\n\tSecurity ID:\t\tS-1-5-21-4138275471-3107049867-993298588-1001\r\n\tAccount Name:\t\tleo\r\n\tAccount Domain:\t\tDESKTOP-G0LLA16\r\n\tLogon ID:\t\t0x4654A5\r\n\tLinked Logon ID:\t\t0x4654C4\r\n\tNetwork Account Name:\t-\r\n\tNetwork Account Domain:\t-\r\n\tLogon GUID:\t\t{00000000-0000-0000-0000-000000000000}\r\n\r\nProcess Information:\r\n\tProcess ID:\t\t0x17c\r\n\tProcess Name:\t\tC:\\Windows\\System32\\svchost.exe\r\n\r\nNetwork Information:\r\n\tWorkstation Name:\tDESKTOP-G0LLA16\r\n\tSource Network Address:\t127.0.0.1\r\n\tSource Port:\t\t0\r\n\r\nDetailed Authentication Information:\r\n\tLogon Process:\t\tUser32 \r\n\tAuthentication Package:\tNegotiate\r\n\tTransited Services:\t-\r\n\tPackage Name (NTLM only):\t-\r\n\tKey Length:\t\t0\r\n\r\nThis event is generated when a logon session is created. It is generated on the computer that was accessed.\r\n\r\nThe subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.\r\n\r\nThe logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).\r\n\r\nThe New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.\r\n\r\nThe network fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.\r\n\r\nThe impersonation level field indicates the extent to which a process in the logon session can impersonate.\r\n\r\nThe authentication information fields provide detailed information about this specific logon request.\r\n\t- Logon GUID is a unique identifier that can be used to correlate this event with a KDC event.\r\n\t- Transited services indicate which intermediate services have participated in this logon request.\r\n\t- Package name indicates which sub-protocol was used among the NTLM protocols.\r\n\t- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.\""
+                            },
+                            "eventdata": {
+                                "subjectUserSid": "S-1-5-18",
+                                "subjectUserName": "DESKTOP-G0LLA16$",
+                                "subjectDomainName": "WORKGROUP",
+                                "subjectLogonId": "0x3e7",
+                                "targetUserSid": "S-1-5-21-4138275471-3107049867-993298588-1001",
+                                "targetUserName": "leo",
+                                "targetDomainName": "DESKTOP-G0LLA16",
+                                "targetLogonId": "0x4654a5",
+                                "logonType": "2",
+                                "logonProcessName": "User32",
+                                "authenticationPackageName": "Negotiate",
+                                "workstationName": "DESKTOP-G0LLA16",
+                                "logonGuid": "{00000000-0000-0000-0000-000000000000}",
+                                "keyLength": "0",
+                                "processId": "0x17c",
+                                "processName": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+                                "ipAddress": "127.0.0.1",
+                                "ipPort": "0",
+                                "impersonationLevel": "%%1833",
+                                "virtualAccount": "%%1843",
+                                "targetLinkedLogonId": "0x4654c4",
+                                "elevatedToken": "%%1842"
+                            }
+                        }
+                    },
+                    "location": "EventChannel"
+                }
+            }
+        },
+        {
+            "alert_id": "CSA-00013",
+            "time": "2026-05-13T18:44:00.689+0800",
+            "host": "windows10",
+            "user": "leo",
+            "source_ip": "127.0.0.1",
+            "destination_ip": "unknown",
+            "event_id": "4624",
+            "process": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+            "parent_process": "",
+            "command_line": "",
+            "pack": "successful_login",
+            "rule_name": "Successful Login",
+            "title": "\u2705 Successful Windows Login",
+            "summary": "User leo successfully logged in on host windows10",
+            "severity": "INFO",
+            "mitre": [
+                "T1078"
+            ],
+            "recommended_actions": [
+                "Check whether failed logins happened before this login",
+                "Verify source IP and logon type",
+                "Check for privilege escalation or PowerShell after login"
+            ],
+            "status": "OPEN",
+            "raw": {
+                "id": "1778669040.806715",
+                "source_file": "/var/ossec/logs/alerts/2026/May/ossec-alerts-13.json",
+                "timestamp": "2026-05-13T18:44:00.689+0800",
+                "agent_name": "windows10",
+                "host": "windows10",
+                "agent_id": "003",
+                "manager_name": "alwin",
+                "rule_id": "60118",
+                "rule_level": 3,
+                "rule_description": "Windows Workstation Logon Success",
+                "groups": [
+                    "windows",
+                    "windows_security",
+                    "authentication_success"
+                ],
+                "location": "EventChannel",
+                "event_id": "4624",
+                "provider": "Microsoft-Windows-Security-Auditing",
+                "computer": "DESKTOP-G0LLA16",
+                "user": "leo",
+                "source_ip": "127.0.0.1",
+                "destination_ip": "",
+                "process": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+                "parent_process": "",
+                "command_line": "",
+                "logon_type": "2",
+                "logon_id": "0x4654c4",
+                "full_log": "",
+                "raw": {
+                    "timestamp": "2026-05-13T18:44:00.689+0800",
+                    "rule": {
+                        "level": 3,
+                        "description": "Windows Workstation Logon Success",
+                        "id": "60118",
+                        "mitre": {
+                            "id": [
+                                "T1078"
+                            ],
+                            "tactic": [
+                                "Defense Evasion",
+                                "Persistence",
+                                "Privilege Escalation",
+                                "Initial Access"
+                            ],
+                            "technique": [
+                                "Valid Accounts"
+                            ]
+                        },
+                        "firedtimes": 2,
+                        "mail": false,
+                        "groups": [
+                            "windows",
+                            "windows_security",
+                            "authentication_success"
+                        ],
+                        "pci_dss": [
+                            "10.2.5"
+                        ],
+                        "gpg13": [
+                            "7.1",
+                            "7.2"
+                        ],
+                        "gdpr": [
+                            "IV_32.2"
+                        ],
+                        "hipaa": [
+                            "164.312.b"
+                        ],
+                        "nist_800_53": [
+                            "AU.14",
+                            "AC.9"
+                        ],
+                        "tsc": [
+                            "CC6.8",
+                            "CC7.2",
+                            "CC7.3"
+                        ]
+                    },
+                    "agent": {
+                        "id": "003",
+                        "name": "windows10",
+                        "ip": "192.168.10.120"
+                    },
+                    "manager": {
+                        "name": "alwin"
+                    },
+                    "id": "1778669040.806715",
+                    "decoder": {
+                        "name": "windows_eventchannel"
+                    },
+                    "data": {
+                        "win": {
+                            "system": {
+                                "providerName": "Microsoft-Windows-Security-Auditing",
+                                "providerGuid": "{54849625-5478-4994-a5ba-3e3b0328c30d}",
+                                "eventID": "4624",
+                                "version": "2",
+                                "level": "0",
+                                "task": "12544",
+                                "opcode": "0",
+                                "keywords": "0x8020000000000000",
+                                "systemTime": "2026-05-13T10:43:59.3054599Z",
+                                "eventRecordID": "20571",
+                                "processID": "692",
+                                "threadID": "4420",
+                                "channel": "Security",
+                                "computer": "DESKTOP-G0LLA16",
+                                "severityValue": "AUDIT_SUCCESS",
+                                "message": "\"An account was successfully logged on.\r\n\r\nSubject:\r\n\tSecurity ID:\t\tS-1-5-18\r\n\tAccount Name:\t\tDESKTOP-G0LLA16$\r\n\tAccount Domain:\t\tWORKGROUP\r\n\tLogon ID:\t\t0x3E7\r\n\r\nLogon Information:\r\n\tLogon Type:\t\t2\r\n\tRestricted Admin Mode:\t-\r\n\tVirtual Account:\t\tNo\r\n\tElevated Token:\t\tNo\r\n\r\nImpersonation Level:\t\tImpersonation\r\n\r\nNew Logon:\r\n\tSecurity ID:\t\tS-1-5-21-4138275471-3107049867-993298588-1001\r\n\tAccount Name:\t\tleo\r\n\tAccount Domain:\t\tDESKTOP-G0LLA16\r\n\tLogon ID:\t\t0x4654C4\r\n\tLinked Logon ID:\t\t0x4654A5\r\n\tNetwork Account Name:\t-\r\n\tNetwork Account Domain:\t-\r\n\tLogon GUID:\t\t{00000000-0000-0000-0000-000000000000}\r\n\r\nProcess Information:\r\n\tProcess ID:\t\t0x17c\r\n\tProcess Name:\t\tC:\\Windows\\System32\\svchost.exe\r\n\r\nNetwork Information:\r\n\tWorkstation Name:\tDESKTOP-G0LLA16\r\n\tSource Network Address:\t127.0.0.1\r\n\tSource Port:\t\t0\r\n\r\nDetailed Authentication Information:\r\n\tLogon Process:\t\tUser32 \r\n\tAuthentication Package:\tNegotiate\r\n\tTransited Services:\t-\r\n\tPackage Name (NTLM only):\t-\r\n\tKey Length:\t\t0\r\n\r\nThis event is generated when a logon session is created. It is generated on the computer that was accessed.\r\n\r\nThe subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.\r\n\r\nThe logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).\r\n\r\nThe New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.\r\n\r\nThe network fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.\r\n\r\nThe impersonation level field indicates the extent to which a process in the logon session can impersonate.\r\n\r\nThe authentication information fields provide detailed information about this specific logon request.\r\n\t- Logon GUID is a unique identifier that can be used to correlate this event with a KDC event.\r\n\t- Transited services indicate which intermediate services have participated in this logon request.\r\n\t- Package name indicates which sub-protocol was used among the NTLM protocols.\r\n\t- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.\""
+                            },
+                            "eventdata": {
+                                "subjectUserSid": "S-1-5-18",
+                                "subjectUserName": "DESKTOP-G0LLA16$",
+                                "subjectDomainName": "WORKGROUP",
+                                "subjectLogonId": "0x3e7",
+                                "targetUserSid": "S-1-5-21-4138275471-3107049867-993298588-1001",
+                                "targetUserName": "leo",
+                                "targetDomainName": "DESKTOP-G0LLA16",
+                                "targetLogonId": "0x4654c4",
+                                "logonType": "2",
+                                "logonProcessName": "User32",
+                                "authenticationPackageName": "Negotiate",
+                                "workstationName": "DESKTOP-G0LLA16",
+                                "logonGuid": "{00000000-0000-0000-0000-000000000000}",
+                                "keyLength": "0",
+                                "processId": "0x17c",
+                                "processName": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+                                "ipAddress": "127.0.0.1",
+                                "ipPort": "0",
+                                "impersonationLevel": "%%1833",
+                                "virtualAccount": "%%1843",
+                                "targetLinkedLogonId": "0x4654a5",
+                                "elevatedToken": "%%1843"
+                            }
+                        }
+                    },
+                    "location": "EventChannel"
+                }
+            }
+        },
+        {
+            "alert_id": "CSA-00014",
+            "time": "2026-05-15T16:38:41.171+0800",
+            "host": "windows10",
+            "user": "leo",
+            "source_ip": "127.0.0.1",
+            "destination_ip": "unknown",
+            "event_id": "4624",
+            "process": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+            "parent_process": "",
+            "command_line": "",
+            "pack": "successful_login",
+            "rule_name": "Successful Login",
+            "title": "\u2705 Successful Windows Login",
+            "summary": "User leo successfully logged in on host windows10",
+            "severity": "INFO",
+            "mitre": [
+                "T1078"
+            ],
+            "recommended_actions": [
+                "Check whether failed logins happened before this login",
+                "Verify source IP and logon type",
+                "Check for privilege escalation or PowerShell after login"
+            ],
+            "status": "OPEN",
+            "raw": {
+                "id": "1778834321.47102",
+                "source_file": "/var/ossec/logs/alerts/2026/May/ossec-alerts-15.json",
+                "timestamp": "2026-05-15T16:38:41.171+0800",
+                "agent_name": "windows10",
+                "host": "windows10",
+                "agent_id": "003",
+                "manager_name": "alwin",
+                "rule_id": "60118",
+                "rule_level": 3,
+                "rule_description": "Windows Workstation Logon Success",
+                "groups": [
+                    "windows",
+                    "windows_security",
+                    "authentication_success"
+                ],
+                "location": "EventChannel",
+                "event_id": "4624",
+                "provider": "Microsoft-Windows-Security-Auditing",
+                "computer": "DESKTOP-G0LLA16",
+                "user": "leo",
+                "source_ip": "127.0.0.1",
+                "destination_ip": "",
+                "process": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+                "parent_process": "",
+                "command_line": "",
+                "logon_type": "2",
+                "logon_id": "0x57184e",
+                "full_log": "",
+                "raw": {
+                    "timestamp": "2026-05-15T16:38:41.171+0800",
+                    "rule": {
+                        "level": 3,
+                        "description": "Windows Workstation Logon Success",
+                        "id": "60118",
+                        "mitre": {
+                            "id": [
+                                "T1078"
+                            ],
+                            "tactic": [
+                                "Defense Evasion",
+                                "Persistence",
+                                "Privilege Escalation",
+                                "Initial Access"
+                            ],
+                            "technique": [
+                                "Valid Accounts"
+                            ]
+                        },
+                        "firedtimes": 1,
+                        "mail": false,
+                        "groups": [
+                            "windows",
+                            "windows_security",
+                            "authentication_success"
+                        ],
+                        "pci_dss": [
+                            "10.2.5"
+                        ],
+                        "gpg13": [
+                            "7.1",
+                            "7.2"
+                        ],
+                        "gdpr": [
+                            "IV_32.2"
+                        ],
+                        "hipaa": [
+                            "164.312.b"
+                        ],
+                        "nist_800_53": [
+                            "AU.14",
+                            "AC.9"
+                        ],
+                        "tsc": [
+                            "CC6.8",
+                            "CC7.2",
+                            "CC7.3"
+                        ]
+                    },
+                    "agent": {
+                        "id": "003",
+                        "name": "windows10",
+                        "ip": "192.168.10.120"
+                    },
+                    "manager": {
+                        "name": "alwin"
+                    },
+                    "id": "1778834321.47102",
+                    "decoder": {
+                        "name": "windows_eventchannel"
+                    },
+                    "data": {
+                        "win": {
+                            "system": {
+                                "providerName": "Microsoft-Windows-Security-Auditing",
+                                "providerGuid": "{54849625-5478-4994-a5ba-3e3b0328c30d}",
+                                "eventID": "4624",
+                                "version": "2",
+                                "level": "0",
+                                "task": "12544",
+                                "opcode": "0",
+                                "keywords": "0x8020000000000000",
+                                "systemTime": "2026-05-15T08:38:19.9052773Z",
+                                "eventRecordID": "20636",
+                                "processID": "692",
+                                "threadID": "5820",
+                                "channel": "Security",
+                                "computer": "DESKTOP-G0LLA16",
+                                "severityValue": "AUDIT_SUCCESS",
+                                "message": "\"An account was successfully logged on.\r\n\r\nSubject:\r\n\tSecurity ID:\t\tS-1-5-18\r\n\tAccount Name:\t\tDESKTOP-G0LLA16$\r\n\tAccount Domain:\t\tWORKGROUP\r\n\tLogon ID:\t\t0x3E7\r\n\r\nLogon Information:\r\n\tLogon Type:\t\t2\r\n\tRestricted Admin Mode:\t-\r\n\tVirtual Account:\t\tNo\r\n\tElevated Token:\t\tYes\r\n\r\nImpersonation Level:\t\tImpersonation\r\n\r\nNew Logon:\r\n\tSecurity ID:\t\tS-1-5-21-4138275471-3107049867-993298588-1001\r\n\tAccount Name:\t\tleo\r\n\tAccount Domain:\t\tDESKTOP-G0LLA16\r\n\tLogon ID:\t\t0x57184E\r\n\tLinked Logon ID:\t\t0x571870\r\n\tNetwork Account Name:\t-\r\n\tNetwork Account Domain:\t-\r\n\tLogon GUID:\t\t{00000000-0000-0000-0000-000000000000}\r\n\r\nProcess Information:\r\n\tProcess ID:\t\t0x17c\r\n\tProcess Name:\t\tC:\\Windows\\System32\\svchost.exe\r\n\r\nNetwork Information:\r\n\tWorkstation Name:\tDESKTOP-G0LLA16\r\n\tSource Network Address:\t127.0.0.1\r\n\tSource Port:\t\t0\r\n\r\nDetailed Authentication Information:\r\n\tLogon Process:\t\tUser32 \r\n\tAuthentication Package:\tNegotiate\r\n\tTransited Services:\t-\r\n\tPackage Name (NTLM only):\t-\r\n\tKey Length:\t\t0\r\n\r\nThis event is generated when a logon session is created. It is generated on the computer that was accessed.\r\n\r\nThe subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.\r\n\r\nThe logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).\r\n\r\nThe New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.\r\n\r\nThe network fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.\r\n\r\nThe impersonation level field indicates the extent to which a process in the logon session can impersonate.\r\n\r\nThe authentication information fields provide detailed information about this specific logon request.\r\n\t- Logon GUID is a unique identifier that can be used to correlate this event with a KDC event.\r\n\t- Transited services indicate which intermediate services have participated in this logon request.\r\n\t- Package name indicates which sub-protocol was used among the NTLM protocols.\r\n\t- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.\""
+                            },
+                            "eventdata": {
+                                "subjectUserSid": "S-1-5-18",
+                                "subjectUserName": "DESKTOP-G0LLA16$",
+                                "subjectDomainName": "WORKGROUP",
+                                "subjectLogonId": "0x3e7",
+                                "targetUserSid": "S-1-5-21-4138275471-3107049867-993298588-1001",
+                                "targetUserName": "leo",
+                                "targetDomainName": "DESKTOP-G0LLA16",
+                                "targetLogonId": "0x57184e",
+                                "logonType": "2",
+                                "logonProcessName": "User32",
+                                "authenticationPackageName": "Negotiate",
+                                "workstationName": "DESKTOP-G0LLA16",
+                                "logonGuid": "{00000000-0000-0000-0000-000000000000}",
+                                "keyLength": "0",
+                                "processId": "0x17c",
+                                "processName": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+                                "ipAddress": "127.0.0.1",
+                                "ipPort": "0",
+                                "impersonationLevel": "%%1833",
+                                "virtualAccount": "%%1843",
+                                "targetLinkedLogonId": "0x571870",
+                                "elevatedToken": "%%1842"
+                            }
+                        }
+                    },
+                    "location": "EventChannel"
+                }
+            }
+        },
+        {
+            "alert_id": "CSA-00015",
+            "time": "2026-05-15T16:38:41.188+0800",
+            "host": "windows10",
+            "user": "leo",
+            "source_ip": "127.0.0.1",
+            "destination_ip": "unknown",
+            "event_id": "4624",
+            "process": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+            "parent_process": "",
+            "command_line": "",
+            "pack": "successful_login",
+            "rule_name": "Successful Login",
+            "title": "\u2705 Successful Windows Login",
+            "summary": "User leo successfully logged in on host windows10",
+            "severity": "INFO",
+            "mitre": [
+                "T1078"
+            ],
+            "recommended_actions": [
+                "Check whether failed logins happened before this login",
+                "Verify source IP and logon type",
+                "Check for privilege escalation or PowerShell after login"
+            ],
+            "status": "OPEN",
+            "raw": {
+                "id": "1778834321.54826",
+                "source_file": "/var/ossec/logs/alerts/2026/May/ossec-alerts-15.json",
+                "timestamp": "2026-05-15T16:38:41.188+0800",
+                "agent_name": "windows10",
+                "host": "windows10",
+                "agent_id": "003",
+                "manager_name": "alwin",
+                "rule_id": "60118",
+                "rule_level": 3,
+                "rule_description": "Windows Workstation Logon Success",
+                "groups": [
+                    "windows",
+                    "windows_security",
+                    "authentication_success"
+                ],
+                "location": "EventChannel",
+                "event_id": "4624",
+                "provider": "Microsoft-Windows-Security-Auditing",
+                "computer": "DESKTOP-G0LLA16",
+                "user": "leo",
+                "source_ip": "127.0.0.1",
+                "destination_ip": "",
+                "process": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+                "parent_process": "",
+                "command_line": "",
+                "logon_type": "2",
+                "logon_id": "0x571870",
+                "full_log": "",
+                "raw": {
+                    "timestamp": "2026-05-15T16:38:41.188+0800",
+                    "rule": {
+                        "level": 3,
+                        "description": "Windows Workstation Logon Success",
+                        "id": "60118",
+                        "mitre": {
+                            "id": [
+                                "T1078"
+                            ],
+                            "tactic": [
+                                "Defense Evasion",
+                                "Persistence",
+                                "Privilege Escalation",
+                                "Initial Access"
+                            ],
+                            "technique": [
+                                "Valid Accounts"
+                            ]
+                        },
+                        "firedtimes": 2,
+                        "mail": false,
+                        "groups": [
+                            "windows",
+                            "windows_security",
+                            "authentication_success"
+                        ],
+                        "pci_dss": [
+                            "10.2.5"
+                        ],
+                        "gpg13": [
+                            "7.1",
+                            "7.2"
+                        ],
+                        "gdpr": [
+                            "IV_32.2"
+                        ],
+                        "hipaa": [
+                            "164.312.b"
+                        ],
+                        "nist_800_53": [
+                            "AU.14",
+                            "AC.9"
+                        ],
+                        "tsc": [
+                            "CC6.8",
+                            "CC7.2",
+                            "CC7.3"
+                        ]
+                    },
+                    "agent": {
+                        "id": "003",
+                        "name": "windows10",
+                        "ip": "192.168.10.120"
+                    },
+                    "manager": {
+                        "name": "alwin"
+                    },
+                    "id": "1778834321.54826",
+                    "decoder": {
+                        "name": "windows_eventchannel"
+                    },
+                    "data": {
+                        "win": {
+                            "system": {
+                                "providerName": "Microsoft-Windows-Security-Auditing",
+                                "providerGuid": "{54849625-5478-4994-a5ba-3e3b0328c30d}",
+                                "eventID": "4624",
+                                "version": "2",
+                                "level": "0",
+                                "task": "12544",
+                                "opcode": "0",
+                                "keywords": "0x8020000000000000",
+                                "systemTime": "2026-05-15T08:38:19.9053177Z",
+                                "eventRecordID": "20637",
+                                "processID": "692",
+                                "threadID": "5820",
+                                "channel": "Security",
+                                "computer": "DESKTOP-G0LLA16",
+                                "severityValue": "AUDIT_SUCCESS",
+                                "message": "\"An account was successfully logged on.\r\n\r\nSubject:\r\n\tSecurity ID:\t\tS-1-5-18\r\n\tAccount Name:\t\tDESKTOP-G0LLA16$\r\n\tAccount Domain:\t\tWORKGROUP\r\n\tLogon ID:\t\t0x3E7\r\n\r\nLogon Information:\r\n\tLogon Type:\t\t2\r\n\tRestricted Admin Mode:\t-\r\n\tVirtual Account:\t\tNo\r\n\tElevated Token:\t\tNo\r\n\r\nImpersonation Level:\t\tImpersonation\r\n\r\nNew Logon:\r\n\tSecurity ID:\t\tS-1-5-21-4138275471-3107049867-993298588-1001\r\n\tAccount Name:\t\tleo\r\n\tAccount Domain:\t\tDESKTOP-G0LLA16\r\n\tLogon ID:\t\t0x571870\r\n\tLinked Logon ID:\t\t0x57184E\r\n\tNetwork Account Name:\t-\r\n\tNetwork Account Domain:\t-\r\n\tLogon GUID:\t\t{00000000-0000-0000-0000-000000000000}\r\n\r\nProcess Information:\r\n\tProcess ID:\t\t0x17c\r\n\tProcess Name:\t\tC:\\Windows\\System32\\svchost.exe\r\n\r\nNetwork Information:\r\n\tWorkstation Name:\tDESKTOP-G0LLA16\r\n\tSource Network Address:\t127.0.0.1\r\n\tSource Port:\t\t0\r\n\r\nDetailed Authentication Information:\r\n\tLogon Process:\t\tUser32 \r\n\tAuthentication Package:\tNegotiate\r\n\tTransited Services:\t-\r\n\tPackage Name (NTLM only):\t-\r\n\tKey Length:\t\t0\r\n\r\nThis event is generated when a logon session is created. It is generated on the computer that was accessed.\r\n\r\nThe subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.\r\n\r\nThe logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).\r\n\r\nThe New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.\r\n\r\nThe network fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.\r\n\r\nThe impersonation level field indicates the extent to which a process in the logon session can impersonate.\r\n\r\nThe authentication information fields provide detailed information about this specific logon request.\r\n\t- Logon GUID is a unique identifier that can be used to correlate this event with a KDC event.\r\n\t- Transited services indicate which intermediate services have participated in this logon request.\r\n\t- Package name indicates which sub-protocol was used among the NTLM protocols.\r\n\t- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.\""
+                            },
+                            "eventdata": {
+                                "subjectUserSid": "S-1-5-18",
+                                "subjectUserName": "DESKTOP-G0LLA16$",
+                                "subjectDomainName": "WORKGROUP",
+                                "subjectLogonId": "0x3e7",
+                                "targetUserSid": "S-1-5-21-4138275471-3107049867-993298588-1001",
+                                "targetUserName": "leo",
+                                "targetDomainName": "DESKTOP-G0LLA16",
+                                "targetLogonId": "0x571870",
+                                "logonType": "2",
+                                "logonProcessName": "User32",
+                                "authenticationPackageName": "Negotiate",
+                                "workstationName": "DESKTOP-G0LLA16",
+                                "logonGuid": "{00000000-0000-0000-0000-000000000000}",
+                                "keyLength": "0",
+                                "processId": "0x17c",
+                                "processName": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+                                "ipAddress": "127.0.0.1",
+                                "ipPort": "0",
+                                "impersonationLevel": "%%1833",
+                                "virtualAccount": "%%1843",
+                                "targetLinkedLogonId": "0x57184e",
+                                "elevatedToken": "%%1843"
+                            }
+                        }
+                    },
+                    "location": "EventChannel"
+                }
+            }
+        },
+        {
+            "alert_id": "CSA-00016",
+            "time": "2026-05-15T16:43:43.942+0800",
+            "host": "windows10",
+            "user": "DESKTOP-G0LLA16\\\\leo",
+            "source_ip": "192.168.10.120",
+            "destination_ip": "unknown",
+            "event_id": "1",
+            "process": "C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe",
+            "parent_process": "C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe",
+            "command_line": "\\\"C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\\\" -ExecutionPolicy Bypass -enc SGVsbG8=",
+            "pack": "malicious_powershell",
+            "rule_name": "Malicious PowerShell",
+            "title": "\u26a0\ufe0f Malicious PowerShell Detected (score: 60)",
+            "summary": "Encoded command (-enc) | Execution policy bypass",
+            "severity": "HIGH",
+            "mitre": [
+                "T1059.001"
+            ],
+            "recommended_actions": [
+                "Decode the base64 command if encoded",
+                "Check what process spawned PowerShell",
+                "Look for file drops or network connections after this"
+            ],
+            "status": "OPEN",
+            "raw": {
+                "id": "1778834623.619663",
+                "source_file": "/var/ossec/logs/alerts/2026/May/ossec-alerts-15.json",
+                "timestamp": "2026-05-15T16:43:43.942+0800",
+                "agent_name": "windows10",
+                "host": "windows10",
+                "agent_id": "003",
+                "manager_name": "alwin",
+                "rule_id": "92027",
+                "rule_level": 4,
+                "rule_description": "Powershell process spawned powershell instance",
+                "groups": [
+                    "sysmon",
+                    "sysmon_eid1_detections",
+                    "windows"
+                ],
+                "location": "EventChannel",
+                "event_id": "1",
+                "provider": "Microsoft-Windows-Sysmon",
+                "computer": "DESKTOP-G0LLA16",
+                "user": "DESKTOP-G0LLA16\\\\leo",
+                "source_ip": "192.168.10.120",
+                "destination_ip": "",
+                "process": "C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe",
+                "parent_process": "C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe",
+                "command_line": "\\\"C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\\\" -ExecutionPolicy Bypass -enc SGVsbG8=",
+                "logon_type": "",
+                "logon_id": "",
+                "full_log": "",
+                "raw": {
+                    "timestamp": "2026-05-15T16:43:43.942+0800",
+                    "rule": {
+                        "level": 4,
+                        "description": "Powershell process spawned powershell instance",
+                        "id": "92027",
+                        "mitre": {
+                            "id": [
+                                "T1059.001"
+                            ],
+                            "tactic": [
+                                "Execution"
+                            ],
+                            "technique": [
+                                "PowerShell"
+                            ]
+                        },
+                        "firedtimes": 1,
+                        "mail": false,
+                        "groups": [
+                            "sysmon",
+                            "sysmon_eid1_detections",
+                            "windows"
+                        ]
+                    },
+                    "agent": {
+                        "id": "003",
+                        "name": "windows10",
+                        "ip": "192.168.10.120"
+                    },
+                    "manager": {
+                        "name": "alwin"
+                    },
+                    "id": "1778834623.619663",
+                    "decoder": {
+                        "name": "windows_eventchannel"
+                    },
+                    "data": {
+                        "win": {
+                            "system": {
+                                "providerName": "Microsoft-Windows-Sysmon",
+                                "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+                                "eventID": "1",
+                                "version": "5",
+                                "level": "4",
+                                "task": "1",
+                                "opcode": "0",
+                                "keywords": "0x8000000000000000",
+                                "systemTime": "2026-05-15T08:43:43.1172046Z",
+                                "eventRecordID": "11892",
+                                "processID": "2244",
+                                "threadID": "4308",
+                                "channel": "Microsoft-Windows-Sysmon/Operational",
+                                "computer": "DESKTOP-G0LLA16",
+                                "severityValue": "INFORMATION",
+                                "message": "\"Process Create:\r\nRuleName: -\r\nUtcTime: 2026-05-15 08:43:43.102\r\nProcessGuid: {32e96954-dcbf-6a06-7e03-000000000a00}\r\nProcessId: 8884\r\nImage: C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\r\nFileVersion: 10.0.19041.3996 (WinBuild.160101.0800)\r\nDescription: Windows PowerShell\r\nProduct: Microsoft\u00ae Windows\u00ae Operating System\r\nCompany: Microsoft Corporation\r\nOriginalFileName: PowerShell.EXE\r\nCommandLine: \"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -ExecutionPolicy Bypass -enc SGVsbG8=\r\nCurrentDirectory: C:\\Windows\\system32\\\r\nUser: DESKTOP-G0LLA16\\leo\r\nLogonGuid: {32e96954-3bde-6a04-fd7c-0d0000000000}\r\nLogonId: 0xD7CFD\r\nTerminalSessionId: 1\r\nIntegrityLevel: High\r\nHashes: SHA256=9785001B0DCF755EDDB8AF294A373C0B87B2498660F724E76C4D53F9C217C7A3\r\nParentProcessGuid: {32e96954-5663-6a04-6602-000000000a00}\r\nParentProcessId: 7072\r\nParentImage: C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\r\nParentCommandLine: \"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" \r\nParentUser: DESKTOP-G0LLA16\\leo\""
+                            },
+                            "eventdata": {
+                                "utcTime": "2026-05-15 08:43:43.102",
+                                "processGuid": "{32e96954-dcbf-6a06-7e03-000000000a00}",
+                                "processId": "8884",
+                                "image": "C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe",
+                                "fileVersion": "10.0.19041.3996 (WinBuild.160101.0800)",
+                                "description": "Windows PowerShell",
+                                "product": "Microsoft\u00ae Windows\u00ae Operating System",
+                                "company": "Microsoft Corporation",
+                                "originalFileName": "PowerShell.EXE",
+                                "commandLine": "\\\"C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\\\" -ExecutionPolicy Bypass -enc SGVsbG8=",
+                                "currentDirectory": "C:\\\\Windows\\\\system32\\\\",
+                                "user": "DESKTOP-G0LLA16\\\\leo",
+                                "logonGuid": "{32e96954-3bde-6a04-fd7c-0d0000000000}",
+                                "logonId": "0xd7cfd",
+                                "terminalSessionId": "1",
+                                "integrityLevel": "High",
+                                "hashes": "SHA256=9785001B0DCF755EDDB8AF294A373C0B87B2498660F724E76C4D53F9C217C7A3",
+                                "parentProcessGuid": "{32e96954-5663-6a04-6602-000000000a00}",
+                                "parentProcessId": "7072",
+                                "parentImage": "C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe",
+                                "parentCommandLine": "\\\"C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\\\"",
+                                "parentUser": "DESKTOP-G0LLA16\\\\leo"
+                            }
+                        }
+                    },
+                    "location": "EventChannel"
+                }
+            }
+        },
+        {
+            "alert_id": "CSA-00017",
+            "time": "2026-05-15T17:58:27.603+0800",
+            "host": "windows10",
+            "user": "leo",
+            "source_ip": "127.0.0.1",
+            "destination_ip": "unknown",
+            "event_id": "4624",
+            "process": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+            "parent_process": "",
+            "command_line": "",
+            "pack": "successful_login",
+            "rule_name": "Successful Login",
+            "title": "\u2705 Successful Windows Login",
+            "summary": "User leo successfully logged in on host windows10",
+            "severity": "INFO",
+            "mitre": [
+                "T1078"
+            ],
+            "recommended_actions": [
+                "Check whether failed logins happened before this login",
+                "Verify source IP and logon type",
+                "Check for privilege escalation or PowerShell after login"
+            ],
+            "status": "OPEN",
+            "raw": {
+                "id": "1778839107.660816",
+                "source_file": "/var/ossec/logs/alerts/2026/May/ossec-alerts-15.json",
+                "timestamp": "2026-05-15T17:58:27.603+0800",
+                "agent_name": "windows10",
+                "host": "windows10",
+                "agent_id": "003",
+                "manager_name": "alwin",
+                "rule_id": "60118",
+                "rule_level": 3,
+                "rule_description": "Windows Workstation Logon Success",
+                "groups": [
+                    "windows",
+                    "windows_security",
+                    "authentication_success"
+                ],
+                "location": "EventChannel",
+                "event_id": "4624",
+                "provider": "Microsoft-Windows-Security-Auditing",
+                "computer": "DESKTOP-G0LLA16",
+                "user": "leo",
+                "source_ip": "127.0.0.1",
+                "destination_ip": "",
+                "process": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+                "parent_process": "",
+                "command_line": "",
+                "logon_type": "2",
+                "logon_id": "0x7bc21f",
+                "full_log": "",
+                "raw": {
+                    "timestamp": "2026-05-15T17:58:27.603+0800",
+                    "rule": {
+                        "level": 3,
+                        "description": "Windows Workstation Logon Success",
+                        "id": "60118",
+                        "mitre": {
+                            "id": [
+                                "T1078"
+                            ],
+                            "tactic": [
+                                "Defense Evasion",
+                                "Persistence",
+                                "Privilege Escalation",
+                                "Initial Access"
+                            ],
+                            "technique": [
+                                "Valid Accounts"
+                            ]
+                        },
+                        "firedtimes": 1,
+                        "mail": false,
+                        "groups": [
+                            "windows",
+                            "windows_security",
+                            "authentication_success"
+                        ],
+                        "pci_dss": [
+                            "10.2.5"
+                        ],
+                        "gpg13": [
+                            "7.1",
+                            "7.2"
+                        ],
+                        "gdpr": [
+                            "IV_32.2"
+                        ],
+                        "hipaa": [
+                            "164.312.b"
+                        ],
+                        "nist_800_53": [
+                            "AU.14",
+                            "AC.9"
+                        ],
+                        "tsc": [
+                            "CC6.8",
+                            "CC7.2",
+                            "CC7.3"
+                        ]
+                    },
+                    "agent": {
+                        "id": "003",
+                        "name": "windows10",
+                        "ip": "192.168.10.120"
+                    },
+                    "manager": {
+                        "name": "alwin"
+                    },
+                    "id": "1778839107.660816",
+                    "decoder": {
+                        "name": "windows_eventchannel"
+                    },
+                    "data": {
+                        "win": {
+                            "system": {
+                                "providerName": "Microsoft-Windows-Security-Auditing",
+                                "providerGuid": "{54849625-5478-4994-a5ba-3e3b0328c30d}",
+                                "eventID": "4624",
+                                "version": "2",
+                                "level": "0",
+                                "task": "12544",
+                                "opcode": "0",
+                                "keywords": "0x8020000000000000",
+                                "systemTime": "2026-05-15T09:58:23.7768240Z",
+                                "eventRecordID": "21004",
+                                "processID": "692",
+                                "threadID": "764",
+                                "channel": "Security",
+                                "computer": "DESKTOP-G0LLA16",
+                                "severityValue": "AUDIT_SUCCESS",
+                                "message": "\"An account was successfully logged on.\r\n\r\nSubject:\r\n\tSecurity ID:\t\tS-1-5-18\r\n\tAccount Name:\t\tDESKTOP-G0LLA16$\r\n\tAccount Domain:\t\tWORKGROUP\r\n\tLogon ID:\t\t0x3E7\r\n\r\nLogon Information:\r\n\tLogon Type:\t\t2\r\n\tRestricted Admin Mode:\t-\r\n\tVirtual Account:\t\tNo\r\n\tElevated Token:\t\tYes\r\n\r\nImpersonation Level:\t\tImpersonation\r\n\r\nNew Logon:\r\n\tSecurity ID:\t\tS-1-5-21-4138275471-3107049867-993298588-1001\r\n\tAccount Name:\t\tleo\r\n\tAccount Domain:\t\tDESKTOP-G0LLA16\r\n\tLogon ID:\t\t0x7BC21F\r\n\tLinked Logon ID:\t\t0x7BC23D\r\n\tNetwork Account Name:\t-\r\n\tNetwork Account Domain:\t-\r\n\tLogon GUID:\t\t{00000000-0000-0000-0000-000000000000}\r\n\r\nProcess Information:\r\n\tProcess ID:\t\t0x17c\r\n\tProcess Name:\t\tC:\\Windows\\System32\\svchost.exe\r\n\r\nNetwork Information:\r\n\tWorkstation Name:\tDESKTOP-G0LLA16\r\n\tSource Network Address:\t127.0.0.1\r\n\tSource Port:\t\t0\r\n\r\nDetailed Authentication Information:\r\n\tLogon Process:\t\tUser32 \r\n\tAuthentication Package:\tNegotiate\r\n\tTransited Services:\t-\r\n\tPackage Name (NTLM only):\t-\r\n\tKey Length:\t\t0\r\n\r\nThis event is generated when a logon session is created. It is generated on the computer that was accessed.\r\n\r\nThe subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.\r\n\r\nThe logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).\r\n\r\nThe New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.\r\n\r\nThe network fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.\r\n\r\nThe impersonation level field indicates the extent to which a process in the logon session can impersonate.\r\n\r\nThe authentication information fields provide detailed information about this specific logon request.\r\n\t- Logon GUID is a unique identifier that can be used to correlate this event with a KDC event.\r\n\t- Transited services indicate which intermediate services have participated in this logon request.\r\n\t- Package name indicates which sub-protocol was used among the NTLM protocols.\r\n\t- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.\""
+                            },
+                            "eventdata": {
+                                "subjectUserSid": "S-1-5-18",
+                                "subjectUserName": "DESKTOP-G0LLA16$",
+                                "subjectDomainName": "WORKGROUP",
+                                "subjectLogonId": "0x3e7",
+                                "targetUserSid": "S-1-5-21-4138275471-3107049867-993298588-1001",
+                                "targetUserName": "leo",
+                                "targetDomainName": "DESKTOP-G0LLA16",
+                                "targetLogonId": "0x7bc21f",
+                                "logonType": "2",
+                                "logonProcessName": "User32",
+                                "authenticationPackageName": "Negotiate",
+                                "workstationName": "DESKTOP-G0LLA16",
+                                "logonGuid": "{00000000-0000-0000-0000-000000000000}",
+                                "keyLength": "0",
+                                "processId": "0x17c",
+                                "processName": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+                                "ipAddress": "127.0.0.1",
+                                "ipPort": "0",
+                                "impersonationLevel": "%%1833",
+                                "virtualAccount": "%%1843",
+                                "targetLinkedLogonId": "0x7bc23d",
+                                "elevatedToken": "%%1842"
+                            }
+                        }
+                    },
+                    "location": "EventChannel"
+                }
+            }
+        },
+        {
+            "alert_id": "CSA-00018",
+            "time": "2026-05-15T17:58:27.618+0800",
+            "host": "windows10",
+            "user": "leo",
+            "source_ip": "127.0.0.1",
+            "destination_ip": "unknown",
+            "event_id": "4624",
+            "process": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+            "parent_process": "",
+            "command_line": "",
+            "pack": "successful_login",
+            "rule_name": "Successful Login",
+            "title": "\u2705 Successful Windows Login",
+            "summary": "User leo successfully logged in on host windows10",
+            "severity": "INFO",
+            "mitre": [
+                "T1078"
+            ],
+            "recommended_actions": [
+                "Check whether failed logins happened before this login",
+                "Verify source IP and logon type",
+                "Check for privilege escalation or PowerShell after login"
+            ],
+            "status": "OPEN",
+            "raw": {
+                "id": "1778839107.668539",
+                "source_file": "/var/ossec/logs/alerts/2026/May/ossec-alerts-15.json",
+                "timestamp": "2026-05-15T17:58:27.618+0800",
+                "agent_name": "windows10",
+                "host": "windows10",
+                "agent_id": "003",
+                "manager_name": "alwin",
+                "rule_id": "60118",
+                "rule_level": 3,
+                "rule_description": "Windows Workstation Logon Success",
+                "groups": [
+                    "windows",
+                    "windows_security",
+                    "authentication_success"
+                ],
+                "location": "EventChannel",
+                "event_id": "4624",
+                "provider": "Microsoft-Windows-Security-Auditing",
+                "computer": "DESKTOP-G0LLA16",
+                "user": "leo",
+                "source_ip": "127.0.0.1",
+                "destination_ip": "",
+                "process": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+                "parent_process": "",
+                "command_line": "",
+                "logon_type": "2",
+                "logon_id": "0x7bc23d",
+                "full_log": "",
+                "raw": {
+                    "timestamp": "2026-05-15T17:58:27.618+0800",
+                    "rule": {
+                        "level": 3,
+                        "description": "Windows Workstation Logon Success",
+                        "id": "60118",
+                        "mitre": {
+                            "id": [
+                                "T1078"
+                            ],
+                            "tactic": [
+                                "Defense Evasion",
+                                "Persistence",
+                                "Privilege Escalation",
+                                "Initial Access"
+                            ],
+                            "technique": [
+                                "Valid Accounts"
+                            ]
+                        },
+                        "firedtimes": 2,
+                        "mail": false,
+                        "groups": [
+                            "windows",
+                            "windows_security",
+                            "authentication_success"
+                        ],
+                        "pci_dss": [
+                            "10.2.5"
+                        ],
+                        "gpg13": [
+                            "7.1",
+                            "7.2"
+                        ],
+                        "gdpr": [
+                            "IV_32.2"
+                        ],
+                        "hipaa": [
+                            "164.312.b"
+                        ],
+                        "nist_800_53": [
+                            "AU.14",
+                            "AC.9"
+                        ],
+                        "tsc": [
+                            "CC6.8",
+                            "CC7.2",
+                            "CC7.3"
+                        ]
+                    },
+                    "agent": {
+                        "id": "003",
+                        "name": "windows10",
+                        "ip": "192.168.10.120"
+                    },
+                    "manager": {
+                        "name": "alwin"
+                    },
+                    "id": "1778839107.668539",
+                    "decoder": {
+                        "name": "windows_eventchannel"
+                    },
+                    "data": {
+                        "win": {
+                            "system": {
+                                "providerName": "Microsoft-Windows-Security-Auditing",
+                                "providerGuid": "{54849625-5478-4994-a5ba-3e3b0328c30d}",
+                                "eventID": "4624",
+                                "version": "2",
+                                "level": "0",
+                                "task": "12544",
+                                "opcode": "0",
+                                "keywords": "0x8020000000000000",
+                                "systemTime": "2026-05-15T09:58:23.7768500Z",
+                                "eventRecordID": "21005",
+                                "processID": "692",
+                                "threadID": "764",
+                                "channel": "Security",
+                                "computer": "DESKTOP-G0LLA16",
+                                "severityValue": "AUDIT_SUCCESS",
+                                "message": "\"An account was successfully logged on.\r\n\r\nSubject:\r\n\tSecurity ID:\t\tS-1-5-18\r\n\tAccount Name:\t\tDESKTOP-G0LLA16$\r\n\tAccount Domain:\t\tWORKGROUP\r\n\tLogon ID:\t\t0x3E7\r\n\r\nLogon Information:\r\n\tLogon Type:\t\t2\r\n\tRestricted Admin Mode:\t-\r\n\tVirtual Account:\t\tNo\r\n\tElevated Token:\t\tNo\r\n\r\nImpersonation Level:\t\tImpersonation\r\n\r\nNew Logon:\r\n\tSecurity ID:\t\tS-1-5-21-4138275471-3107049867-993298588-1001\r\n\tAccount Name:\t\tleo\r\n\tAccount Domain:\t\tDESKTOP-G0LLA16\r\n\tLogon ID:\t\t0x7BC23D\r\n\tLinked Logon ID:\t\t0x7BC21F\r\n\tNetwork Account Name:\t-\r\n\tNetwork Account Domain:\t-\r\n\tLogon GUID:\t\t{00000000-0000-0000-0000-000000000000}\r\n\r\nProcess Information:\r\n\tProcess ID:\t\t0x17c\r\n\tProcess Name:\t\tC:\\Windows\\System32\\svchost.exe\r\n\r\nNetwork Information:\r\n\tWorkstation Name:\tDESKTOP-G0LLA16\r\n\tSource Network Address:\t127.0.0.1\r\n\tSource Port:\t\t0\r\n\r\nDetailed Authentication Information:\r\n\tLogon Process:\t\tUser32 \r\n\tAuthentication Package:\tNegotiate\r\n\tTransited Services:\t-\r\n\tPackage Name (NTLM only):\t-\r\n\tKey Length:\t\t0\r\n\r\nThis event is generated when a logon session is created. It is generated on the computer that was accessed.\r\n\r\nThe subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.\r\n\r\nThe logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).\r\n\r\nThe New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.\r\n\r\nThe network fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.\r\n\r\nThe impersonation level field indicates the extent to which a process in the logon session can impersonate.\r\n\r\nThe authentication information fields provide detailed information about this specific logon request.\r\n\t- Logon GUID is a unique identifier that can be used to correlate this event with a KDC event.\r\n\t- Transited services indicate which intermediate services have participated in this logon request.\r\n\t- Package name indicates which sub-protocol was used among the NTLM protocols.\r\n\t- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.\""
+                            },
+                            "eventdata": {
+                                "subjectUserSid": "S-1-5-18",
+                                "subjectUserName": "DESKTOP-G0LLA16$",
+                                "subjectDomainName": "WORKGROUP",
+                                "subjectLogonId": "0x3e7",
+                                "targetUserSid": "S-1-5-21-4138275471-3107049867-993298588-1001",
+                                "targetUserName": "leo",
+                                "targetDomainName": "DESKTOP-G0LLA16",
+                                "targetLogonId": "0x7bc23d",
+                                "logonType": "2",
+                                "logonProcessName": "User32",
+                                "authenticationPackageName": "Negotiate",
+                                "workstationName": "DESKTOP-G0LLA16",
+                                "logonGuid": "{00000000-0000-0000-0000-000000000000}",
+                                "keyLength": "0",
+                                "processId": "0x17c",
+                                "processName": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+                                "ipAddress": "127.0.0.1",
+                                "ipPort": "0",
+                                "impersonationLevel": "%%1833",
+                                "virtualAccount": "%%1843",
+                                "targetLinkedLogonId": "0x7bc21f",
+                                "elevatedToken": "%%1843"
+                            }
+                        }
+                    },
+                    "location": "EventChannel"
+                }
+            }
+        },
+        {
+            "alert_id": "CSA-00019",
+            "time": "2026-05-15T18:09:03.616+0800",
+            "host": "windows10",
+            "user": "leo",
+            "source_ip": "127.0.0.1",
+            "destination_ip": "unknown",
+            "event_id": "4624",
+            "process": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+            "parent_process": "",
+            "command_line": "",
+            "pack": "successful_login",
+            "rule_name": "Successful Login",
+            "title": "\u2705 Successful Windows Login",
+            "summary": "User leo successfully logged in on host windows10",
+            "severity": "INFO",
+            "mitre": [
+                "T1078"
+            ],
+            "recommended_actions": [
+                "Check whether failed logins happened before this login",
+                "Verify source IP and logon type",
+                "Check for privilege escalation or PowerShell after login"
+            ],
+            "status": "OPEN",
+            "raw": {
+                "id": "1778839743.826552",
+                "source_file": "/var/ossec/logs/alerts/2026/May/ossec-alerts-15.json",
+                "timestamp": "2026-05-15T18:09:03.616+0800",
+                "agent_name": "windows10",
+                "host": "windows10",
+                "agent_id": "003",
+                "manager_name": "alwin",
+                "rule_id": "60118",
+                "rule_level": 3,
+                "rule_description": "Windows Workstation Logon Success",
+                "groups": [
+                    "windows",
+                    "windows_security",
+                    "authentication_success"
+                ],
+                "location": "EventChannel",
+                "event_id": "4624",
+                "provider": "Microsoft-Windows-Security-Auditing",
+                "computer": "DESKTOP-G0LLA16",
+                "user": "leo",
+                "source_ip": "127.0.0.1",
+                "destination_ip": "",
+                "process": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+                "parent_process": "",
+                "command_line": "",
+                "logon_type": "2",
+                "logon_id": "0xf0b47",
+                "full_log": "",
+                "raw": {
+                    "timestamp": "2026-05-15T18:09:03.616+0800",
+                    "rule": {
+                        "level": 3,
+                        "description": "Windows Workstation Logon Success",
+                        "id": "60118",
+                        "mitre": {
+                            "id": [
+                                "T1078"
+                            ],
+                            "tactic": [
+                                "Defense Evasion",
+                                "Persistence",
+                                "Privilege Escalation",
+                                "Initial Access"
+                            ],
+                            "technique": [
+                                "Valid Accounts"
+                            ]
+                        },
+                        "firedtimes": 1,
+                        "mail": false,
+                        "groups": [
+                            "windows",
+                            "windows_security",
+                            "authentication_success"
+                        ],
+                        "pci_dss": [
+                            "10.2.5"
+                        ],
+                        "gpg13": [
+                            "7.1",
+                            "7.2"
+                        ],
+                        "gdpr": [
+                            "IV_32.2"
+                        ],
+                        "hipaa": [
+                            "164.312.b"
+                        ],
+                        "nist_800_53": [
+                            "AU.14",
+                            "AC.9"
+                        ],
+                        "tsc": [
+                            "CC6.8",
+                            "CC7.2",
+                            "CC7.3"
+                        ]
+                    },
+                    "agent": {
+                        "id": "003",
+                        "name": "windows10",
+                        "ip": "192.168.10.120"
+                    },
+                    "manager": {
+                        "name": "alwin"
+                    },
+                    "id": "1778839743.826552",
+                    "decoder": {
+                        "name": "windows_eventchannel"
+                    },
+                    "data": {
+                        "win": {
+                            "system": {
+                                "providerName": "Microsoft-Windows-Security-Auditing",
+                                "providerGuid": "{54849625-5478-4994-a5ba-3e3b0328c30d}",
+                                "eventID": "4624",
+                                "version": "2",
+                                "level": "0",
+                                "task": "12544",
+                                "opcode": "0",
+                                "keywords": "0x8020000000000000",
+                                "systemTime": "2026-05-15T10:09:00.2586757Z",
+                                "eventRecordID": "21249",
+                                "processID": "668",
+                                "threadID": "704",
+                                "channel": "Security",
+                                "computer": "DESKTOP-G0LLA16",
+                                "severityValue": "AUDIT_SUCCESS",
+                                "message": "\"An account was successfully logged on.\r\n\r\nSubject:\r\n\tSecurity ID:\t\tS-1-5-18\r\n\tAccount Name:\t\tDESKTOP-G0LLA16$\r\n\tAccount Domain:\t\tWORKGROUP\r\n\tLogon ID:\t\t0x3E7\r\n\r\nLogon Information:\r\n\tLogon Type:\t\t2\r\n\tRestricted Admin Mode:\t-\r\n\tVirtual Account:\t\tNo\r\n\tElevated Token:\t\tYes\r\n\r\nImpersonation Level:\t\tImpersonation\r\n\r\nNew Logon:\r\n\tSecurity ID:\t\tS-1-5-21-4138275471-3107049867-993298588-1001\r\n\tAccount Name:\t\tleo\r\n\tAccount Domain:\t\tDESKTOP-G0LLA16\r\n\tLogon ID:\t\t0xF0B47\r\n\tLinked Logon ID:\t\t0xF0B65\r\n\tNetwork Account Name:\t-\r\n\tNetwork Account Domain:\t-\r\n\tLogon GUID:\t\t{00000000-0000-0000-0000-000000000000}\r\n\r\nProcess Information:\r\n\tProcess ID:\t\t0x3dc\r\n\tProcess Name:\t\tC:\\Windows\\System32\\svchost.exe\r\n\r\nNetwork Information:\r\n\tWorkstation Name:\tDESKTOP-G0LLA16\r\n\tSource Network Address:\t127.0.0.1\r\n\tSource Port:\t\t0\r\n\r\nDetailed Authentication Information:\r\n\tLogon Process:\t\tUser32 \r\n\tAuthentication Package:\tNegotiate\r\n\tTransited Services:\t-\r\n\tPackage Name (NTLM only):\t-\r\n\tKey Length:\t\t0\r\n\r\nThis event is generated when a logon session is created. It is generated on the computer that was accessed.\r\n\r\nThe subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.\r\n\r\nThe logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).\r\n\r\nThe New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.\r\n\r\nThe network fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.\r\n\r\nThe impersonation level field indicates the extent to which a process in the logon session can impersonate.\r\n\r\nThe authentication information fields provide detailed information about this specific logon request.\r\n\t- Logon GUID is a unique identifier that can be used to correlate this event with a KDC event.\r\n\t- Transited services indicate which intermediate services have participated in this logon request.\r\n\t- Package name indicates which sub-protocol was used among the NTLM protocols.\r\n\t- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.\""
+                            },
+                            "eventdata": {
+                                "subjectUserSid": "S-1-5-18",
+                                "subjectUserName": "DESKTOP-G0LLA16$",
+                                "subjectDomainName": "WORKGROUP",
+                                "subjectLogonId": "0x3e7",
+                                "targetUserSid": "S-1-5-21-4138275471-3107049867-993298588-1001",
+                                "targetUserName": "leo",
+                                "targetDomainName": "DESKTOP-G0LLA16",
+                                "targetLogonId": "0xf0b47",
+                                "logonType": "2",
+                                "logonProcessName": "User32",
+                                "authenticationPackageName": "Negotiate",
+                                "workstationName": "DESKTOP-G0LLA16",
+                                "logonGuid": "{00000000-0000-0000-0000-000000000000}",
+                                "keyLength": "0",
+                                "processId": "0x3dc",
+                                "processName": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+                                "ipAddress": "127.0.0.1",
+                                "ipPort": "0",
+                                "impersonationLevel": "%%1833",
+                                "virtualAccount": "%%1843",
+                                "targetLinkedLogonId": "0xf0b65",
+                                "elevatedToken": "%%1842"
+                            }
+                        }
+                    },
+                    "location": "EventChannel"
+                }
+            }
+        },
+        {
+            "alert_id": "CSA-00020",
+            "time": "2026-05-15T18:09:03.624+0800",
+            "host": "windows10",
+            "user": "leo",
+            "source_ip": "127.0.0.1",
+            "destination_ip": "unknown",
+            "event_id": "4624",
+            "process": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+            "parent_process": "",
+            "command_line": "",
+            "pack": "successful_login",
+            "rule_name": "Successful Login",
+            "title": "\u2705 Successful Windows Login",
+            "summary": "User leo successfully logged in on host windows10",
+            "severity": "INFO",
+            "mitre": [
+                "T1078"
+            ],
+            "recommended_actions": [
+                "Check whether failed logins happened before this login",
+                "Verify source IP and logon type",
+                "Check for privilege escalation or PowerShell after login"
+            ],
+            "status": "OPEN",
+            "raw": {
+                "id": "1778839743.834267",
+                "source_file": "/var/ossec/logs/alerts/2026/May/ossec-alerts-15.json",
+                "timestamp": "2026-05-15T18:09:03.624+0800",
+                "agent_name": "windows10",
+                "host": "windows10",
+                "agent_id": "003",
+                "manager_name": "alwin",
+                "rule_id": "60118",
+                "rule_level": 3,
+                "rule_description": "Windows Workstation Logon Success",
+                "groups": [
+                    "windows",
+                    "windows_security",
+                    "authentication_success"
+                ],
+                "location": "EventChannel",
+                "event_id": "4624",
+                "provider": "Microsoft-Windows-Security-Auditing",
+                "computer": "DESKTOP-G0LLA16",
+                "user": "leo",
+                "source_ip": "127.0.0.1",
+                "destination_ip": "",
+                "process": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+                "parent_process": "",
+                "command_line": "",
+                "logon_type": "2",
+                "logon_id": "0xf0b65",
+                "full_log": "",
+                "raw": {
+                    "timestamp": "2026-05-15T18:09:03.624+0800",
+                    "rule": {
+                        "level": 3,
+                        "description": "Windows Workstation Logon Success",
+                        "id": "60118",
+                        "mitre": {
+                            "id": [
+                                "T1078"
+                            ],
+                            "tactic": [
+                                "Defense Evasion",
+                                "Persistence",
+                                "Privilege Escalation",
+                                "Initial Access"
+                            ],
+                            "technique": [
+                                "Valid Accounts"
+                            ]
+                        },
+                        "firedtimes": 2,
+                        "mail": false,
+                        "groups": [
+                            "windows",
+                            "windows_security",
+                            "authentication_success"
+                        ],
+                        "pci_dss": [
+                            "10.2.5"
+                        ],
+                        "gpg13": [
+                            "7.1",
+                            "7.2"
+                        ],
+                        "gdpr": [
+                            "IV_32.2"
+                        ],
+                        "hipaa": [
+                            "164.312.b"
+                        ],
+                        "nist_800_53": [
+                            "AU.14",
+                            "AC.9"
+                        ],
+                        "tsc": [
+                            "CC6.8",
+                            "CC7.2",
+                            "CC7.3"
+                        ]
+                    },
+                    "agent": {
+                        "id": "003",
+                        "name": "windows10",
+                        "ip": "192.168.10.120"
+                    },
+                    "manager": {
+                        "name": "alwin"
+                    },
+                    "id": "1778839743.834267",
+                    "decoder": {
+                        "name": "windows_eventchannel"
+                    },
+                    "data": {
+                        "win": {
+                            "system": {
+                                "providerName": "Microsoft-Windows-Security-Auditing",
+                                "providerGuid": "{54849625-5478-4994-a5ba-3e3b0328c30d}",
+                                "eventID": "4624",
+                                "version": "2",
+                                "level": "0",
+                                "task": "12544",
+                                "opcode": "0",
+                                "keywords": "0x8020000000000000",
+                                "systemTime": "2026-05-15T10:09:00.2587017Z",
+                                "eventRecordID": "21250",
+                                "processID": "668",
+                                "threadID": "704",
+                                "channel": "Security",
+                                "computer": "DESKTOP-G0LLA16",
+                                "severityValue": "AUDIT_SUCCESS",
+                                "message": "\"An account was successfully logged on.\r\n\r\nSubject:\r\n\tSecurity ID:\t\tS-1-5-18\r\n\tAccount Name:\t\tDESKTOP-G0LLA16$\r\n\tAccount Domain:\t\tWORKGROUP\r\n\tLogon ID:\t\t0x3E7\r\n\r\nLogon Information:\r\n\tLogon Type:\t\t2\r\n\tRestricted Admin Mode:\t-\r\n\tVirtual Account:\t\tNo\r\n\tElevated Token:\t\tNo\r\n\r\nImpersonation Level:\t\tImpersonation\r\n\r\nNew Logon:\r\n\tSecurity ID:\t\tS-1-5-21-4138275471-3107049867-993298588-1001\r\n\tAccount Name:\t\tleo\r\n\tAccount Domain:\t\tDESKTOP-G0LLA16\r\n\tLogon ID:\t\t0xF0B65\r\n\tLinked Logon ID:\t\t0xF0B47\r\n\tNetwork Account Name:\t-\r\n\tNetwork Account Domain:\t-\r\n\tLogon GUID:\t\t{00000000-0000-0000-0000-000000000000}\r\n\r\nProcess Information:\r\n\tProcess ID:\t\t0x3dc\r\n\tProcess Name:\t\tC:\\Windows\\System32\\svchost.exe\r\n\r\nNetwork Information:\r\n\tWorkstation Name:\tDESKTOP-G0LLA16\r\n\tSource Network Address:\t127.0.0.1\r\n\tSource Port:\t\t0\r\n\r\nDetailed Authentication Information:\r\n\tLogon Process:\t\tUser32 \r\n\tAuthentication Package:\tNegotiate\r\n\tTransited Services:\t-\r\n\tPackage Name (NTLM only):\t-\r\n\tKey Length:\t\t0\r\n\r\nThis event is generated when a logon session is created. It is generated on the computer that was accessed.\r\n\r\nThe subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.\r\n\r\nThe logon type field indicates the kind of logon that occurred. The most common types are 2 (interactive) and 3 (network).\r\n\r\nThe New Logon fields indicate the account for whom the new logon was created, i.e. the account that was logged on.\r\n\r\nThe network fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.\r\n\r\nThe impersonation level field indicates the extent to which a process in the logon session can impersonate.\r\n\r\nThe authentication information fields provide detailed information about this specific logon request.\r\n\t- Logon GUID is a unique identifier that can be used to correlate this event with a KDC event.\r\n\t- Transited services indicate which intermediate services have participated in this logon request.\r\n\t- Package name indicates which sub-protocol was used among the NTLM protocols.\r\n\t- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.\""
+                            },
+                            "eventdata": {
+                                "subjectUserSid": "S-1-5-18",
+                                "subjectUserName": "DESKTOP-G0LLA16$",
+                                "subjectDomainName": "WORKGROUP",
+                                "subjectLogonId": "0x3e7",
+                                "targetUserSid": "S-1-5-21-4138275471-3107049867-993298588-1001",
+                                "targetUserName": "leo",
+                                "targetDomainName": "DESKTOP-G0LLA16",
+                                "targetLogonId": "0xf0b65",
+                                "logonType": "2",
+                                "logonProcessName": "User32",
+                                "authenticationPackageName": "Negotiate",
+                                "workstationName": "DESKTOP-G0LLA16",
+                                "logonGuid": "{00000000-0000-0000-0000-000000000000}",
+                                "keyLength": "0",
+                                "processId": "0x3dc",
+                                "processName": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+                                "ipAddress": "127.0.0.1",
+                                "ipPort": "0",
+                                "impersonationLevel": "%%1833",
+                                "virtualAccount": "%%1843",
+                                "targetLinkedLogonId": "0xf0b47",
+                                "elevatedToken": "%%1843"
+                            }
+                        }
+                    },
+                    "location": "EventChannel"
+                }
+            }
+        }
+    ],
+    "recent_attack_chains": [],
+    "priority_queue": {
+        "investigate": [],
+        "monitor": [],
+        "clear": []
+    },
+    "noise_summary": {
+        "raw_events_processed": 67,
+        "final_incidents": 0,
+        "noise_reduction_percent": 0
+    }
+}
