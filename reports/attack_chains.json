@@ -3775,6 +3775,677 @@
     },
     {
         "chain_id": "CHAIN-00005",
+        "chain_label": "Initial Access \u2192 Discovery",
+        "kill_chain_phases": [
+            "Initial Access",
+            "Discovery"
+        ],
+        "host": "win-server",
+        "user": "administrator",
+        "severity": "LOW",
+        "decision": "MONITOR",
+        "risk_score": 20,
+        "confidence": "LOW",
+        "reasons": [
+            "Brute force login activity detected"
+        ],
+        "mitre": [
+            "T1082",
+            "T1087",
+            "T1110"
+        ],
+        "alert_count": 4,
+        "timeline": [
+            {
+                "time": "2026-05-04T17:25:29.502+0800",
+                "event_id": "4625",
+                "kill_chain_phase": "Initial Access",
+                "stage": "authentication_failure",
+                "event": "Authentication Failure Spike",
+                "details": "3 failed logins in 5 min | User: administrator | Host: win-server",
+                "host": "win-server",
+                "user": "administrator",
+                "process": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+                "mitre": [
+                    "T1110"
+                ]
+            },
+            {
+                "time": "2026-06-26T17:18:16.613+0800",
+                "event_id": "4625",
+                "kill_chain_phase": "Initial Access",
+                "stage": "brute_force",
+                "event": "\ud83d\udd28 Brute Force Login Attempt",
+                "details": "10 failed logins in 5 min | User: administrator | Host: win-server",
+                "host": "win-server",
+                "user": "administrator",
+                "process": "",
+                "mitre": [
+                    "T1110"
+                ]
+            },
+            {
+                "time": "2026-06-26T17:20:12.431+0800",
+                "event_id": "1",
+                "kill_chain_phase": "Discovery",
+                "stage": "suspicious_execution",
+                "event": "\ud83d\udd0d Discovery Activity Detected",
+                "details": "Discovery activity spawned via powershell execution | Host: win-server | Process: c:\\\\windows\\\\system32\\\\net.exe",
+                "host": "win-server",
+                "user": "administrator",
+                "process": "C:\\\\Windows\\\\System32\\\\net.exe",
+                "mitre": [
+                    "T1082",
+                    "T1087"
+                ]
+            },
+            {
+                "time": "2026-06-26T17:20:12.463+0800",
+                "event_id": "1",
+                "kill_chain_phase": "Discovery",
+                "stage": "suspicious_execution",
+                "event": "\ud83d\udd0d Discovery Activity Detected",
+                "details": "A net.exe account discovery command was initiated | Host: win-server | Process: c:\\\\windows\\\\system32\\\\net1.exe",
+                "host": "win-server",
+                "user": "administrator",
+                "process": "C:\\\\Windows\\\\System32\\\\net1.exe",
+                "mitre": [
+                    "T1082",
+                    "T1087"
+                ]
+            }
+        ],
+        "alerts": [
+            {
+                "alert_id": "CSA-00013",
+                "time": "2026-05-04T17:25:29.502+0800",
+                "host": "win-server",
+                "user": "administrator",
+                "source_ip": "127.0.0.1",
+                "destination_ip": "unknown",
+                "event_id": "4625",
+                "rule_id": "60122",
+                "rule_description": "Logon Failure - Unknown user or bad password",
+                "process": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+                "parent_process": "",
+                "command_line": "",
+                "pack": "authentication_failure",
+                "rule_name": "Repeated Authentication Failures",
+                "title": "Authentication Failure Spike",
+                "summary": "3 failed logins in 5 min | User: administrator | Host: win-server",
+                "severity": "MEDIUM",
+                "mitre": [
+                    "T1110"
+                ],
+                "kill_chain_phase": "Initial Access",
+                "recommended_actions": [
+                    "Verify if the user mistyped password",
+                    "Check source IP and logon type",
+                    "Monitor for successful login after failures"
+                ],
+                "fp_notes": "3-9 failures may be user error. Do not call it brute force unless volume increases.",
+                "status": "OPEN",
+                "raw": {
+                    "id": "1777886729.6191288",
+                    "timestamp": "2026-05-04T17:25:29.502+0800",
+                    "host": "win-server",
+                    "user": "administrator",
+                    "event_id": "4625",
+                    "rule_id": "60122",
+                    "rule_level": 5,
+                    "rule_description": "Logon Failure - Unknown user or bad password",
+                    "source_ip": "127.0.0.1",
+                    "process": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+                    "parent_process": "",
+                    "command_line": "",
+                    "provider": "Microsoft-Windows-Security-Auditing",
+                    "raw_json": "{\"timestamp\": \"2026-05-04T17:25:29.502+0800\", \"rule\": {\"level\": 5, \"description\": \"Logon Failure - Unknown user or bad password\", \"id\": \"60122\", \"mitre\": {\"id\": [\"T1531\"], \"tactic\": [\"Impact\"], \"technique\": [\"Account Access Removal\"]}, \"firedtimes\": 3, \"mail\": false, \"groups\": [\"windows\", \"windows_security\", \"authentication_failed\"], \"pci_dss\": [\"10.2.4\", \"10.2.5\"], \"gpg13\": [\"7.1\"], \"gdpr\": [\"IV_35.7.d\", \"IV_32.2\"], \"hipaa\": [\"164.312.b\"], \"nist_800_53\": [\"AU.14\", \"AC.7\"], \"tsc\": [\"CC6.1\", \"CC6.8\", \"CC7.2\", \"CC7.3\"]}, \"agent\": {\"id\": \"004\", \"name\": \"win-server\", \"ip\": \"192.168.10.145\"}, \"manager\": {\"name\": \"alwin\"}, \"id\": \"1777886729.6191288\", \"decoder\": {\"name\": \"windows_eventchannel\"}, \"data\": {\"win\": {\"system\": {\"providerName\": \"Microsoft-Windows-Security-Auditing\", \"providerGuid\": \"{54849625-5478-4994-a5ba-3e3b0328c30d}\", \"eventID\": \"4625\", \"version\": \"0\", \"level\": \"0\", \"task\": \"12544\", \"opcode\": \"0\", \"keywords\": \"0x8010000000000000\", \"systemTime\": \"2026-05-04T09:25:28.192999300Z\", \"eventRecordID\": \"1367\", \"processID\": \"632\", \"threadID\": \"4392\", \"channel\": \"Security\", \"computer\": \"WIN-KMSGSH5FS1F\", \"severityValue\": \"AUDIT_FAILURE\", \"message\": \"\\\"An account failed to log on.\\r\\n\\r\\nSubject:\\r\\n\\tSecurity ID:\\t\\tS-1-5-18\\r\\n\\tAccount Name:\\t\\tWIN-KMSGSH5FS1F$\\r\\n\\tAccount Domain:\\t\\tWORKGROUP\\r\\n\\tLogon ID:\\t\\t0x3E7\\r\\n\\r\\nLogon Type:\\t\\t\\t7\\r\\n\\r\\nAccount For Which Logon Failed:\\r\\n\\tSecurity ID:\\t\\tS-1-0-0\\r\\n\\tAccount Name:\\t\\tAdministrator\\r\\n\\tAccount Domain:\\t\\tWIN-KMSGSH5FS1F\\r\\n\\r\\nFailure Information:\\r\\n\\tFailure Reason:\\t\\tUnknown user name or bad password.\\r\\n\\tStatus:\\t\\t\\t0xC000006D\\r\\n\\tSub Status:\\t\\t0xC000006A\\r\\n\\r\\nProcess Information:\\r\\n\\tCaller Process ID:\\t0x438\\r\\n\\tCaller Process Name:\\tC:\\\\Windows\\\\System32\\\\svchost.exe\\r\\n\\r\\nNetwork Information:\\r\\n\\tWorkstation Name:\\tWIN-KMSGSH5FS1F\\r\\n\\tSource Network Address:\\t127.0.0.1\\r\\n\\tSource Port:\\t\\t0\\r\\n\\r\\nDetailed Authentication Information:\\r\\n\\tLogon Process:\\t\\tUser32 \\r\\n\\tAuthentication Package:\\tNegotiate\\r\\n\\tTransited Services:\\t-\\r\\n\\tPackage Name (NTLM only):\\t-\\r\\n\\tKey Length:\\t\\t0\\r\\n\\r\\nThis event is generated when a logon request fails. It is generated on the computer where access was attempted.\\r\\n\\r\\nThe Subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.\\r\\n\\r\\nThe Logon Type field indicates the kind of logon that was requested. The most common types are 2 (interactive) and 3 (network).\\r\\n\\r\\nThe Process Information fields indicate which account and process on the system requested the logon.\\r\\n\\r\\nThe Network Information fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.\\r\\n\\r\\nThe authentication information fields provide detailed information about this specific logon request.\\r\\n\\t- Transited services indicate which intermediate services have participated in this logon request.\\r\\n\\t- Package name indicates which sub-protocol was used among the NTLM protocols.\\r\\n\\t- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.\\\"\"}, \"eventdata\": {\"subjectUserSid\": \"S-1-5-18\", \"subjectUserName\": \"WIN-KMSGSH5FS1F$\", \"subjectDomainName\": \"WORKGROUP\", \"subjectLogonId\": \"0x3e7\", \"targetUserSid\": \"S-1-0-0\", \"targetUserName\": \"Administrator\", \"targetDomainName\": \"WIN-KMSGSH5FS1F\", \"status\": \"0xc000006d\", \"failureReason\": \"%%2313\", \"subStatus\": \"0xc000006a\", \"logonType\": \"7\", \"logonProcessName\": \"User32\", \"authenticationPackageName\": \"Negotiate\", \"workstationName\": \"WIN-KMSGSH5FS1F\", \"keyLength\": \"0\", \"processId\": \"0x438\", \"processName\": \"C:\\\\\\\\Windows\\\\\\\\System32\\\\\\\\svchost.exe\", \"ipAddress\": \"127.0.0.1\", \"ipPort\": \"0\"}}}, \"location\": \"EventChannel\"}",
+                    "inserted_at": "2026-06-07T19:24:38.921594",
+                    "raw": {
+                        "timestamp": "2026-05-04T17:25:29.502+0800",
+                        "rule": {
+                            "level": 5,
+                            "description": "Logon Failure - Unknown user or bad password",
+                            "id": "60122",
+                            "mitre": {
+                                "id": [
+                                    "T1531"
+                                ],
+                                "tactic": [
+                                    "Impact"
+                                ],
+                                "technique": [
+                                    "Account Access Removal"
+                                ]
+                            },
+                            "firedtimes": 3,
+                            "mail": false,
+                            "groups": [
+                                "windows",
+                                "windows_security",
+                                "authentication_failed"
+                            ],
+                            "pci_dss": [
+                                "10.2.4",
+                                "10.2.5"
+                            ],
+                            "gpg13": [
+                                "7.1"
+                            ],
+                            "gdpr": [
+                                "IV_35.7.d",
+                                "IV_32.2"
+                            ],
+                            "hipaa": [
+                                "164.312.b"
+                            ],
+                            "nist_800_53": [
+                                "AU.14",
+                                "AC.7"
+                            ],
+                            "tsc": [
+                                "CC6.1",
+                                "CC6.8",
+                                "CC7.2",
+                                "CC7.3"
+                            ]
+                        },
+                        "agent": {
+                            "id": "004",
+                            "name": "win-server",
+                            "ip": "192.168.10.145"
+                        },
+                        "manager": {
+                            "name": "alwin"
+                        },
+                        "id": "1777886729.6191288",
+                        "decoder": {
+                            "name": "windows_eventchannel"
+                        },
+                        "data": {
+                            "win": {
+                                "system": {
+                                    "providerName": "Microsoft-Windows-Security-Auditing",
+                                    "providerGuid": "{54849625-5478-4994-a5ba-3e3b0328c30d}",
+                                    "eventID": "4625",
+                                    "version": "0",
+                                    "level": "0",
+                                    "task": "12544",
+                                    "opcode": "0",
+                                    "keywords": "0x8010000000000000",
+                                    "systemTime": "2026-05-04T09:25:28.192999300Z",
+                                    "eventRecordID": "1367",
+                                    "processID": "632",
+                                    "threadID": "4392",
+                                    "channel": "Security",
+                                    "computer": "WIN-KMSGSH5FS1F",
+                                    "severityValue": "AUDIT_FAILURE",
+                                    "message": "\"An account failed to log on.\r\n\r\nSubject:\r\n\tSecurity ID:\t\tS-1-5-18\r\n\tAccount Name:\t\tWIN-KMSGSH5FS1F$\r\n\tAccount Domain:\t\tWORKGROUP\r\n\tLogon ID:\t\t0x3E7\r\n\r\nLogon Type:\t\t\t7\r\n\r\nAccount For Which Logon Failed:\r\n\tSecurity ID:\t\tS-1-0-0\r\n\tAccount Name:\t\tAdministrator\r\n\tAccount Domain:\t\tWIN-KMSGSH5FS1F\r\n\r\nFailure Information:\r\n\tFailure Reason:\t\tUnknown user name or bad password.\r\n\tStatus:\t\t\t0xC000006D\r\n\tSub Status:\t\t0xC000006A\r\n\r\nProcess Information:\r\n\tCaller Process ID:\t0x438\r\n\tCaller Process Name:\tC:\\Windows\\System32\\svchost.exe\r\n\r\nNetwork Information:\r\n\tWorkstation Name:\tWIN-KMSGSH5FS1F\r\n\tSource Network Address:\t127.0.0.1\r\n\tSource Port:\t\t0\r\n\r\nDetailed Authentication Information:\r\n\tLogon Process:\t\tUser32 \r\n\tAuthentication Package:\tNegotiate\r\n\tTransited Services:\t-\r\n\tPackage Name (NTLM only):\t-\r\n\tKey Length:\t\t0\r\n\r\nThis event is generated when a logon request fails. It is generated on the computer where access was attempted.\r\n\r\nThe Subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.\r\n\r\nThe Logon Type field indicates the kind of logon that was requested. The most common types are 2 (interactive) and 3 (network).\r\n\r\nThe Process Information fields indicate which account and process on the system requested the logon.\r\n\r\nThe Network Information fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.\r\n\r\nThe authentication information fields provide detailed information about this specific logon request.\r\n\t- Transited services indicate which intermediate services have participated in this logon request.\r\n\t- Package name indicates which sub-protocol was used among the NTLM protocols.\r\n\t- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.\""
+                                },
+                                "eventdata": {
+                                    "subjectUserSid": "S-1-5-18",
+                                    "subjectUserName": "WIN-KMSGSH5FS1F$",
+                                    "subjectDomainName": "WORKGROUP",
+                                    "subjectLogonId": "0x3e7",
+                                    "targetUserSid": "S-1-0-0",
+                                    "targetUserName": "Administrator",
+                                    "targetDomainName": "WIN-KMSGSH5FS1F",
+                                    "status": "0xc000006d",
+                                    "failureReason": "%%2313",
+                                    "subStatus": "0xc000006a",
+                                    "logonType": "7",
+                                    "logonProcessName": "User32",
+                                    "authenticationPackageName": "Negotiate",
+                                    "workstationName": "WIN-KMSGSH5FS1F",
+                                    "keyLength": "0",
+                                    "processId": "0x438",
+                                    "processName": "C:\\\\Windows\\\\System32\\\\svchost.exe",
+                                    "ipAddress": "127.0.0.1",
+                                    "ipPort": "0"
+                                }
+                            }
+                        },
+                        "location": "EventChannel"
+                    }
+                }
+            },
+            {
+                "alert_id": "CSA-00031",
+                "time": "2026-06-26T17:18:16.613+0800",
+                "host": "win-server",
+                "user": "administrator",
+                "source_ip": "192.168.10.144",
+                "destination_ip": "unknown",
+                "event_id": "4625",
+                "rule_id": "60122",
+                "rule_description": "Logon Failure - Unknown user or bad password",
+                "process": "",
+                "parent_process": "",
+                "command_line": "",
+                "pack": "brute_force",
+                "rule_name": "Brute Force Detected",
+                "title": "\ud83d\udd28 Brute Force Login Attempt",
+                "summary": "10 failed logins in 5 min | User: administrator | Host: win-server",
+                "severity": "MEDIUM",
+                "mitre": [
+                    "T1110"
+                ],
+                "kill_chain_phase": "Initial Access",
+                "recommended_actions": [
+                    "Check if account is now locked",
+                    "Verify source IP",
+                    "Monitor for successful login (4624) following this"
+                ],
+                "fp_notes": "Could be password expiry or account lockout \u2014 no confirmed success yet",
+                "status": "OPEN",
+                "raw": {
+                    "id": "1782465496.802210",
+                    "timestamp": "2026-06-26T17:18:16.613+0800",
+                    "host": "win-server",
+                    "user": "administrator",
+                    "event_id": "4625",
+                    "rule_id": "60122",
+                    "rule_level": 5,
+                    "rule_description": "Logon Failure - Unknown user or bad password",
+                    "source_ip": "192.168.10.144",
+                    "process": "",
+                    "parent_process": "",
+                    "command_line": "",
+                    "provider": "Microsoft-Windows-Security-Auditing",
+                    "raw_json": "{\"timestamp\": \"2026-06-26T17:18:16.613+0800\", \"rule\": {\"level\": 5, \"description\": \"Logon Failure - Unknown user or bad password\", \"id\": \"60122\", \"mitre\": {\"id\": [\"T1531\"], \"tactic\": [\"Impact\"], \"technique\": [\"Account Access Removal\"]}, \"firedtimes\": 9, \"mail\": false, \"groups\": [\"windows\", \"windows_security\", \"authentication_failed\"], \"pci_dss\": [\"10.2.4\", \"10.2.5\"], \"gpg13\": [\"7.1\"], \"gdpr\": [\"IV_35.7.d\", \"IV_32.2\"], \"hipaa\": [\"164.312.b\"], \"nist_800_53\": [\"AU.14\", \"AC.7\"], \"tsc\": [\"CC6.1\", \"CC6.8\", \"CC7.2\", \"CC7.3\"]}, \"agent\": {\"id\": \"004\", \"name\": \"win-server\", \"ip\": \"192.168.10.145\"}, \"manager\": {\"name\": \"alwin\"}, \"id\": \"1782465496.802210\", \"decoder\": {\"name\": \"windows_eventchannel\"}, \"data\": {\"win\": {\"system\": {\"providerName\": \"Microsoft-Windows-Security-Auditing\", \"providerGuid\": \"{54849625-5478-4994-a5ba-3e3b0328c30d}\", \"eventID\": \"4625\", \"version\": \"0\", \"level\": \"0\", \"task\": \"12544\", \"opcode\": \"0\", \"keywords\": \"0x8010000000000000\", \"systemTime\": \"2026-06-26T09:18:15.613973900Z\", \"eventRecordID\": \"3386\", \"processID\": \"656\", \"threadID\": \"3188\", \"channel\": \"Security\", \"computer\": \"WIN-KMSGSH5FS1F\", \"severityValue\": \"AUDIT_FAILURE\", \"message\": \"\\\"An account failed to log on.\\r\\n\\r\\nSubject:\\r\\n\\tSecurity ID:\\t\\tS-1-0-0\\r\\n\\tAccount Name:\\t\\t-\\r\\n\\tAccount Domain:\\t\\t-\\r\\n\\tLogon ID:\\t\\t0x0\\r\\n\\r\\nLogon Type:\\t\\t\\t3\\r\\n\\r\\nAccount For Which Logon Failed:\\r\\n\\tSecurity ID:\\t\\tS-1-0-0\\r\\n\\tAccount Name:\\t\\tadministrator\\r\\n\\tAccount Domain:\\t\\tWORKGROUP\\r\\n\\r\\nFailure Information:\\r\\n\\tFailure Reason:\\t\\tUnknown user name or bad password.\\r\\n\\tStatus:\\t\\t\\t0xC000006D\\r\\n\\tSub Status:\\t\\t0xC000006A\\r\\n\\r\\nProcess Information:\\r\\n\\tCaller Process ID:\\t0x0\\r\\n\\tCaller Process Name:\\t-\\r\\n\\r\\nNetwork Information:\\r\\n\\tWorkstation Name:\\tKALI\\r\\n\\tSource Network Address:\\t192.168.10.144\\r\\n\\tSource Port:\\t\\t38762\\r\\n\\r\\nDetailed Authentication Information:\\r\\n\\tLogon Process:\\t\\tNtLmSsp \\r\\n\\tAuthentication Package:\\tNTLM\\r\\n\\tTransited Services:\\t-\\r\\n\\tPackage Name (NTLM only):\\t-\\r\\n\\tKey Length:\\t\\t0\\r\\n\\r\\nThis event is generated when a logon request fails. It is generated on the computer where access was attempted.\\r\\n\\r\\nThe Subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.\\r\\n\\r\\nThe Logon Type field indicates the kind of logon that was requested. The most common types are 2 (interactive) and 3 (network).\\r\\n\\r\\nThe Process Information fields indicate which account and process on the system requested the logon.\\r\\n\\r\\nThe Network Information fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.\\r\\n\\r\\nThe authentication information fields provide detailed information about this specific logon request.\\r\\n\\t- Transited services indicate which intermediate services have participated in this logon request.\\r\\n\\t- Package name indicates which sub-protocol was used among the NTLM protocols.\\r\\n\\t- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.\\\"\"}, \"eventdata\": {\"subjectUserSid\": \"S-1-0-0\", \"subjectLogonId\": \"0x0\", \"targetUserSid\": \"S-1-0-0\", \"targetUserName\": \"administrator\", \"targetDomainName\": \"WORKGROUP\", \"status\": \"0xc000006d\", \"failureReason\": \"%%2313\", \"subStatus\": \"0xc000006a\", \"logonType\": \"3\", \"logonProcessName\": \"NtLmSsp\", \"authenticationPackageName\": \"NTLM\", \"workstationName\": \"KALI\", \"keyLength\": \"0\", \"processId\": \"0x0\", \"ipAddress\": \"192.168.10.144\", \"ipPort\": \"38762\"}}}, \"location\": \"EventChannel\"}",
+                    "inserted_at": "2026-06-26T09:22:44.125359",
+                    "raw": {
+                        "timestamp": "2026-06-26T17:18:16.613+0800",
+                        "rule": {
+                            "level": 5,
+                            "description": "Logon Failure - Unknown user or bad password",
+                            "id": "60122",
+                            "mitre": {
+                                "id": [
+                                    "T1531"
+                                ],
+                                "tactic": [
+                                    "Impact"
+                                ],
+                                "technique": [
+                                    "Account Access Removal"
+                                ]
+                            },
+                            "firedtimes": 9,
+                            "mail": false,
+                            "groups": [
+                                "windows",
+                                "windows_security",
+                                "authentication_failed"
+                            ],
+                            "pci_dss": [
+                                "10.2.4",
+                                "10.2.5"
+                            ],
+                            "gpg13": [
+                                "7.1"
+                            ],
+                            "gdpr": [
+                                "IV_35.7.d",
+                                "IV_32.2"
+                            ],
+                            "hipaa": [
+                                "164.312.b"
+                            ],
+                            "nist_800_53": [
+                                "AU.14",
+                                "AC.7"
+                            ],
+                            "tsc": [
+                                "CC6.1",
+                                "CC6.8",
+                                "CC7.2",
+                                "CC7.3"
+                            ]
+                        },
+                        "agent": {
+                            "id": "004",
+                            "name": "win-server",
+                            "ip": "192.168.10.145"
+                        },
+                        "manager": {
+                            "name": "alwin"
+                        },
+                        "id": "1782465496.802210",
+                        "decoder": {
+                            "name": "windows_eventchannel"
+                        },
+                        "data": {
+                            "win": {
+                                "system": {
+                                    "providerName": "Microsoft-Windows-Security-Auditing",
+                                    "providerGuid": "{54849625-5478-4994-a5ba-3e3b0328c30d}",
+                                    "eventID": "4625",
+                                    "version": "0",
+                                    "level": "0",
+                                    "task": "12544",
+                                    "opcode": "0",
+                                    "keywords": "0x8010000000000000",
+                                    "systemTime": "2026-06-26T09:18:15.613973900Z",
+                                    "eventRecordID": "3386",
+                                    "processID": "656",
+                                    "threadID": "3188",
+                                    "channel": "Security",
+                                    "computer": "WIN-KMSGSH5FS1F",
+                                    "severityValue": "AUDIT_FAILURE",
+                                    "message": "\"An account failed to log on.\r\n\r\nSubject:\r\n\tSecurity ID:\t\tS-1-0-0\r\n\tAccount Name:\t\t-\r\n\tAccount Domain:\t\t-\r\n\tLogon ID:\t\t0x0\r\n\r\nLogon Type:\t\t\t3\r\n\r\nAccount For Which Logon Failed:\r\n\tSecurity ID:\t\tS-1-0-0\r\n\tAccount Name:\t\tadministrator\r\n\tAccount Domain:\t\tWORKGROUP\r\n\r\nFailure Information:\r\n\tFailure Reason:\t\tUnknown user name or bad password.\r\n\tStatus:\t\t\t0xC000006D\r\n\tSub Status:\t\t0xC000006A\r\n\r\nProcess Information:\r\n\tCaller Process ID:\t0x0\r\n\tCaller Process Name:\t-\r\n\r\nNetwork Information:\r\n\tWorkstation Name:\tKALI\r\n\tSource Network Address:\t192.168.10.144\r\n\tSource Port:\t\t38762\r\n\r\nDetailed Authentication Information:\r\n\tLogon Process:\t\tNtLmSsp \r\n\tAuthentication Package:\tNTLM\r\n\tTransited Services:\t-\r\n\tPackage Name (NTLM only):\t-\r\n\tKey Length:\t\t0\r\n\r\nThis event is generated when a logon request fails. It is generated on the computer where access was attempted.\r\n\r\nThe Subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.\r\n\r\nThe Logon Type field indicates the kind of logon that was requested. The most common types are 2 (interactive) and 3 (network).\r\n\r\nThe Process Information fields indicate which account and process on the system requested the logon.\r\n\r\nThe Network Information fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.\r\n\r\nThe authentication information fields provide detailed information about this specific logon request.\r\n\t- Transited services indicate which intermediate services have participated in this logon request.\r\n\t- Package name indicates which sub-protocol was used among the NTLM protocols.\r\n\t- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.\""
+                                },
+                                "eventdata": {
+                                    "subjectUserSid": "S-1-0-0",
+                                    "subjectLogonId": "0x0",
+                                    "targetUserSid": "S-1-0-0",
+                                    "targetUserName": "administrator",
+                                    "targetDomainName": "WORKGROUP",
+                                    "status": "0xc000006d",
+                                    "failureReason": "%%2313",
+                                    "subStatus": "0xc000006a",
+                                    "logonType": "3",
+                                    "logonProcessName": "NtLmSsp",
+                                    "authenticationPackageName": "NTLM",
+                                    "workstationName": "KALI",
+                                    "keyLength": "0",
+                                    "processId": "0x0",
+                                    "ipAddress": "192.168.10.144",
+                                    "ipPort": "38762"
+                                }
+                            }
+                        },
+                        "location": "EventChannel"
+                    }
+                }
+            },
+            {
+                "alert_id": "CSA-00032",
+                "time": "2026-06-26T17:20:12.431+0800",
+                "host": "win-server",
+                "user": "administrator",
+                "source_ip": "192.168.10.145",
+                "destination_ip": "unknown",
+                "event_id": "1",
+                "rule_id": "92033",
+                "rule_description": "Discovery activity spawned via powershell execution",
+                "process": "C:\\\\Windows\\\\System32\\\\net.exe",
+                "parent_process": "C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe",
+                "command_line": "\\\"C:\\\\Windows\\\\system32\\\\net.exe\\\" user administrator /active:yes",
+                "pack": "suspicious_execution",
+                "rule_name": "Suspicious Process Execution",
+                "title": "\ud83d\udd0d Discovery Activity Detected",
+                "summary": "Discovery activity spawned via powershell execution | Host: win-server | Process: c:\\\\windows\\\\system32\\\\net.exe",
+                "severity": "MEDIUM",
+                "mitre": [
+                    "T1082",
+                    "T1087"
+                ],
+                "kill_chain_phase": "Discovery",
+                "recommended_actions": [
+                    "Check parent process context",
+                    "Verify if activity was authorized",
+                    "Correlate with login events on same host",
+                    "Check for file drops or network connections after execution"
+                ],
+                "fp_notes": "Verify parent process \u2014 could be legitimate admin activity",
+                "status": "OPEN",
+                "raw": {
+                    "id": "1782465612.14401109",
+                    "timestamp": "2026-06-26T17:20:12.431+0800",
+                    "host": "win-server",
+                    "user": "administrator",
+                    "event_id": "1",
+                    "rule_id": "92033",
+                    "rule_level": 3,
+                    "rule_description": "Discovery activity spawned via powershell execution",
+                    "source_ip": "192.168.10.145",
+                    "process": "C:\\\\Windows\\\\System32\\\\net.exe",
+                    "parent_process": "C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe",
+                    "command_line": "\\\"C:\\\\Windows\\\\system32\\\\net.exe\\\" user administrator /active:yes",
+                    "provider": "Microsoft-Windows-Sysmon",
+                    "raw_json": "{\"timestamp\": \"2026-06-26T17:20:12.431+0800\", \"rule\": {\"level\": 3, \"description\": \"Discovery activity spawned via powershell execution\", \"id\": \"92033\", \"mitre\": {\"id\": [\"T1087\", \"T1059.001\"], \"tactic\": [\"Discovery\", \"Execution\"], \"technique\": [\"Account Discovery\", \"PowerShell\"]}, \"firedtimes\": 1, \"mail\": false, \"groups\": [\"sysmon\", \"sysmon_eid1_detections\", \"windows\"]}, \"agent\": {\"id\": \"004\", \"name\": \"win-server\", \"ip\": \"192.168.10.145\"}, \"manager\": {\"name\": \"alwin\"}, \"id\": \"1782465612.14401109\", \"decoder\": {\"name\": \"windows_eventchannel\"}, \"data\": {\"win\": {\"system\": {\"providerName\": \"Microsoft-Windows-Sysmon\", \"providerGuid\": \"{5770385f-c22a-43e0-bf4c-06f5698ffbd9}\", \"eventID\": \"1\", \"version\": \"5\", \"level\": \"4\", \"task\": \"1\", \"opcode\": \"0\", \"keywords\": \"0x8000000000000000\", \"systemTime\": \"2026-06-26T09:20:07.832157700Z\", \"eventRecordID\": \"6804\", \"processID\": \"2184\", \"threadID\": \"2260\", \"channel\": \"Microsoft-Windows-Sysmon/Operational\", \"computer\": \"WIN-KMSGSH5FS1F\", \"severityValue\": \"INFORMATION\", \"message\": \"\\\"Process Create:\\r\\nRuleName: -\\r\\nUtcTime: 2026-06-26 09:20:07.817\\r\\nProcessGuid: {a6e2d9b7-4447-6a3e-9a01-000000000a00}\\r\\nProcessId: 724\\r\\nImage: C:\\\\Windows\\\\System32\\\\net.exe\\r\\nFileVersion: 10.0.17763.1 (WinBuild.160101.0800)\\r\\nDescription: Net Command\\r\\nProduct: Microsoft\\u00ae Windows\\u00ae Operating System\\r\\nCompany: Microsoft Corporation\\r\\nOriginalFileName: net.exe\\r\\nCommandLine: \\\"C:\\\\Windows\\\\system32\\\\net.exe\\\" user administrator /active:yes\\r\\nCurrentDirectory: C:\\\\Users\\\\Administrator\\\\\\r\\nUser: WIN-KMSGSH5FS1F\\\\Administrator\\r\\nLogonGuid: {a6e2d9b7-441e-6a3e-e8bb-270000000000}\\r\\nLogonId: 0x27BBE8\\r\\nTerminalSessionId: 1\\r\\nIntegrityLevel: High\\r\\nHashes: MD5=AE61D8F04BCDE8158304067913160B31,SHA256=25C8266D2BC1D5626DCDF72419838B397D28D44D00AC09F02FF4E421B43EC369,IMPHASH=57F0C47AE2A1A2C06C8B987372AB0B07\\r\\nParentProcessGuid: {a6e2d9b7-4439-6a3e-9401-000000000a00}\\r\\nParentProcessId: 5256\\r\\nParentImage: C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\\r\\nParentCommandLine: \\\"C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\\\" \\r\\nParentUser: WIN-KMSGSH5FS1F\\\\Administrator\\\"\"}, \"eventdata\": {\"utcTime\": \"2026-06-26 09:20:07.817\", \"processGuid\": \"{a6e2d9b7-4447-6a3e-9a01-000000000a00}\", \"processId\": \"724\", \"image\": \"C:\\\\\\\\Windows\\\\\\\\System32\\\\\\\\net.exe\", \"fileVersion\": \"10.0.17763.1 (WinBuild.160101.0800)\", \"description\": \"Net Command\", \"product\": \"Microsoft\\u00ae Windows\\u00ae Operating System\", \"company\": \"Microsoft Corporation\", \"originalFileName\": \"net.exe\", \"commandLine\": \"\\\\\\\"C:\\\\\\\\Windows\\\\\\\\system32\\\\\\\\net.exe\\\\\\\" user administrator /active:yes\", \"currentDirectory\": \"C:\\\\\\\\Users\\\\\\\\Administrator\\\\\\\\\", \"user\": \"WIN-KMSGSH5FS1F\\\\\\\\Administrator\", \"logonGuid\": \"{a6e2d9b7-441e-6a3e-e8bb-270000000000}\", \"logonId\": \"0x27bbe8\", \"terminalSessionId\": \"1\", \"integrityLevel\": \"High\", \"hashes\": \"MD5=AE61D8F04BCDE8158304067913160B31,SHA256=25C8266D2BC1D5626DCDF72419838B397D28D44D00AC09F02FF4E421B43EC369,IMPHASH=57F0C47AE2A1A2C06C8B987372AB0B07\", \"parentProcessGuid\": \"{a6e2d9b7-4439-6a3e-9401-000000000a00}\", \"parentProcessId\": \"5256\", \"parentImage\": \"C:\\\\\\\\Windows\\\\\\\\System32\\\\\\\\WindowsPowerShell\\\\\\\\v1.0\\\\\\\\powershell.exe\", \"parentCommandLine\": \"\\\\\\\"C:\\\\\\\\Windows\\\\\\\\System32\\\\\\\\WindowsPowerShell\\\\\\\\v1.0\\\\\\\\powershell.exe\\\\\\\"\", \"parentUser\": \"WIN-KMSGSH5FS1F\\\\\\\\Administrator\"}}}, \"location\": \"EventChannel\"}",
+                    "inserted_at": "2026-06-26T09:22:44.125359",
+                    "raw": {
+                        "timestamp": "2026-06-26T17:20:12.431+0800",
+                        "rule": {
+                            "level": 3,
+                            "description": "Discovery activity spawned via powershell execution",
+                            "id": "92033",
+                            "mitre": {
+                                "id": [
+                                    "T1087",
+                                    "T1059.001"
+                                ],
+                                "tactic": [
+                                    "Discovery",
+                                    "Execution"
+                                ],
+                                "technique": [
+                                    "Account Discovery",
+                                    "PowerShell"
+                                ]
+                            },
+                            "firedtimes": 1,
+                            "mail": false,
+                            "groups": [
+                                "sysmon",
+                                "sysmon_eid1_detections",
+                                "windows"
+                            ]
+                        },
+                        "agent": {
+                            "id": "004",
+                            "name": "win-server",
+                            "ip": "192.168.10.145"
+                        },
+                        "manager": {
+                            "name": "alwin"
+                        },
+                        "id": "1782465612.14401109",
+                        "decoder": {
+                            "name": "windows_eventchannel"
+                        },
+                        "data": {
+                            "win": {
+                                "system": {
+                                    "providerName": "Microsoft-Windows-Sysmon",
+                                    "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+                                    "eventID": "1",
+                                    "version": "5",
+                                    "level": "4",
+                                    "task": "1",
+                                    "opcode": "0",
+                                    "keywords": "0x8000000000000000",
+                                    "systemTime": "2026-06-26T09:20:07.832157700Z",
+                                    "eventRecordID": "6804",
+                                    "processID": "2184",
+                                    "threadID": "2260",
+                                    "channel": "Microsoft-Windows-Sysmon/Operational",
+                                    "computer": "WIN-KMSGSH5FS1F",
+                                    "severityValue": "INFORMATION",
+                                    "message": "\"Process Create:\r\nRuleName: -\r\nUtcTime: 2026-06-26 09:20:07.817\r\nProcessGuid: {a6e2d9b7-4447-6a3e-9a01-000000000a00}\r\nProcessId: 724\r\nImage: C:\\Windows\\System32\\net.exe\r\nFileVersion: 10.0.17763.1 (WinBuild.160101.0800)\r\nDescription: Net Command\r\nProduct: Microsoft\u00ae Windows\u00ae Operating System\r\nCompany: Microsoft Corporation\r\nOriginalFileName: net.exe\r\nCommandLine: \"C:\\Windows\\system32\\net.exe\" user administrator /active:yes\r\nCurrentDirectory: C:\\Users\\Administrator\\\r\nUser: WIN-KMSGSH5FS1F\\Administrator\r\nLogonGuid: {a6e2d9b7-441e-6a3e-e8bb-270000000000}\r\nLogonId: 0x27BBE8\r\nTerminalSessionId: 1\r\nIntegrityLevel: High\r\nHashes: MD5=AE61D8F04BCDE8158304067913160B31,SHA256=25C8266D2BC1D5626DCDF72419838B397D28D44D00AC09F02FF4E421B43EC369,IMPHASH=57F0C47AE2A1A2C06C8B987372AB0B07\r\nParentProcessGuid: {a6e2d9b7-4439-6a3e-9401-000000000a00}\r\nParentProcessId: 5256\r\nParentImage: C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\r\nParentCommandLine: \"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" \r\nParentUser: WIN-KMSGSH5FS1F\\Administrator\""
+                                },
+                                "eventdata": {
+                                    "utcTime": "2026-06-26 09:20:07.817",
+                                    "processGuid": "{a6e2d9b7-4447-6a3e-9a01-000000000a00}",
+                                    "processId": "724",
+                                    "image": "C:\\\\Windows\\\\System32\\\\net.exe",
+                                    "fileVersion": "10.0.17763.1 (WinBuild.160101.0800)",
+                                    "description": "Net Command",
+                                    "product": "Microsoft\u00ae Windows\u00ae Operating System",
+                                    "company": "Microsoft Corporation",
+                                    "originalFileName": "net.exe",
+                                    "commandLine": "\\\"C:\\\\Windows\\\\system32\\\\net.exe\\\" user administrator /active:yes",
+                                    "currentDirectory": "C:\\\\Users\\\\Administrator\\\\",
+                                    "user": "WIN-KMSGSH5FS1F\\\\Administrator",
+                                    "logonGuid": "{a6e2d9b7-441e-6a3e-e8bb-270000000000}",
+                                    "logonId": "0x27bbe8",
+                                    "terminalSessionId": "1",
+                                    "integrityLevel": "High",
+                                    "hashes": "MD5=AE61D8F04BCDE8158304067913160B31,SHA256=25C8266D2BC1D5626DCDF72419838B397D28D44D00AC09F02FF4E421B43EC369,IMPHASH=57F0C47AE2A1A2C06C8B987372AB0B07",
+                                    "parentProcessGuid": "{a6e2d9b7-4439-6a3e-9401-000000000a00}",
+                                    "parentProcessId": "5256",
+                                    "parentImage": "C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe",
+                                    "parentCommandLine": "\\\"C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\\\"",
+                                    "parentUser": "WIN-KMSGSH5FS1F\\\\Administrator"
+                                }
+                            }
+                        },
+                        "location": "EventChannel"
+                    }
+                }
+            },
+            {
+                "alert_id": "CSA-00033",
+                "time": "2026-06-26T17:20:12.463+0800",
+                "host": "win-server",
+                "user": "administrator",
+                "source_ip": "192.168.10.145",
+                "destination_ip": "unknown",
+                "event_id": "1",
+                "rule_id": "92039",
+                "rule_description": "A net.exe account discovery command was initiated",
+                "process": "C:\\\\Windows\\\\System32\\\\net1.exe",
+                "parent_process": "C:\\\\Windows\\\\System32\\\\net.exe",
+                "command_line": "C:\\\\Windows\\\\system32\\\\net1 user administrator /active:yes",
+                "pack": "suspicious_execution",
+                "rule_name": "Suspicious Process Execution",
+                "title": "\ud83d\udd0d Discovery Activity Detected",
+                "summary": "A net.exe account discovery command was initiated | Host: win-server | Process: c:\\\\windows\\\\system32\\\\net1.exe",
+                "severity": "MEDIUM",
+                "mitre": [
+                    "T1082",
+                    "T1087"
+                ],
+                "kill_chain_phase": "Discovery",
+                "recommended_actions": [
+                    "Check parent process context",
+                    "Verify if activity was authorized",
+                    "Correlate with login events on same host",
+                    "Check for file drops or network connections after execution"
+                ],
+                "fp_notes": "Verify parent process \u2014 could be legitimate admin activity",
+                "status": "OPEN",
+                "raw": {
+                    "id": "1782465612.14407280",
+                    "timestamp": "2026-06-26T17:20:12.463+0800",
+                    "host": "win-server",
+                    "user": "administrator",
+                    "event_id": "1",
+                    "rule_id": "92039",
+                    "rule_level": 3,
+                    "rule_description": "A net.exe account discovery command was initiated",
+                    "source_ip": "192.168.10.145",
+                    "process": "C:\\\\Windows\\\\System32\\\\net1.exe",
+                    "parent_process": "C:\\\\Windows\\\\System32\\\\net.exe",
+                    "command_line": "C:\\\\Windows\\\\system32\\\\net1 user administrator /active:yes",
+                    "provider": "Microsoft-Windows-Sysmon",
+                    "raw_json": "{\"timestamp\": \"2026-06-26T17:20:12.463+0800\", \"rule\": {\"level\": 3, \"description\": \"A net.exe account discovery command was initiated\", \"id\": \"92039\", \"mitre\": {\"id\": [\"T1087\"], \"tactic\": [\"Discovery\"], \"technique\": [\"Account Discovery\"]}, \"firedtimes\": 1, \"mail\": false, \"groups\": [\"sysmon\", \"sysmon_eid1_detections\", \"windows\"]}, \"agent\": {\"id\": \"004\", \"name\": \"win-server\", \"ip\": \"192.168.10.145\"}, \"manager\": {\"name\": \"alwin\"}, \"id\": \"1782465612.14407280\", \"decoder\": {\"name\": \"windows_eventchannel\"}, \"data\": {\"win\": {\"system\": {\"providerName\": \"Microsoft-Windows-Sysmon\", \"providerGuid\": \"{5770385f-c22a-43e0-bf4c-06f5698ffbd9}\", \"eventID\": \"1\", \"version\": \"5\", \"level\": \"4\", \"task\": \"1\", \"opcode\": \"0\", \"keywords\": \"0x8000000000000000\", \"systemTime\": \"2026-06-26T09:20:07.857611300Z\", \"eventRecordID\": \"6805\", \"processID\": \"2184\", \"threadID\": \"2260\", \"channel\": \"Microsoft-Windows-Sysmon/Operational\", \"computer\": \"WIN-KMSGSH5FS1F\", \"severityValue\": \"INFORMATION\", \"message\": \"\\\"Process Create:\\r\\nRuleName: -\\r\\nUtcTime: 2026-06-26 09:20:07.842\\r\\nProcessGuid: {a6e2d9b7-4447-6a3e-9b01-000000000a00}\\r\\nProcessId: 5716\\r\\nImage: C:\\\\Windows\\\\System32\\\\net1.exe\\r\\nFileVersion: 10.0.17763.1 (WinBuild.160101.0800)\\r\\nDescription: Net Command\\r\\nProduct: Microsoft\\u00ae Windows\\u00ae Operating System\\r\\nCompany: Microsoft Corporation\\r\\nOriginalFileName: net1.exe\\r\\nCommandLine: C:\\\\Windows\\\\system32\\\\net1 user administrator /active:yes\\r\\nCurrentDirectory: C:\\\\Users\\\\Administrator\\\\\\r\\nUser: WIN-KMSGSH5FS1F\\\\Administrator\\r\\nLogonGuid: {a6e2d9b7-441e-6a3e-e8bb-270000000000}\\r\\nLogonId: 0x27BBE8\\r\\nTerminalSessionId: 1\\r\\nIntegrityLevel: High\\r\\nHashes: MD5=63DD4523677E62A73A8A7494DB321EA2,SHA256=C687157FD58EAA51757CDA87D06C30953A31F03F5356B9F5A9C004FA4BAD4BF5,IMPHASH=41DBA1AF77E1A2260F0CE46D59ADCB5E\\r\\nParentProcessGuid: {a6e2d9b7-4447-6a3e-9a01-000000000a00}\\r\\nParentProcessId: 724\\r\\nParentImage: C:\\\\Windows\\\\System32\\\\net.exe\\r\\nParentCommandLine: \\\"C:\\\\Windows\\\\system32\\\\net.exe\\\" user administrator /active:yes\\r\\nParentUser: WIN-KMSGSH5FS1F\\\\Administrator\\\"\"}, \"eventdata\": {\"utcTime\": \"2026-06-26 09:20:07.842\", \"processGuid\": \"{a6e2d9b7-4447-6a3e-9b01-000000000a00}\", \"processId\": \"5716\", \"image\": \"C:\\\\\\\\Windows\\\\\\\\System32\\\\\\\\net1.exe\", \"fileVersion\": \"10.0.17763.1 (WinBuild.160101.0800)\", \"description\": \"Net Command\", \"product\": \"Microsoft\\u00ae Windows\\u00ae Operating System\", \"company\": \"Microsoft Corporation\", \"originalFileName\": \"net1.exe\", \"commandLine\": \"C:\\\\\\\\Windows\\\\\\\\system32\\\\\\\\net1 user administrator /active:yes\", \"currentDirectory\": \"C:\\\\\\\\Users\\\\\\\\Administrator\\\\\\\\\", \"user\": \"WIN-KMSGSH5FS1F\\\\\\\\Administrator\", \"logonGuid\": \"{a6e2d9b7-441e-6a3e-e8bb-270000000000}\", \"logonId\": \"0x27bbe8\", \"terminalSessionId\": \"1\", \"integrityLevel\": \"High\", \"hashes\": \"MD5=63DD4523677E62A73A8A7494DB321EA2,SHA256=C687157FD58EAA51757CDA87D06C30953A31F03F5356B9F5A9C004FA4BAD4BF5,IMPHASH=41DBA1AF77E1A2260F0CE46D59ADCB5E\", \"parentProcessGuid\": \"{a6e2d9b7-4447-6a3e-9a01-000000000a00}\", \"parentProcessId\": \"724\", \"parentImage\": \"C:\\\\\\\\Windows\\\\\\\\System32\\\\\\\\net.exe\", \"parentCommandLine\": \"\\\\\\\"C:\\\\\\\\Windows\\\\\\\\system32\\\\\\\\net.exe\\\\\\\" user administrator /active:yes\", \"parentUser\": \"WIN-KMSGSH5FS1F\\\\\\\\Administrator\"}}}, \"location\": \"EventChannel\"}",
+                    "inserted_at": "2026-06-26T09:22:44.125359",
+                    "raw": {
+                        "timestamp": "2026-06-26T17:20:12.463+0800",
+                        "rule": {
+                            "level": 3,
+                            "description": "A net.exe account discovery command was initiated",
+                            "id": "92039",
+                            "mitre": {
+                                "id": [
+                                    "T1087"
+                                ],
+                                "tactic": [
+                                    "Discovery"
+                                ],
+                                "technique": [
+                                    "Account Discovery"
+                                ]
+                            },
+                            "firedtimes": 1,
+                            "mail": false,
+                            "groups": [
+                                "sysmon",
+                                "sysmon_eid1_detections",
+                                "windows"
+                            ]
+                        },
+                        "agent": {
+                            "id": "004",
+                            "name": "win-server",
+                            "ip": "192.168.10.145"
+                        },
+                        "manager": {
+                            "name": "alwin"
+                        },
+                        "id": "1782465612.14407280",
+                        "decoder": {
+                            "name": "windows_eventchannel"
+                        },
+                        "data": {
+                            "win": {
+                                "system": {
+                                    "providerName": "Microsoft-Windows-Sysmon",
+                                    "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+                                    "eventID": "1",
+                                    "version": "5",
+                                    "level": "4",
+                                    "task": "1",
+                                    "opcode": "0",
+                                    "keywords": "0x8000000000000000",
+                                    "systemTime": "2026-06-26T09:20:07.857611300Z",
+                                    "eventRecordID": "6805",
+                                    "processID": "2184",
+                                    "threadID": "2260",
+                                    "channel": "Microsoft-Windows-Sysmon/Operational",
+                                    "computer": "WIN-KMSGSH5FS1F",
+                                    "severityValue": "INFORMATION",
+                                    "message": "\"Process Create:\r\nRuleName: -\r\nUtcTime: 2026-06-26 09:20:07.842\r\nProcessGuid: {a6e2d9b7-4447-6a3e-9b01-000000000a00}\r\nProcessId: 5716\r\nImage: C:\\Windows\\System32\\net1.exe\r\nFileVersion: 10.0.17763.1 (WinBuild.160101.0800)\r\nDescription: Net Command\r\nProduct: Microsoft\u00ae Windows\u00ae Operating System\r\nCompany: Microsoft Corporation\r\nOriginalFileName: net1.exe\r\nCommandLine: C:\\Windows\\system32\\net1 user administrator /active:yes\r\nCurrentDirectory: C:\\Users\\Administrator\\\r\nUser: WIN-KMSGSH5FS1F\\Administrator\r\nLogonGuid: {a6e2d9b7-441e-6a3e-e8bb-270000000000}\r\nLogonId: 0x27BBE8\r\nTerminalSessionId: 1\r\nIntegrityLevel: High\r\nHashes: MD5=63DD4523677E62A73A8A7494DB321EA2,SHA256=C687157FD58EAA51757CDA87D06C30953A31F03F5356B9F5A9C004FA4BAD4BF5,IMPHASH=41DBA1AF77E1A2260F0CE46D59ADCB5E\r\nParentProcessGuid: {a6e2d9b7-4447-6a3e-9a01-000000000a00}\r\nParentProcessId: 724\r\nParentImage: C:\\Windows\\System32\\net.exe\r\nParentCommandLine: \"C:\\Windows\\system32\\net.exe\" user administrator /active:yes\r\nParentUser: WIN-KMSGSH5FS1F\\Administrator\""
+                                },
+                                "eventdata": {
+                                    "utcTime": "2026-06-26 09:20:07.842",
+                                    "processGuid": "{a6e2d9b7-4447-6a3e-9b01-000000000a00}",
+                                    "processId": "5716",
+                                    "image": "C:\\\\Windows\\\\System32\\\\net1.exe",
+                                    "fileVersion": "10.0.17763.1 (WinBuild.160101.0800)",
+                                    "description": "Net Command",
+                                    "product": "Microsoft\u00ae Windows\u00ae Operating System",
+                                    "company": "Microsoft Corporation",
+                                    "originalFileName": "net1.exe",
+                                    "commandLine": "C:\\\\Windows\\\\system32\\\\net1 user administrator /active:yes",
+                                    "currentDirectory": "C:\\\\Users\\\\Administrator\\\\",
+                                    "user": "WIN-KMSGSH5FS1F\\\\Administrator",
+                                    "logonGuid": "{a6e2d9b7-441e-6a3e-e8bb-270000000000}",
+                                    "logonId": "0x27bbe8",
+                                    "terminalSessionId": "1",
+                                    "integrityLevel": "High",
+                                    "hashes": "MD5=63DD4523677E62A73A8A7494DB321EA2,SHA256=C687157FD58EAA51757CDA87D06C30953A31F03F5356B9F5A9C004FA4BAD4BF5,IMPHASH=41DBA1AF77E1A2260F0CE46D59ADCB5E",
+                                    "parentProcessGuid": "{a6e2d9b7-4447-6a3e-9a01-000000000a00}",
+                                    "parentProcessId": "724",
+                                    "parentImage": "C:\\\\Windows\\\\System32\\\\net.exe",
+                                    "parentCommandLine": "\\\"C:\\\\Windows\\\\system32\\\\net.exe\\\" user administrator /active:yes",
+                                    "parentUser": "WIN-KMSGSH5FS1F\\\\Administrator"
+                                }
+                            }
+                        },
+                        "location": "EventChannel"
+                    }
+                }
+            }
+        ],
+        "recommended_actions": [
+            "Check for file drops or network connections after execution",
+            "Check if account is now locked",
+            "Check parent process context",
+            "Check source IP and logon type",
+            "Correlate with login events on same host",
+            "Monitor for successful login (4624) following this",
+            "Monitor for successful login after failures",
+            "Verify if activity was authorized",
+            "Verify if the user mistyped password",
+            "Verify source IP"
+        ]
+    },
+    {
+        "chain_id": "CHAIN-00006",
         "chain_label": "Initial Access",
         "kill_chain_phases": [
             "Initial Access"

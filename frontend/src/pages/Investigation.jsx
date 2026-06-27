@@ -297,6 +297,7 @@ export default function Investigation() {
   const [sent, setSent] = useState(false);
   const [showDecoded, setShowDecoded] = useState(false);
   const [notes, setNotes] = useState(localStorage.getItem("clearsoc_investigation_notes") || "");
+  const [settings, setSettings] = useState(null);
   const [hostAlerts, setHostAlerts] = useState([]);
   const [zeekData, setZeekData] = useState(null);
   const [rawFields, setRawFields] = useState({});
@@ -316,6 +317,10 @@ MITRE: ${(selected.mitre||[]).join(", ")}
 Summary: ${selected.summary}
 Action Required: Immediate investigation`;
     setEscalateMsg(msg);
+    fetch("http://localhost:8001/api/settings")
+      .then(r => r.json())
+      .then(s => setSettings(s))
+      .catch(() => {});
     fetch(`${API}/api/investigations`)
       .then(r => r.json())
       .then(data => {
@@ -396,9 +401,9 @@ Action Required: Immediate investigation`;
             <p style={{color:"#64748b",fontSize:"12px",margin:"0 0 12px"}}>Send via:</p>
             <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:"10px",marginBottom:"20px"}}>
               {[
-                { label:"📧 Email", color:"#38bdf8", href:`mailto:soc-team@company.com?subject=ClearSOC ESCALATION: ${sev} Alert&body=${encodeURIComponent(escalateMsg)}` },
-                { label:"💬 WhatsApp", color:"#22c55e", href:`https://wa.me/?text=${encodeURIComponent(escalateMsg)}` },
-                { label:"📱 SMS", color:"#a855f7", href:`sms:?body=${encodeURIComponent(escalateMsg)}` },
+                { label:"📧 Email", color:"#38bdf8", href:`mailto:${settings?.escalation?.email||"soc-team@company.com"}?subject=ClearSOC ESCALATION: ${sev} Alert&body=${encodeURIComponent(escalateMsg)}` },
+                { label:"💬 WhatsApp", color:"#22c55e", href:`https://wa.me/${(settings?.escalation?.whatsapp||"").replace(/[^0-9]/g,"")}?text=${encodeURIComponent(escalateMsg)}` },
+                { label:"📱 SMS", color:"#a855f7", href:`sms:${settings?.escalation?.sms||""}?body=${encodeURIComponent(escalateMsg)}` },
               ].map(b => (
                 <a key={b.label} href={b.href} target="_blank" rel="noreferrer"
                   onClick={() => setSent(true)}
@@ -756,6 +761,9 @@ Action Required: Immediate investigation`;
         {/* ZEEK NETWORK CONTEXT */}
         <ZeekPanel alert={alert} API={API} />
 
+        {/* SURICATA IDS */}
+        <SuricataPanel alert={alert} API={API} />
+
         {/* FP/TP ASSESSMENT */}
         <FpTpAssessmentWrapper alert={alert} inv={inv} API={API} />
 
@@ -927,6 +935,54 @@ function ZeekPanel({ alert, API }) {
               ))}
             </>
           )}
+        </>
+      )}
+    </EvidenceBox>
+  );
+}
+
+function SuricataPanel({ alert, API }) {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const ip = alert?.raw?.agent?.ip || alert?.source_ip || "";
+    const time = alert?.time || "";
+    if (!ip) { setLoading(false); return; }
+    fetch(`${API}/api/suricata-context?host_ip=${encodeURIComponent(ip)}&alert_time=${encodeURIComponent(time)}&window_minutes=10`)
+      .then(r => r.json())
+      .then(d => { setData(d); setLoading(false); })
+      .catch(() => setLoading(false));
+  }, [alert?.time]);
+
+  if (loading) return (
+    <EvidenceBox title="Suricata IDS" color="#f97316">
+      <span style={{color:"#475569",fontSize:"11px"}}>Loading...</span>
+    </EvidenceBox>
+  );
+
+  if (!data?.available) return (
+    <EvidenceBox title="Suricata IDS" color="#475569">
+      <span style={{color:"#475569",fontSize:"11px"}}>No Suricata alerts for this host in the time window. Suricata monitors ens33 traffic only.</span>
+    </EvidenceBox>
+  );
+
+  return (
+    <EvidenceBox title="Suricata IDS" color="#f97316">
+      {data.alerts.length === 0 ? (
+        <span style={{color:"#22c55e",fontSize:"11px"}}>No IDS alerts from this host in the time window — no known attack signatures matched.</span>
+      ) : (
+        <>
+          <div style={{display:"flex",alignItems:"center",gap:"6px",marginBottom:"8px"}}>
+            <span style={{color:"#ef4444",fontSize:"13px",fontWeight:700}}>{data.alerts.length}</span>
+            <span style={{color:"#94a3b8",fontSize:"11px"}}>IDS alert{data.alerts.length===1?"":"s"} matched</span>
+          </div>
+          {data.alerts.slice(0,5).map((a,i) => (
+            <div key={i} style={{padding:"6px 8px",background:"rgba(239,68,68,0.06)",border:"1px solid rgba(239,68,68,0.15)",borderRadius:"6px",marginBottom:"4px"}}>
+              <p style={{color:"#fca5a5",fontSize:"11px",fontWeight:600,margin:"0 0 2px"}}>{a.signature}</p>
+              <p style={{color:"#64748b",fontSize:"10px",margin:0}}>{a.src_ip} → {a.dest_ip}:{a.dest_port} | Severity: {a.severity} | Category: {a.category}</p>
+            </div>
+          ))}
         </>
       )}
     </EvidenceBox>

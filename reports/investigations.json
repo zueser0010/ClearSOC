@@ -566,11 +566,16 @@
         "fp_notes": "3-9 failures may be user error. Do not call it brute force unless volume increases.",
         "title": "Authentication Failure Spike",
         "summary": "3 failed logins in 5 min | User: administrator | Host: win-server",
-        "related_chain_id": null,
-        "chain_severity": null,
+        "related_chain_id": "CHAIN-00005",
+        "chain_severity": "LOW",
         "chain_decision": "MONITOR",
-        "chain_reasons": [],
-        "chain_kill_chain_phases": [],
+        "chain_reasons": [
+            "Brute force login activity detected"
+        ],
+        "chain_kill_chain_phases": [
+            "Initial Access",
+            "Discovery"
+        ],
         "confidence": "LOW",
         "recommended_actions": [
             "Verify if the user mistyped password",
@@ -578,7 +583,7 @@
             "Monitor for successful login after failures"
         ],
         "validation": {
-            "brute_force_preceded": false,
+            "brute_force_preceded": true,
             "privilege_escalation_observed": false,
             "powershell_observed": false,
             "persistence_observed": false,
@@ -646,7 +651,7 @@
         "fp_notes": "3-9 failures may be user error. Do not call it brute force unless volume increases.",
         "title": "Authentication Failure Spike",
         "summary": "3 failed logins in 5 min | User: admin | Host: win-server",
-        "related_chain_id": "CHAIN-00005",
+        "related_chain_id": "CHAIN-00006",
         "chain_severity": "LOW",
         "chain_decision": "MONITOR",
         "chain_reasons": [
@@ -735,7 +740,7 @@
         "fp_notes": "Could be password expiry or account lockout \u2014 no confirmed success yet",
         "title": "\ud83d\udd28 Brute Force Login Attempt",
         "summary": "10 failed logins in 5 min | User: admin | Host: win-server",
-        "related_chain_id": "CHAIN-00005",
+        "related_chain_id": "CHAIN-00006",
         "chain_severity": "LOW",
         "chain_decision": "MONITOR",
         "chain_reasons": [
@@ -1357,6 +1362,142 @@
             "privilege_escalation_observed": false,
             "powershell_observed": false,
             "persistence_observed": true,
+            "lateral_movement_observed": false
+        }
+    },
+    {
+        "investigation_id": "INV-00031",
+        "alert_id": "CSA-00031",
+        "time": "2026-06-26T17:18:16.613+0800",
+        "host": "win-server",
+        "user": "administrator",
+        "event_id": "4625",
+        "rule_id": "60122",
+        "rule_description": "Logon Failure - Unknown user or bad password",
+        "process": "",
+        "parent_process": "",
+        "command_line": "",
+        "severity": "MEDIUM",
+        "kill_chain_phase": "Initial Access",
+        "mitre": [
+            "T1110"
+        ],
+        "fp_notes": "Could be password expiry or account lockout \u2014 no confirmed success yet",
+        "title": "\ud83d\udd28 Brute Force Login Attempt",
+        "summary": "10 failed logins in 5 min | User: administrator | Host: win-server",
+        "related_chain_id": "CHAIN-00005",
+        "chain_severity": "LOW",
+        "chain_decision": "MONITOR",
+        "chain_reasons": [
+            "Brute force login activity detected"
+        ],
+        "chain_kill_chain_phases": [
+            "Initial Access",
+            "Discovery"
+        ],
+        "confidence": "LOW",
+        "recommended_actions": [
+            "Check if account is now locked",
+            "Verify source IP",
+            "Monitor for successful login (4624) following this"
+        ],
+        "validation": {
+            "brute_force_preceded": true,
+            "privilege_escalation_observed": false,
+            "powershell_observed": false,
+            "persistence_observed": false,
+            "lateral_movement_observed": false
+        }
+    },
+    {
+        "investigation_id": "INV-00032",
+        "alert_id": "CSA-00032",
+        "time": "2026-06-26T17:20:12.431+0800",
+        "host": "win-server",
+        "user": "administrator",
+        "event_id": "1",
+        "rule_id": "92033",
+        "rule_description": "Discovery activity spawned via powershell execution",
+        "process": "C:\\\\Windows\\\\System32\\\\net.exe",
+        "parent_process": "C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe",
+        "command_line": "\\\"C:\\\\Windows\\\\system32\\\\net.exe\\\" user administrator /active:yes",
+        "severity": "MEDIUM",
+        "kill_chain_phase": "Discovery",
+        "mitre": [
+            "T1082",
+            "T1087"
+        ],
+        "fp_notes": "Verify parent process \u2014 could be legitimate admin activity",
+        "title": "\ud83d\udd0d Discovery Activity Detected",
+        "summary": "Discovery activity spawned via powershell execution | Host: win-server | Process: c:\\\\windows\\\\system32\\\\net.exe",
+        "related_chain_id": "CHAIN-00005",
+        "chain_severity": "LOW",
+        "chain_decision": "MONITOR",
+        "chain_reasons": [
+            "Brute force login activity detected"
+        ],
+        "chain_kill_chain_phases": [
+            "Initial Access",
+            "Discovery"
+        ],
+        "confidence": "LOW",
+        "recommended_actions": [
+            "Check parent process context",
+            "Verify if activity was authorized",
+            "Correlate with login events on same host",
+            "Check for file drops or network connections after execution"
+        ],
+        "validation": {
+            "brute_force_preceded": true,
+            "privilege_escalation_observed": false,
+            "powershell_observed": false,
+            "persistence_observed": false,
+            "lateral_movement_observed": false
+        }
+    },
+    {
+        "investigation_id": "INV-00033",
+        "alert_id": "CSA-00033",
+        "time": "2026-06-26T17:20:12.463+0800",
+        "host": "win-server",
+        "user": "administrator",
+        "event_id": "1",
+        "rule_id": "92039",
+        "rule_description": "A net.exe account discovery command was initiated",
+        "process": "C:\\\\Windows\\\\System32\\\\net1.exe",
+        "parent_process": "C:\\\\Windows\\\\System32\\\\net.exe",
+        "command_line": "C:\\\\Windows\\\\system32\\\\net1 user administrator /active:yes",
+        "severity": "MEDIUM",
+        "kill_chain_phase": "Discovery",
+        "mitre": [
+            "T1082",
+            "T1087"
+        ],
+        "fp_notes": "Verify parent process \u2014 could be legitimate admin activity",
+        "title": "\ud83d\udd0d Discovery Activity Detected",
+        "summary": "A net.exe account discovery command was initiated | Host: win-server | Process: c:\\\\windows\\\\system32\\\\net1.exe",
+        "related_chain_id": "CHAIN-00005",
+        "chain_severity": "LOW",
+        "chain_decision": "MONITOR",
+        "chain_reasons": [
+            "Brute force login activity detected"
+        ],
+        "chain_kill_chain_phases": [
+            "Initial Access",
+            "Discovery"
+        ],
+        "confidence": "LOW",
+        "recommended_actions": [
+            "Check parent process context",
+            "Verify if activity was authorized",
+            "Correlate with login events on same host",
+            "Check for file drops or network connections after execution"
+        ],
+        "validation": {
+            "brute_force_preceded": true,
+            "privilege_escalation_observed": false,
+            "powershell_observed": false,
+            "persistence_observed": false,
             "lateral_movement_observed": false
         }
     }

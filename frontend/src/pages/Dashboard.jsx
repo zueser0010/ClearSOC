@@ -301,6 +301,14 @@ export default function Dashboard() {
                 <td style={{padding:"8px",color:SEV_COLOR[a.severity]||"#94a3b8",fontWeight:700}}>{a.severity}</td>
                 <td style={{padding:"8px",color:"#f97316",fontWeight:700}}>INVESTIGATE</td>
                 <td style={{padding:"8px"}}><span style={{color:"#22c55e",fontSize:"11px",fontWeight:600}}>● OPEN</span></td>
+                <td style={{padding:"8px"}}>
+                  <button onClick={() => {
+                    localStorage.setItem("clearsoc_selected_alert", JSON.stringify(a));
+                    navigate("/investigation");
+                  }} style={{background:"rgba(56,189,248,0.1)",border:"1px solid rgba(56,189,248,0.3)",color:"#38bdf8",padding:"4px 10px",borderRadius:"6px",cursor:"pointer",fontSize:"11px",fontWeight:600}}>
+                    Investigate
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>

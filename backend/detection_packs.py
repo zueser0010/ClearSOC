@@ -4,6 +4,19 @@ from pathlib import Path
 from datetime import datetime, timedelta
 from collections import defaultdict
 
+import json as _dpjson
+def _load_dp_config():
+    try:
+        with open("/home/alwin/ClearSOC/reports/clearsoc_config.json") as f:
+            c = _dpjson.load(f)
+        return c.get("thresholds", {})
+    except:
+        return {}
+_DP_CONFIG = _load_dp_config()
+_BF_COUNT = _DP_CONFIG.get("brute_force_count", 5)
+_BF_WINDOW = _DP_CONFIG.get("brute_force_window_minutes", 5)
+
+
 def safe_lower(value):
     if value is None:
         return ""
@@ -82,7 +95,7 @@ def detect_brute_force(event):
         return None
 
     now = event.get("parsed_time") or datetime.utcnow()
-    window = timedelta(minutes=5)
+    window = timedelta(minutes=_BF_WINDOW)
 
     # Track successful logins per user/host
     if eid == "4624":
@@ -197,7 +210,7 @@ def detect_privilege_escalation(event):
 
     # Check if brute force preceded this
     bf_key = f"{host}:{user}"
-    recent_bf = len(_brute_force_tracker.get(bf_key, [])) >= 5
+    recent_bf = len(_brute_force_tracker.get(bf_key, [])) >= _BF_COUNT
 
     severity = "CRITICAL" if recent_bf else "HIGH"
     title = "👑 Privilege Escalation After Brute Force" if recent_bf else "👑 Unexpected Admin Privileges"

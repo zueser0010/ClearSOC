@@ -29,6 +29,36 @@ LIVE_WAZUH_RULES = {
 
 from detection_packs import run_detection_packs
 
+import json as _json
+def load_clearsoc_config():
+    config_path = "/home/alwin/ClearSOC/reports/clearsoc_config.json"
+    defaults = {
+        "thresholds": {
+            "brute_force_count": 5,
+            "brute_force_window_minutes": 5,
+            "min_rule_level": 3
+        },
+        "escalation": {"email": "", "whatsapp": "", "sms": ""},
+        "siem": {"alerts_path": "/var/ossec/logs/alerts/alerts.json"}
+    }
+    try:
+        with open(config_path) as f:
+            saved = _json.load(f)
+        for k in saved:
+            if isinstance(saved[k], dict) and k in defaults:
+                defaults[k].update(saved[k])
+            else:
+                defaults[k] = saved[k]
+    except:
+        pass
+    return defaults
+
+CLEARSOC_CONFIG = load_clearsoc_config()
+BRUTE_FORCE_COUNT = CLEARSOC_CONFIG["thresholds"]["brute_force_count"]
+BRUTE_FORCE_WINDOW = CLEARSOC_CONFIG["thresholds"]["brute_force_window_minutes"]
+MIN_RULE_LEVEL = CLEARSOC_CONFIG["thresholds"]["min_rule_level"]
+
+
 SEV_TO_BASE_CONFIDENCE = {"CRITICAL": "HIGH", "HIGH": "MEDIUM", "MEDIUM": "LOW", "LOW": "LOW"}
 CONF_RANK = {"LOW": 0, "MEDIUM": 1, "HIGH": 2}
 
