@@ -607,8 +607,7 @@ Action Required: Immediate investigation`;
         </div>
 
         <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"12px"}}>
-          <MetricBox label="Analyst Confidence" value={analystAnalysis.confidence} color={analystAnalysis.confidence === "HIGH" ? "#22c55e" : analystAnalysis.confidence === "MEDIUM" ? "#eab308" : "#64748b"} />
-          <MetricBox label="Suggested Verdict" value={analystAnalysis.verdict} color={analystAnalysis.verdict === "ESCALATE" ? "#ef4444" : analystAnalysis.verdict === "INVESTIGATE" ? "#f97316" : "#eab308"} />
+          {/* Verdict moved to right panel FP/TP Assessment for single source of truth */}
         </div>
       </StepCard>
 
@@ -632,7 +631,7 @@ Action Required: Immediate investigation`;
           <MetricBox label="Alert Severity" value={sev} color={sevColor}/>
           <MetricBox label="Evidence Found" value={`${evidenceFound}/${totalEvidence}`} color="#38bdf8"/>
           <MetricBox label="Chain Severity" value={inv?.chain_severity || "N/A"} color={SEV_COLOR[inv?.chain_severity] || "#94a3b8"}/>
-          <MetricBox label="Confidence" value={inv?.confidence || "LOW"} color={inv?.confidence === "HIGH" ? "#22c55e" : inv?.confidence === "MEDIUM" ? "#eab308" : "#64748b"}/>
+          <MetricBox label="Confidence" value={analystAnalysis.confidence} color={analystAnalysis.confidence === "HIGH" ? "#22c55e" : analystAnalysis.confidence === "MEDIUM" ? "#eab308" : "#64748b"}/>
         </div>
 
         {/* Evidence Score */}

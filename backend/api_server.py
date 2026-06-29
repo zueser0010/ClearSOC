@@ -207,3 +207,14 @@ def suricata_context(host_ip: str = "", alert_time: str = "", window_minutes: in
     except Exception as e:
         result["error"] = str(e)
     return result
+
+@app.get("/api/host-alerts")
+def host_alerts(host: str, exclude_id: str = ""):
+    try:
+        alerts = load_report("soc_alerts.json", [])
+        if not isinstance(alerts, list):
+            alerts = []
+        filtered = [a for a in alerts if str(a.get("host","")).lower() == host.lower() and a.get("alert_id","") != exclude_id]
+        return filtered
+    except Exception as e:
+        return []
